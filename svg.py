@@ -43,7 +43,10 @@ class Element:
 	def __init__(self, attrs, parent=None):
 		self.__parent = parent
 		self.id = attrs.get("id", "")
-		self.transform = attrs.get("transform", "")
+		if attrs.has_key("transform"):
+			self.transform = Transform(attrs.get("transform", ""))
+		else:
+			self.transform = None
 	
 	def callHandler(self, handler):
 		pass
@@ -169,6 +172,48 @@ class Style(dict):
 			a = item.split(":")
 			if len(a)<2: continue
 			self[a[0]] = a[1]
+
+#変形
+class Transform:
+	class Translate:
+		def __init__(self, x, y= "0"):
+			self.x = Length(x)
+			self.y = Length(y)
+			
+		def __str__(self):
+			return "translate(%s,%s)" % (str(self.x), str(self.y))
+
+	class Matrix:
+		def __init__(self, a, b, c, d, e, f):
+			self.a = float(a)
+			self.b = float(b)
+			self.c = float(c)
+			self.d = float(d)
+			self.e = Length(e)
+			self.f = Length(f)
+		
+		def __str__(self):
+			return "matrix(%f,%f,%f,%f,%s,%s)" % (
+				self.a, self.b, self.c, self.d,
+				str(self.e), str(self.f))
+
+	__filter_re = re.compile(r"(?P<name>[a-z]+)\((?P<args>[\-0-9,.]*)\)", re.I)
+	__transforms_dict = {
+		"translate": Translate,
+		"matrix": Matrix,
+	}
+	def __init__(self, s):
+		s = s.replace(" ", "").replace("\t", "")
+		transforms = []
+		for m in Transform.__filter_re.finditer(s):
+			name = m.group("name")
+			args = m.group("args").split(",")
+			transform = Transform.__transforms_dict[name](*args)
+			transforms.append(transform)
+		self.__transforms = transforms
+	
+	def __str__(self):
+		return " ".join([str(f) for f in self.__transforms])
 
 class SVGHandler:
 	def svg(self, x):

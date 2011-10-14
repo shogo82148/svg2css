@@ -60,11 +60,7 @@ class CSSWriter(svg.SVGHandler):
 	
 		#変形
 		if x.transform:
-			css["-moz-transform"] = x.transform
-			css["-webkit-transform"] = x.transform
-			css["-o-transform"] = x.transform
-			css["-ms-transform"] = x.transform
-			print x.transform
+			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(x.transform)
 
 		#フィルを指定する
 		if "fill" in x.style:
@@ -103,11 +99,7 @@ class CSSWriter(svg.SVGHandler):
 		
 		#変形
 		if x.transform:
-			css["-moz-transform"] = x.transform
-			css["-webkit-transform"] = x.transform
-			css["-o-transform"] = x.transform
-			css["-ms-transform"] = x.transform
-			print x.transform
+			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(x.transform)
 		
 		#出力
 		css_style = "".join(["%s:%s;"%style for style in css.items()])
