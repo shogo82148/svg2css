@@ -23,7 +23,10 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 		self.__svg = None
 		
 	def startElement(self, name, attrs):
-		if name=="svg":
+		type = attrs.get('sodipodi:type', '')
+		if type=="arc":
+			self.__container.append(Arc(attrs))
+		elif name=="svg":
 			self.__container = SVG(attrs, self.__container)
 			self.__svg = self.__container
 		elif name=="rect":
@@ -40,6 +43,7 @@ class Element:
 	def __init__(self, attrs, parent=None):
 		self.__parent = parent
 		self.id = attrs.get("id", "")
+		self.transform = attrs.get("transform", "")
 	
 	def callHandler(self, handler):
 		pass
@@ -103,6 +107,18 @@ class Rect(Element):
 	def callHandler(self, handler):
 		handler.rect(self)
 
+#円弧
+class Arc(Element):
+	def __init__(self, attrs, parent=None):
+		Element.__init__(self, attrs, parent)
+		self.cx = Length(attrs.get("sodipodi:cx", "0"))
+		self.cy = Length(attrs.get("sodipodi:cy", "0"))
+		self.rx = Length(attrs.get("sodipodi:rx", "0"))
+		self.ry = Length(attrs.get("sodipodi:ry", "0"))
+		self.style = Style(attrs.get("style", ""))
+		
+	def callHandler(self, handler):
+		handler.arc(self)
 
 #SVG内での長さを表すクラス
 class Length:
@@ -160,6 +176,9 @@ class SVGHandler:
 			a.callHandler(self)
 			
 	def rect(self, x):
+		pass
+	
+	def arc(self, x):
 		pass
 
 def main():
