@@ -38,10 +38,18 @@ class CSSWriter(svg.SVGHandler):
 		
 		#ストロークの描画
 		if "stroke" in x.style and x.style["stroke"] != 'none':
-			css["border-style"] = "solid"
-			css["border-color"] =  x.style["stroke"]
-			stroke = svg.Length(x.style.get("stroke-width",1))
-			css["border-width"] = str(stroke)
+			try:
+				css["border-style"] = "solid"
+				if "stroke-opacity" in x.style:
+					color = svg.Color(x.style["stroke"])
+					color.a = float(x.style["stroke-opacity"])
+					css["border-color"] = color.toRGBA()
+				else:
+					css["border-color"] =  x.style["stroke"]
+				stroke = svg.Length(x.style.get("stroke-width",1))
+				css["border-width"] = str(stroke)
+			except:
+				pass
 		
 		#位置と大きさの設定
 		css["position"] = "absolute"
@@ -62,14 +70,21 @@ class CSSWriter(svg.SVGHandler):
 		if x.transform:
 			#CSSとSVGの原点の違いを補正
 			transform = x.transform.toMatrix()
-			print transform
 			transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
 			transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
 			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(transform)
 
 		#フィルを指定する
-		if "fill" in x.style:
-			css["background-color"] = x.style["fill"]
+		if "fill" in x.style and x.style["fill"] != "none":
+			try:
+				if "fill-opacity" in x.style:
+					color = svg.Color(x.style["fill"])
+					color.a = float(x.style["fill-opacity"])
+					css["background-color"] = color.toRGBA()
+				else:
+					css["background-color"] = x.style["fill"]
+			except:
+				pass
 			
 		#出力
 		css_style = "".join(["%s:%s;"%style for style in css.items()])
@@ -83,11 +98,19 @@ class CSSWriter(svg.SVGHandler):
 		
 		#ストロークの描画
 		if "stroke" in x.style and x.style["stroke"] != 'none':
-			css["border-style"] = "solid"
-			css["border-color"] =  x.style["stroke"]
-			stroke = svg.Length(x.style.get("stroke-width",1))
-			css["border-width"] = str(stroke)
-		
+			try:
+				css["border-style"] = "solid"
+				if "stroke-opacity" in x.style:
+					color = svg.Color(x.style["stroke"])
+					color.a = float(x.style["stroke-opacity"])
+					css["border-color"] = color.toRGBA()
+				else:
+					css["border-color"] =  x.style["stroke"]
+				stroke = svg.Length(x.style.get("stroke-width",1))
+				css["border-width"] = str(stroke)
+			except:
+				pass
+				
 		#位置と大きさの設定
 		css["position"] = "absolute"
 		css["left"] = str(x.cx - x.rx - stroke/2)
@@ -99,18 +122,24 @@ class CSSWriter(svg.SVGHandler):
 		css["border-radius"] = "%s/%s" % (str(x.rx+stroke/2), str(x.ry+stroke/2))
 	
 		#フィルを指定する
-		if "fill" in x.style:
-			css["background-color"] = x.style["fill"]
+		if "fill" in x.style and x.style["fill"] != "none":
+			try:
+				if "fill-opacity" in x.style:
+					color = svg.Color(x.style["fill"])
+					color.a = float(x.style["fill-opacity"])
+					css["background-color"] = color.toRGBA()
+				else:
+					css["background-color"] = x.style["fill"]
+			except:
+				pass
 		
 		#変形
 		if x.transform:
-			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(x.transform)
-			p = svg.Point(x.cx, x.cy)
-			for m in x.transform:
-				if isinstance(m, svg.Transform.Matrix):
-					p = m * p
-			css["left"] = str(p.x - x.rx - stroke/2)
-			css["top"] = str(p.y - x.ry - stroke/2)
+			#CSSとSVGの原点の違いを補正
+			transform = x.transform.toMatrix()
+			transform = transform * svg.Transform.Translate(x.cx, x.cy)
+			transform = svg.Transform.Translate(-x.cx, -x.cy) * transform
+			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(transform)
 		
 		#出力
 		css_style = "".join(["%s:%s;"%style for style in css.items()])
@@ -141,12 +170,13 @@ class CSSWriter(svg.SVGHandler):
 		self.__css.close()
 
 def main():
-	testsets = ["rect", "rect-rotate"]
+	testsets = ["rect", "rect-rotate","ellipse","ellipse-rotate","opacity"]
 	for name in testsets:
 		p = svg.Parser()
 		svgfile = open(name + ".svg", "r")
 		writer = CSSWriter(name)
 		p.parse(svgfile).callHandler(writer)
+		svg.Color("#FF0000")
 	return
 
 if __name__=="__main__":

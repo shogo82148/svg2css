@@ -33,13 +33,15 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 		elif name=="rect":
 			self.__container.append(Rect(attrs))
 		elif name=="g":
-			g = Group(attrs)
+			g = Group(attrs, self.__container)
 			self.__container.append(g)
 			self.__container = g
+			assert g.parent
 			
 	def endElement(self, name):
 		if name=="g":
 			self.__container = self.__container.parent
+			assert self.__container
 		
 	def getSVG(self):
 		return self.__svg
@@ -47,7 +49,7 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 #SVGの要素を表すクラス
 class Element:
 	def __init__(self, attrs, parent=None):
-		self.__parent = parent
+		self._parent = parent
 		self.id = attrs.get("id", "")
 		if attrs.has_key("transform"):
 			self.transform = Transform(attrs.get("transform", ""))
@@ -60,7 +62,9 @@ class Element:
 	@apply
 	def parent():
 		def get(self):
-			return self.__parent
+			return self._parent
+		def set(self, p):
+			self._parent = p
 
 #他のSVG要素を格納できるコンテナ
 class Container(Element,list):
@@ -70,25 +74,25 @@ class Container(Element,list):
 		
 	def append(self, x):
 		list.append(self, x)
-		x._Element__parent = self
+		x.parent = self
 		
 	def extend(self, L):
 		list.extend(self, L)
 		for x in L:
-			x._Element__parent = self
+			x.parent = self
 	
 	def insert(self, i, x):
 		list.insert(self, i, x)
-		x._Element__parent = self
+		x.parent = self
 
 	def remove(self, x):
 		list.remove(self, x)
-		x._Element__parent = None
+		x.parent = None
 	
 	def pop(self, i=-1):
 		list.pop(self, i)
-		x._Element__parent = None
-
+		x.parent = None
+		
 #SVG画像
 class SVG(Container):
 	def __init__(self, attrs, parent=None):
@@ -139,7 +143,7 @@ class Group(Container):
 
 #SVG内での長さを表すクラス
 class Length:
-	__length_re = re.compile(r"(?P<length>[+\-0-9.]*)(?P<unit>[%a-z]*)")
+	__length_re = re.compile(r"^(?P<length>[+\-0-9e.]*)(?P<unit>[%a-z]*)$")
 	__px_per_unit = {
 		"px": 1.0,
 		"in": 90.0,
@@ -162,7 +166,7 @@ class Length:
 		return self.__length * Length.__px_per_unit[self.__unit]
 	
 	def __str__(self):
-		return str(self.__length) + self.__unit
+		return "%.2f%s" % (self.__length, self.__unit)
 	
 	def __add__(a, b):
 		if isinstance(b, Length):
@@ -267,7 +271,7 @@ class Transform(list):
 		def toMatrix(self):
 			return self
 		
-	__filter_re = re.compile(r"(?P<name>[a-z]+)\((?P<args>[\-0-9,.]*)\)", re.I)
+	__filter_re = re.compile(r"(?P<name>[a-z]+)\((?P<args>[e+\-0-9,.]*)\)", re.I)
 	__transforms_dict = {
 		"translate": Translate,
 		"matrix": Matrix,
@@ -313,6 +317,46 @@ class SVGHandler:
 	
 	def arc(self, x):
 		pass
+
+class Color:
+	__re_hex = re.compile("^#([0-9a-f][0-9a-f])([0-9a-f][0-9a-f])([0-9a-f][0-9a-f])$", re.I)
+	def __init__(self, *larg, **darg):
+		if len(larg)==1:
+			#文字列
+			m = Color.__re_hex.match(larg[0])
+			if m:
+				self.r = int(m.group(1), 16)
+				self.g = int(m.group(2), 16)
+				self.b = int(m.group(3), 16)
+				self.a = 1.0
+				return
+			raise
+		elif len(larg)==3:
+			#(r,g,b)
+			self.r = int(larg[0])
+			self.g = int(larg[1])
+			self.b = int(larg[2])
+			self.a = 1.0
+		elif len(larg)==4:
+			#(r,g,b,a)
+			self.r = int(larg[0])
+			self.g = int(larg[1])
+			self.b = int(larg[2])
+			self.a = float(larg[3])
+		else:
+			self.r = int(darg.get("r", "0"))
+			self.g = int(darg.get("g", "0"))
+			self.b = int(darg.get("b", "0"))
+			self.a = float(darg.get("a", "1"))
+
+	def toHex(self):
+		return "#%02x%02x%02x" % (self.r, self.g, self.b)
+	
+	def toRGB(self):
+		return "rgb(%d,%d,%d)" % (self.r, self.g, self.b)
+		
+	def toRGBA(self):
+		return "rgba(%d,%d,%d,%f)" % (self.r, self.g, self.b, self.a)
 
 def main():
 	filename = sys.argv[1]
