@@ -169,7 +169,7 @@ class Length:
 			return Length(a.px + b.px, "px")
 		else:
 			return Length(a.px + b, "px")
-	
+
 	def __sub__(a, b):
 		if isinstance(b, Length):
 			return Length(a.px - b.px, "px")
@@ -184,6 +184,19 @@ class Length:
 	
 	def __div__(a, b):
 		return Length(a.__length / b, a.__unit)
+		
+	def __neg__(a):
+		return Length(-a.__length, a.__unit)
+	
+	def __pos__(a):
+		return a;
+	
+	def __abs__(a):
+		return Length(abs(a.__length), a.__unit)
+	
+	def __float__(a):
+		return a.px
+
 
 #スタイル
 class Style(dict):
@@ -210,16 +223,16 @@ class Transform(list):
 		def __mul__(self, a):
 			if isinstance(a, Point):
 				return Point(a.x+self.x, a.y+self.y)
-			elif isinstance(a, Translate):
-				return Translate(a.x+self.x, a.y+self.y)
-			elif isinstance(a, BaseTransform):
+			elif isinstance(a, Transform.Translate):
+				return Transform.Translate(a.x+self.x, a.y+self.y)
+			elif isinstance(a, Transform.BaseTransform):
 				m = a.toMatrix()
-				return Matrix(m.a, m.b, m.c, m.d, m.e+self.x, m.f+self.y)
+				return Transform.Matrix(m.a, m.b, m.c, m.d, m.e+self.x.px, m.f+self.y.px)
 			else:
 				raise
 		
 		def toMatrix(self):
-			return Matrix(0,0,0,0,self.x,self.y)
+			return Transform.Matrix(1,0,0,1,self.x,self.y)
 
 	class Matrix(BaseTransform):
 		def __init__(self, a, b, c, d, e, f):
@@ -240,9 +253,9 @@ class Transform(list):
 				return Point(
 					self.a*a.x+self.c*a.y+self.e,
 					self.b*a.x+self.d*a.y+self.f)
-			elif isinstance(a, BaseTransform):
+			elif isinstance(a, Transform.BaseTransform):
 				m = a.toMatrix()
-				return Matrix(self.a*m.a+self.c*m.b,
+				return Transform.Matrix(self.a*m.a+self.c*m.b,
 					self.b*m.a+self.d*m.b,
 					self.a*m.c+self.c*m.d,
 					self.b*m.c+self.d*m.d,
@@ -270,6 +283,12 @@ class Transform(list):
 		
 	def __str__(self):
 		return " ".join([str(f) for f in self])
+		
+	def toMatrix(self):
+		ret = Transform.Matrix(1,0,0,1,0,0)
+		for m in self:
+			ret = m * ret
+		return ret
 
 class Point(namedtuple('Point', 'x y')):
 	__slots__ = ()

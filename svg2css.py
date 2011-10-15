@@ -60,13 +60,12 @@ class CSSWriter(svg.SVGHandler):
 	
 		#変形
 		if x.transform:
-			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(x.transform)
-			p = svg.Point(x.x, x.y)
-			for m in x.transform:
-				if isinstance(m, svg.Transform.Matrix):
-					p = m * p
-			css["left"] = str(p.x)
-			css["top"] = str(p.y)
+			#CSSとSVGの原点の違いを補正
+			transform = x.transform.toMatrix()
+			print transform
+			transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
+			transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
+			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(transform)
 
 		#フィルを指定する
 		if "fill" in x.style:
