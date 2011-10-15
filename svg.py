@@ -4,6 +4,7 @@ import xml.sax
 import xml.sax.handler
 import sys
 import re
+from collections import namedtuple
 
 class Parser:
 	def __init__(self):
@@ -151,10 +152,16 @@ class Length:
 		return str(self.__length) + self.__unit
 	
 	def __add__(a, b):
-		return Length(a.px + b.px, "px")
+		if isinstance(b, Length):
+			return Length(a.px + b.px, "px")
+		else:
+			return Length(a.px + b, "px")
 	
 	def __sub__(a, b):
-		return Length(a.px - b.px, "px")
+		if isinstance(b, Length):
+			return Length(a.px - b.px, "px")
+		else:
+			return Length(a.px - b, "px")
 	
 	def __mul__(a, b):
 		return Length(a.__length * b, a.__unit)
@@ -174,12 +181,13 @@ class Style(dict):
 			self[a[0]] = a[1]
 
 #変形
-class Transform:
+class Transform(list):
 	class Translate:
 		def __init__(self, x, y= "0"):
 			self.x = Length(x)
 			self.y = Length(y)
-			
+		
+
 		def __str__(self):
 			return "translate(%s,%s)" % (str(self.x), str(self.y))
 
@@ -189,31 +197,50 @@ class Transform:
 			self.b = float(b)
 			self.c = float(c)
 			self.d = float(d)
-			self.e = Length(e)
-			self.f = Length(f)
+			self.e = float(e)
+			self.f = float(f)
 		
 		def __str__(self):
-			return "matrix(%f,%f,%f,%f,%s,%s)" % (
+			return "matrix(%f,%f,%f,%f,%f,%f)" % (
 				self.a, self.b, self.c, self.d,
-				str(self.e), str(self.f))
-
+				self.e, self.f)
+				
+		def __mul__(self, a):
+			if isinstance(a, Point):
+				print str(self)
+				return Point(
+					self.a*a.x+self.c*a.y,
+					self.b*a.x+self.d*a.y)
+			elif isinstance(a, Translate):
+				raise
+			else:
+				raise
+		
 	__filter_re = re.compile(r"(?P<name>[a-z]+)\((?P<args>[\-0-9,.]*)\)", re.I)
 	__transforms_dict = {
 		"translate": Translate,
 		"matrix": Matrix,
 	}
 	def __init__(self, s):
+		list.__init__(self)
 		s = s.replace(" ", "").replace("\t", "")
-		transforms = []
 		for m in Transform.__filter_re.finditer(s):
 			name = m.group("name")
 			args = m.group("args").split(",")
 			transform = Transform.__transforms_dict[name](*args)
-			transforms.append(transform)
-		self.__transforms = transforms
-	
+			self.append(transform)
+		
 	def __str__(self):
-		return " ".join([str(f) for f in self.__transforms])
+		return " ".join([str(f) for f in self])
+
+class Point(namedtuple('Point', 'x y')):
+	__slots__ = ()
+	
+	def __add__(a, b):
+		return Point(a.x+b.x, a.y+b.y)
+	
+	def __sub__(a, b):
+		return Point(a.x-b.x, a.y-b.y)
 
 class SVGHandler:
 	def svg(self, x):
