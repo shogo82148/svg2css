@@ -195,16 +195,33 @@ class Style(dict):
 
 #変形
 class Transform(list):
-	class Translate:
+	class BaseTransform:
+		def toMatrix(self):
+			raise
+
+	class Translate(BaseTransform):
 		def __init__(self, x, y= "0"):
 			self.x = Length(x)
 			self.y = Length(y)
 		
-
 		def __str__(self):
 			return "translate(%s,%s)" % (str(self.x), str(self.y))
+		
+		def __mul__(self, a):
+			if isinstance(a, Point):
+				return Point(a.x+self.x, a.y+self.y)
+			elif isinstance(a, Translate):
+				return Translate(a.x+self.x, a.y+self.y)
+			elif isinstance(a, BaseTransform):
+				m = a.toMatrix()
+				return Matrix(m.a, m.b, m.c, m.d, m.e+self.x, m.f+self.y)
+			else:
+				raise
+		
+		def toMatrix(self):
+			return Matrix(0,0,0,0,self.x,self.y)
 
-	class Matrix:
+	class Matrix(BaseTransform):
 		def __init__(self, a, b, c, d, e, f):
 			self.a = float(a)
 			self.b = float(b)
@@ -220,14 +237,22 @@ class Transform(list):
 				
 		def __mul__(self, a):
 			if isinstance(a, Point):
-				print str(self)
 				return Point(
-					self.a*a.x+self.c*a.y,
-					self.b*a.x+self.d*a.y)
-			elif isinstance(a, Translate):
-				raise
+					self.a*a.x+self.c*a.y+self.e,
+					self.b*a.x+self.d*a.y+self.f)
+			elif isinstance(a, BaseTransform):
+				m = a.toMatrix()
+				return Matrix(self.a*m.a+self.c*m.b,
+					self.b*m.a+self.d*m.b,
+					self.a*m.c+self.c*m.d,
+					self.b*m.c+self.d*m.d,
+					self.a*m.e+self.c*m.f+self.e,
+					self.b*m.e+self.d*m.f+self.f)
 			else:
 				raise
+		
+		def toMatrix(self):
+			return self
 		
 	__filter_re = re.compile(r"(?P<name>[a-z]+)\((?P<args>[\-0-9,.]*)\)", re.I)
 	__transforms_dict = {
