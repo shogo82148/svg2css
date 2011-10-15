@@ -142,7 +142,7 @@ class CSSWriter(svg.SVGHandler):
 		self.__css.close()
 
 def main():
-	testsets = ["rect"]
+	testsets = ["rect", "rect-rotate"]
 	for name in testsets:
 		p = svg.Parser()
 		svgfile = open(name + ".svg", "r")
