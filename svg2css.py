@@ -26,8 +26,8 @@ class CSSWriter(svg.SVGHandler):
 </head>
 <body>
 <div class="svg">\n""" % self.__name)
-		self.__css.write('@charset "utf-8"\n\n')
-		self.__css.write("div.svg{width:%s;height: %s;position: absolute;}\n" % (str(x.width), str(x.height)))
+		#self.__css.write('@charset "utf-8"\n\n.a{}\n')
+		self.__css.write(".svg{top:0px;left:0px;width:%s;height:%s;position:absolute;}\n" % (str(x.width), str(x.height)))
 		svg.SVGHandler.svg(self, x)
 		self.__html.write("""</div>\n</body></html>\n""")
 		
@@ -74,7 +74,7 @@ class CSSWriter(svg.SVGHandler):
 			
 		#出力
 		css_style = "".join(["%s:%s;"%style for style in css.items()])
-		self.__css.write("div.%s{%s}\n" % (name, css_style));
+		self.__css.write(".%s{%s}\n" % (name, css_style));
 		self.__html.write('<div class="%s"></div>\n' % name);
 	
 	def arc(self, x):
@@ -115,17 +115,39 @@ class CSSWriter(svg.SVGHandler):
 		
 		#出力
 		css_style = "".join(["%s:%s;"%style for style in css.items()])
-		self.__css.write("div.%s{%s}\n" % (name, css_style));
+		self.__css.write(".%s{%s}\n" % (name, css_style));
 		self.__html.write('<div class="%s"></div>\n' % name);
+	
+	def group(self, x):
+		name = self.newName()
+		css = {}
+		stroke = svg.Length(0)
+
+		css["position"] = "absolute"
+		css["margin"] = "0px"
 		
+		#変形
+		if x.transform:
+			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(x.transform)
+		
+		#出力
+		css_style = "".join(["%s:%s;"%style for style in css.items()])
+		self.__css.write(".%s{%s}\n" % (name, css_style));
+		self.__html.write('<div class="%s">\n' % name)
+		svg.SVGHandler.group(self, x)
+		self.__html.write('</div>\n');
+	
 	def __del__(self):
 		self.__html.close()
 		self.__css.close()
 
 def main():
-	filename = sys.argv[1]
-	p = svg.Parser()
-	p.parse(open(filename, "r")).callHandler(CSSWriter("out"))
+	testsets = ["rect"]
+	for name in testsets:
+		p = svg.Parser()
+		svgfile = open(name + ".svg", "r")
+		writer = CSSWriter(name)
+		p.parse(svgfile).callHandler(writer)
 	return
 
 if __name__=="__main__":

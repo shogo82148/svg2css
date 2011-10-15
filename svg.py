@@ -32,9 +32,14 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__svg = self.__container
 		elif name=="rect":
 			self.__container.append(Rect(attrs))
+		elif name=="g":
+			g = Group(attrs)
+			self.__container.append(g)
+			self.__container = g
 			
 	def endElement(self, name):
-		pass
+		if name=="g":
+			self.__container = self.__container.parent
 		
 	def getSVG(self):
 		return self.__svg
@@ -53,7 +58,7 @@ class Element:
 		pass
 	
 	@apply
-	def parrent():
+	def parent():
 		def get(self):
 			return self.__parent
 
@@ -123,6 +128,14 @@ class Arc(Element):
 		
 	def callHandler(self, handler):
 		handler.arc(self)
+
+#グループ
+class Group(Container):
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+		
+	def callHandler(self, handler):
+		handler.group(self)
 
 #SVG内での長さを表すクラス
 class Length:
@@ -246,7 +259,11 @@ class SVGHandler:
 	def svg(self, x):
 		for a in x:
 			a.callHandler(self)
-			
+	
+	def group(self, x):
+		for a in x:
+			a.callHandler(self)
+	
 	def rect(self, x):
 		pass
 	
