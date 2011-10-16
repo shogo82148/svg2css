@@ -72,7 +72,8 @@ class CSSWriter(svg.SVGHandler):
 			transform = x.transform.toMatrix()
 			transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
 			transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
-			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(transform)
+			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
+			css["-moz-transform"] = transform.toStringMoz()
 
 		#フィルを指定する
 		if "fill" in x.style and x.style["fill"] != "none":
@@ -139,7 +140,8 @@ class CSSWriter(svg.SVGHandler):
 			transform = x.transform.toMatrix()
 			transform = transform * svg.Transform.Translate(x.cx, x.cy)
 			transform = svg.Transform.Translate(-x.cx, -x.cy) * transform
-			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(transform)
+			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
+			css["-moz-transform"] = transform.toStringMoz()
 		
 		#出力
 		css_style = "".join(["%s:%s;"%style for style in css.items()])

@@ -271,6 +271,11 @@ class Transform(list):
 		def toMatrix(self):
 			return self
 		
+		def toStringMoz(self):
+			return "matrix(%f,%f,%f,%f,%fpx,%fpx)" % (
+				self.a, self.b, self.c, self.d,
+				self.e, self.f)
+		
 	__filter_re = re.compile(r"(?P<name>[a-z]+)\((?P<args>[e+\-0-9,.]*)\)", re.I)
 	__transforms_dict = {
 		"translate": Translate,
