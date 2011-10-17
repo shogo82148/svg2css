@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="droid.svg">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective2824"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3612"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3636"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3664"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3690"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4.0299249"
+     inkscape:cx="181.70004"
+     inkscape:cy="919.14668"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1024"
+     inkscape:window-height="712"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="0,1"
+       position="65.659915,946.00785"
+       id="guide2829" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="129.03466,998.52977"
+       id="guide2831" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="239.95484,998.52977"
+       id="guide2833" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="183.87439,998.52977"
+       id="guide2837" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="レイヤー 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       sodipodi:absref="C:\Documents and Settings\shogo\My Documents\My Dropbox\LT\svg-css\android_logo.gif"
+       xlink:href="android_logo.gif"
+       y="22.647894"
+       x="25.142843"
+       id="image2826"
+       height="236.57143"
+       width="315.42856" />
+    <rect
+       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       id="rect2830"
+       width="24.364952"
+       height="76.112457"
+       x="100.71429"
+       y="106.35433"
+       ry="11.616755" />
+    <rect
+       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       id="rect2830-2"
+       width="24.364952"
+       height="75.818886"
+       x="244.24966"
+       y="106.59844"
+       ry="11.616755" />
+    <rect
+       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       id="rect3626"
+       width="24.243662"
+       height="56.063465"
+       x="152.02795"
+       y="185.14622"
+       ry="11.616755" />
+    <rect
+       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       id="rect3626-6"
+       width="24.243662"
+       height="56.063465"
+       x="193.44421"
+       y="184.38861"
+       ry="11.616755" />
+    <rect
+       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       id="rect3650"
+       width="110.92019"
+       height="87.121269"
+       x="129.03465"
+       y="114.43554"
+       ry="11.616755" />
+    <rect
+       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       id="rect3652"
+       width="110.92019"
+       height="122.34391"
+       x="129.03465"
+       y="53.832413"
+       ry="51.51778" />
+    <rect
+       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       id="rect3654"
+       width="3.5355339"
+       height="29.7995"
+       x="108.87383"
+       y="109.47547"
+       ry="1.767767"
+       transform="matrix(0.87562738,-0.48298725,0.48298725,0.87562738,0,0)" />
+    <rect
+       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       id="rect3654-9"
+       width="3.5355339"
+       height="29.7995"
+       x="-214.58879"
+       y="-68.799026"
+       ry="1.767767"
+       transform="matrix(-0.87562738,-0.48298725,-0.48298725,0.87562738,0,0)"
+       inkscape:transform-center-x="2.6516504"
+       inkscape:transform-center-y="-2.7779195" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect3678"
+       width="8.8388348"
+       height="9.3439112"
+       x="155.05841"
+       y="75.35527"
+       ry="4.4194174" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect3678-7"
+       width="8.8388348"
+       height="9.3439112"
+       x="205.62918"
+       y="75.35527"
+       ry="4.4194174"
+       inkscape:transform-center-x="15.404826"
+       inkscape:transform-center-y="-0.69447988" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect3704"
+       width="116.73573"
+       height="4.1669521"
+       x="126.58475"
+       y="104.46029" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect2830"
+       id="use2844" />
+  </g>
+</svg>

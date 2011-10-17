@@ -172,7 +172,7 @@ class CSSWriter(svg.SVGHandler):
 		self.__css.close()
 
 def main():
-	testsets = ["rect", "rect-rotate","ellipse","ellipse-rotate","opacity"]
+	testsets = ["rect", "rect-rotate","ellipse","ellipse-rotate","opacity","droid"]
 	for name in testsets:
 		p = svg.Parser()
 		svgfile = open(name + ".svg", "r")
