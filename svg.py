@@ -37,6 +37,16 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
+		elif name=="def":
+			g = Define(attrs, self.__container)
+			self.__container.append(g)
+			self.__container = g
+			assert g.parent
+		elif name=="linearGradient":
+			g = LinearGradient(attrs, self.__container)
+			self.__container.append(g)
+			self.__container = g
+			assert g.parent
 			
 	def endElement(self, name):
 		if name=="g":
@@ -156,6 +166,21 @@ class Group(Container):
 		
 	def callHandler(self, handler):
 		handler.group(self)
+
+#defタグ
+class Define(Container):
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+		
+	def callHandler(self, handler):
+		handler.define(self)
+
+#線形グラデーション
+class LinearGradient(Container):
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+	def callHandler(self, handler):
+		handler.linearGradient(self)
 
 #SVG内での長さを表すクラス
 class Length:
@@ -332,6 +357,12 @@ class SVGHandler:
 	def group(self, x):
 		for a in x:
 			a.callHandler(self)
+	
+	def define(self, x):
+		pass
+	
+	def linearGradient(self, x):
+		pass
 	
 	def rect(self, x):
 		pass
