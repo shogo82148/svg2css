@@ -65,12 +65,19 @@ class Element:
 			return self._parent
 		def set(self, p):
 			self._parent = p
+	
+	def getElementById(self, id):
+		if self.id==id:
+			return self
+		else:
+			return None
 
 #他のSVG要素を格納できるコンテナ
 class Container(Element,list):
 	def __init__(self, attrs, parent=None):
 		Element.__init__(self, attrs, parent)
 		list.__init__(self)
+		self.__childids = {}
 		
 	def append(self, x):
 		list.append(self, x)
@@ -93,6 +100,15 @@ class Container(Element,list):
 		list.pop(self, i)
 		x.parent = None
 		
+	def getElementById(self, id):
+		if self.id==id:
+			return self
+		for e in self:
+			res = e.getElementById(id)
+			if res:
+				return res
+		return None
+
 #SVG画像
 class SVG(Container):
 	def __init__(self, attrs, parent=None):
