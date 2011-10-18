@@ -61,10 +61,16 @@ class Element:
 	def __init__(self, attrs, parent=None):
 		self._parent = parent
 		self.id = attrs.get("id", "")
+		
 		if attrs.has_key("transform"):
 			self.transform = Transform(attrs.get("transform", ""))
 		else:
 			self.transform = None
+		
+		if attrs.has_key("xlink:href"):
+			self.href = attrs.get("xlink:href")
+		else:
+			self.href = None
 	
 	def callHandler(self, handler):
 		pass
@@ -76,11 +82,8 @@ class Element:
 		def set(self, p):
 			self._parent = p
 	
-	def getElementById(self, id):
-		if self.id==id:
-			return self
-		else:
-			return None
+	def __getattr__(self, name):
+		raise AttributeError(name)
 
 #他のSVG要素を格納できるコンテナ
 class Container(Element,list):
@@ -91,38 +94,68 @@ class Container(Element,list):
 		
 	def append(self, x):
 		list.append(self, x)
-		x.parent = self
+		self.__appendChild(x)
 		
 	def extend(self, L):
 		list.extend(self, L)
 		for x in L:
-			x.parent = self
+			self.__appendChild(x)
 	
 	def insert(self, i, x):
 		list.insert(self, i, x)
-		x.parent = self
+		self.__appendChild(x)
 
 	def remove(self, x):
 		list.remove(self, x)
-		x.parent = None
+		self.__removeChild(x)
 	
 	def pop(self, i=-1):
-		list.pop(self, i)
+		x = list.pop(self, i)
+		self.__removeChild(x)
+		return x
+	
+	def __removeChild(self, x):
 		x.parent = None
+		self.__removeId(x)
 		
+	def __appendChild(self, x):
+		parent = x.parent
+		if parent==self:
+			return
+		if parent:
+			index = parent.index(x)
+			parent.remove(index)
+		x.parent = self
+		self.__appendId(x)
+	
+	def __removeId(self, x):
+		if x.id:
+			del self.__childids[x.id]
+		if isinstance(x, Container):
+			for id,child in x.__childids.iteritems():
+				del self.__childids[id]
+		if self.parent:
+			self.parent.__removeId(x)
+	
+	def __appendId(self, x):
+		id = x.id
+		if id:
+			self.__childids[id] = x
+		if isinstance(x, Container):
+			for id,child in x.__childids.iteritems():
+				self.__childids[id] = child
+		if self.parent:
+			self.parent.__appendId(x)
+	
 	def getElementById(self, id):
 		if self.id==id:
 			return self
-		for e in self:
-			res = e.getElementById(id)
-			if res:
-				return res
-		return None
+		return self.__childids.get(id, None)
 
 #SVG画像
 class SVG(Container):
 	def __init__(self, attrs, parent=None):
-		Element.__init__(self, attrs, parent)
+		Container.__init__(self, attrs, parent)
 		self.x = Length(attrs.get("x", "0"))
 		self.y = Length(attrs.get("y", "0"))
 		self.width = Length(attrs.get("width", "0"))

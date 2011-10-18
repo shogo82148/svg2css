@@ -177,8 +177,8 @@ def main():
 		p = svg.Parser()
 		svgfile = open(name + ".svg", "r")
 		writer = CSSWriter(name)
-		p.parse(svgfile).callHandler(writer)
-		svg.Color("#FF0000")
+		s = p.parse(svgfile)
+		s.callHandler(writer)
 	return
 
 if __name__=="__main__":
