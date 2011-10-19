@@ -5,6 +5,7 @@
 import sys
 import svg
 import re
+import math
 
 class CSSStyle(dict):
 	def __str__(self):
@@ -72,6 +73,20 @@ class CSSStyle(dict):
 				point2.y - svg.Length(self["top"]))
 
 		#css3のデフォルト
+		deg = -math.atan2(point2.y-point1.y, point2.x-point1.x)/math.pi*180
+		gradient = "(%.1fdeg" % deg
+		for stop in stops:
+			color = svg.Color(stop.style["stop-color"])
+			if float(stop.style.get("stop-opacity", "1"))<=0.999:
+				color.a = float(stop.style.get("stop-opacity", "1"))
+			gradient += ",%s %.1f%%" % (color, stop.offset*100)
+		gradient += ")"
+		background.append("linear-gradient" + gradient)
+		background.append("-o-linear-gradient" + gradient)
+		background.append("-moz-linear-gradient" + gradient)
+		background.append("-ms-linear-gradient" + gradient)
+		background.append("-webkit-linear-gradient" + gradient)
+		print "linear-gradient" + gradient
 		
 		#webkit
 		webkit = "-webkit-gradient(linear,%f %f,%f %f," % (point1.x.px, point1.y.px, point2.x.px, point2.y.px)
@@ -89,6 +104,7 @@ class CSSStyle(dict):
 		if float(stops[-1].style.get("stop-opacity", "1"))<=0.999:
 			color.a = float(stops[-1].style.get("stop-opacity", "1"))
 		webkit += "to(%s))" % color
+		background.append(webkit)
 
 		self["background"] = background
 		
