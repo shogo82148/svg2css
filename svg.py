@@ -28,7 +28,7 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 		if type=="arc":
 			self.__container.append(Arc(attrs))
 		elif name=="svg":
-			self.__container = SVG(attrs, self.__container)
+			self.__container = SVG(attrs)
 			self.__svg = self.__container
 		elif name=="rect":
 			self.__container.append(Rect(attrs))
@@ -37,16 +37,18 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
-		elif name=="def":
-			g = Define(attrs, self.__container)
+		elif name=="defs":
+			g = Define(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
 		elif name=="linearGradient":
-			g = LinearGradient(attrs, self.__container)
+			g = LinearGradient(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
+		elif name=="stop":
+			self.__container.append(Stop(attrs))
 		elif name=="use":
 			self.__container.append(Use(attrs))
 			
@@ -54,7 +56,7 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 		if name=="g":
 			self.__container = self.__container.parent
 			assert self.__container
-		elif name=="def":
+		elif name=="defs":
 			self.__container = self.__container.parent
 			assert self.__container
 		elif name=="linearGradient":
@@ -235,8 +237,24 @@ class Define(Container):
 class LinearGradient(Container):
 	def __init__(self, attrs, parent=None):
 		Container.__init__(self, attrs, parent)
+		self.x1 = Length(attrs.get("x1", "0"))
+		self.y1 = Length(attrs.get("y1", "0"))
+		self.x2 = Length(attrs.get("x2", "0"))
+		self.y2 = Length(attrs.get("y2", "0"))
+		self.gradientUnits = attrs.get("gradientUnits", "objectBoundingBox")
+		self.gradientTransform = Transform(attrs.get("gradientTransform", ""))
+		
 	def callHandler(self, handler):
 		handler.linearGradient(self)
+
+class Stop(Element):
+	def __init__(self, attrs, parent=None):
+		Element.__init__(self, attrs, parent)
+		self.offset = float(attrs.get("offset", "0"))
+		self.style = Style(attrs.get("style", ""))
+	
+	def callHandler(self, handler):
+		handler.use(self)
 
 class Use(Element):
 	def __init__(self, attrs, parent=None):

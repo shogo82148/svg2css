@@ -4,6 +4,7 @@
 
 import sys
 import svg
+import re
 
 class CSSStyle(dict):
 	def __str__(self):
@@ -11,6 +12,9 @@ class CSSStyle(dict):
 		for name,style in self.iteritems():
 			if name=="transform":
 				s += CSSStyle.__transform(style)
+				continue
+			if isinstance(style, list):
+				s += "".join(["%s:%s;" % (name, s) for s in style])
 				continue
 			if not isinstance(style, str):
 				style = str(style)
@@ -26,18 +30,68 @@ class CSSStyle(dict):
 		s += "-moz-transform:%s;" % transform.toStringMoz()
 		return s
 	
-	def addFill(self, svgstyle):
+	__re_fill_url = re.compile("url\(#(.*)\)")
+	def addFill(self, element):
+		svgstyle = element.style
 		if "fill" not in svgstyle or svgstyle["fill"] == "none":
 			return
 			
 		try:
-			color = svg.Color(svgstyle["fill"])
+			fill = svgstyle["fill"]
+			m = CSSStyle.__re_fill_url.match(fill)
+			if m:
+				fill = element.root.getElementById(m.group(1))
+				if isinstance(fill, svg.LinearGradient):
+					self.__addLinearGradient(fill)
+				return
+			color = svg.Color(fill)
 			if "fill-opacity" in svgstyle:
 				color.a = float(svgstyle["fill-opacity"])
 			self["background-color"] = color
 		except:
-			pass
-			
+			print svgstyle["fill"]
+	
+	def __addLinearGradient(self, fill):
+		root = fill.root
+		stops = fill
+		while len(stops)==0 and stops.href:
+			stops = root.getElementById(stops.href[1:])
+		background = []
+		
+		#座標補正
+		point1 = svg.Point(fill.x1, fill.y1)
+		point2 = svg.Point(fill.x2, fill.y2)
+		point1 = fill.gradientTransform.toMatrix() * point1
+		point2 = fill.gradientTransform.toMatrix() * point2
+		if fill.gradientUnits == "userSpaceOnUse":
+			point1 = svg.Point(
+				point1.x - svg.Length(self["left"]),
+				point1.y - svg.Length(self["top"]))
+			point2 = svg.Point(
+				point2.x - svg.Length(self["left"]),
+				point2.y - svg.Length(self["top"]))
+
+		#css3のデフォルト
+		
+		#webkit
+		webkit = "-webkit-gradient(linear,%f %f,%f %f," % (point1.x.px, point1.y.px, point2.x.px, point2.y.px)
+		color = svg.Color(stops[0].style["stop-color"])
+		if float(stops[0].style.get("stop-opacity", "1"))<=0.999:
+			color.a = float(stops[0].style.get("stop-opacity", "1"))
+		webkit += "from(%s)," % color
+		if len(stops)>2:
+			for stop in stops[1:-1]:
+				color = svg.Color(stop.style["stop-color"])
+				if float(stop.style.get("stop-opacity", "1"))<=0.999:
+					color.a = float(stop.style.get("stop-opacity", "1"))
+				webkit += "color-stop(%f,%s)," % (stop.offset, color)
+		color = svg.Color(stops[-1].style["stop-color"])
+		if float(stops[-1].style.get("stop-opacity", "1"))<=0.999:
+			color.a = float(stops[-1].style.get("stop-opacity", "1"))
+		webkit += "to(%s))" % color
+
+		self["background"] = background
+		
 class CSSWriter(svg.SVGHandler):
 	def __init__(self, name):
 		self.__name = name
@@ -111,7 +165,7 @@ class CSSWriter(svg.SVGHandler):
 				css["transform"] = transform
 
 			#フィルを指定する
-			css.addFill(x.style)
+			css.addFill(x)
 				
 			#出力
 			self.__css.write(".%s{%s}\n" % (name, str(css)))
@@ -149,7 +203,7 @@ class CSSWriter(svg.SVGHandler):
 			css["border-radius"] = "%s/%s" % (str(x.rx+stroke/2), str(x.ry+stroke/2))
 		
 			#フィルを指定する
-			css.addFill(x.style)
+			css.addFill(x)
 			
 			#変形
 			if x.transform:
