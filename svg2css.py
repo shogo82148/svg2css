@@ -25,8 +25,19 @@ class CSSStyle(dict):
 			s += "%s:%s;" % (name, style)
 		s += "-moz-transform:%s;" % transform.toStringMoz()
 		return s
-		
-
+	
+	def addFill(self, svgstyle):
+		if "fill" not in svgstyle or svgstyle["fill"] == "none":
+			return
+			
+		try:
+			color = svg.Color(svgstyle["fill"])
+			if "fill-opacity" in svgstyle:
+				color.a = float(svgstyle["fill-opacity"])
+			self["background-color"] = color
+		except:
+			pass
+			
 class CSSWriter(svg.SVGHandler):
 	def __init__(self, name):
 		self.__name = name
@@ -100,14 +111,7 @@ class CSSWriter(svg.SVGHandler):
 				css["transform"] = transform
 
 			#フィルを指定する
-			if "fill" in x.style and x.style["fill"] != "none":
-				try:
-					color = svg.Color(x.style["fill"])
-					if "fill-opacity" in x.style:
-						color.a = float(x.style["fill-opacity"])
-					css["background-color"] = color
-				except:
-					pass
+			css.addFill(x.style)
 				
 			#出力
 			self.__css.write(".%s{%s}\n" % (name, str(css)))
@@ -145,14 +149,7 @@ class CSSWriter(svg.SVGHandler):
 			css["border-radius"] = "%s/%s" % (str(x.rx+stroke/2), str(x.ry+stroke/2))
 		
 			#フィルを指定する
-			if "fill" in x.style and x.style["fill"] != "none":
-				try:
-					color = svg.Color(x.style["fill"])
-					if "fill-opacity" in x.style:
-						color.a = float(x.style["fill-opacity"])
-					css["background-color"] = color
-				except:
-					pass
+			css.addFill(x.style)
 			
 			#変形
 			if x.transform:
