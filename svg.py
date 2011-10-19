@@ -482,6 +482,12 @@ class Color:
 		
 	def toRGBA(self):
 		return "rgba(%d,%d,%d,%f)" % (self.r, self.g, self.b, self.a)
+	
+	def __str__(self):
+		if self.a>0.999:
+			return self.toHex()
+		else:
+			return self.toRGBA()
 
 def main():
 	filename = sys.argv[1]
