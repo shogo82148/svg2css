@@ -11,8 +11,11 @@ class CSSWriter(svg.SVGHandler):
 		self.__html = open(name + ".html", "w")
 		self.__css = open(name + ".css", "w")
 		self.__id = 0
+		self.__css_classes = set()
 		
-	def newName(self):
+	def newName(self, x=None):
+		if x and isinstance(x, svg.Element) and x.id:
+			return "svg" + x.id
 		self.__id = self.__id + 1
 		return "id%04d" % self.__id
 		
@@ -32,145 +35,152 @@ class CSSWriter(svg.SVGHandler):
 		self.__html.write("""</div>\n</body></html>\n""")
 		
 	def rect(self, x):
-		name = self.newName()
-		css = {}
-		stroke = svg.Length(0)
-		
-		#ストロークの描画
-		if "stroke" in x.style and x.style["stroke"] != 'none':
-			try:
-				css["border-style"] = "solid"
-				if "stroke-opacity" in x.style:
-					color = svg.Color(x.style["stroke"])
-					color.a = float(x.style["stroke-opacity"])
-					css["border-color"] = color.toRGBA()
-				else:
-					css["border-color"] =  x.style["stroke"]
-				stroke = svg.Length(x.style.get("stroke-width",1))
-				css["border-width"] = str(stroke)
-			except:
-				pass
-		
-		#位置と大きさの設定
-		css["position"] = "absolute"
-		css["left"] = str(x.x - stroke/2)
-		css["top"] = str(x.y - stroke/2)
-		css["width"] = str(x.width - stroke)
-		css["height"] = str(x.height - stroke)
-		
-		#角を丸める
-		if x.rx and x.ry:
-			css["border-radius"] = "%s/%s" % (str(x.rx+stroke/2), str(x.ry+stroke/2))
-		elif x.rx:
-			css["border-radius"] = str(x.rx+stroke/2)
-		elif x.ry:
-			css["border-radius"] = str(x.ry+stroke/2)
-	
-		#変形
-		if x.transform:
-			#CSSとSVGの原点の違いを補正
-			transform = x.transform.toMatrix()
-			transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
-			transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
-			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
-			css["-moz-transform"] = transform.toStringMoz()
-
-		#フィルを指定する
-		if "fill" in x.style and x.style["fill"] != "none":
-			try:
-				if "fill-opacity" in x.style:
-					color = svg.Color(x.style["fill"])
-					color.a = float(x.style["fill-opacity"])
-					css["background-color"] = color.toRGBA()
-				else:
-					css["background-color"] = x.style["fill"]
-			except:
-				pass
+		name = self.newName(x)
+		if name not in self.__css_classes:
+			self.__css_classes.add(name)
+			css = {}
+			stroke = svg.Length(0)
 			
-		#出力
-		css_style = "".join(["%s:%s;"%style for style in css.items()])
-		self.__css.write(".%s{%s}\n" % (name, css_style));
-		self.__html.write('<div class="%s"></div>\n' % name);
+			#ストロークの描画
+			if "stroke" in x.style and x.style["stroke"] != 'none':
+				try:
+					css["border-style"] = "solid"
+					if "stroke-opacity" in x.style:
+						color = svg.Color(x.style["stroke"])
+						color.a = float(x.style["stroke-opacity"])
+						css["border-color"] = color.toRGBA()
+					else:
+						css["border-color"] =  x.style["stroke"]
+					stroke = svg.Length(x.style.get("stroke-width",1))
+					css["border-width"] = str(stroke)
+				except:
+					pass
+			
+			#位置と大きさの設定
+			css["position"] = "absolute"
+			css["left"] = str(x.x - stroke/2)
+			css["top"] = str(x.y - stroke/2)
+			css["width"] = str(x.width - stroke)
+			css["height"] = str(x.height - stroke)
+			
+			#角を丸める
+			if x.rx and x.ry:
+				css["border-radius"] = "%s/%s" % (str(x.rx+stroke/2), str(x.ry+stroke/2))
+			elif x.rx:
+				css["border-radius"] = str(x.rx+stroke/2)
+			elif x.ry:
+				css["border-radius"] = str(x.ry+stroke/2)
+		
+			#変形
+			if x.transform:
+				#CSSとSVGの原点の違いを補正
+				transform = x.transform.toMatrix()
+				transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
+				transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
+				css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
+				css["-moz-transform"] = transform.toStringMoz()
+
+			#フィルを指定する
+			if "fill" in x.style and x.style["fill"] != "none":
+				try:
+					if "fill-opacity" in x.style:
+						color = svg.Color(x.style["fill"])
+						color.a = float(x.style["fill-opacity"])
+						css["background-color"] = color.toRGBA()
+					else:
+						css["background-color"] = x.style["fill"]
+				except:
+					pass
+				
+			#出力
+			css_style = "".join(["%s:%s;"%style for style in css.items()])
+			self.__css.write(".%s{%s}\n" % (name, css_style))
+			
+		self.__html.write('<div class="%s"></div>\n' % name)
 	
 	def arc(self, x):
-		name = self.newName()
-		css = {}
-		stroke = svg.Length(0)
+		name = self.newName(x)
+		if name not in self.__css_classes:
+			self.__css_classes.add(name)
+			css = {}
+			stroke = svg.Length(0)
+			
+			#ストロークの描画
+			if "stroke" in x.style and x.style["stroke"] != 'none':
+				try:
+					css["border-style"] = "solid"
+					if "stroke-opacity" in x.style:
+						color = svg.Color(x.style["stroke"])
+						color.a = float(x.style["stroke-opacity"])
+						css["border-color"] = color.toRGBA()
+					else:
+						css["border-color"] =  x.style["stroke"]
+					stroke = svg.Length(x.style.get("stroke-width",1))
+					css["border-width"] = str(stroke)
+				except:
+					pass
+					
+			#位置と大きさの設定
+			css["position"] = "absolute"
+			css["left"] = str(x.cx - x.rx - stroke/2)
+			css["top"] = str(x.cy - x.ry - stroke/2)
+			css["width"] = str(x.rx * 2 - stroke)
+			css["height"] = str(x.ry * 2 - stroke)
+			
+			#角を丸める
+			css["border-radius"] = "%s/%s" % (str(x.rx+stroke/2), str(x.ry+stroke/2))
 		
-		#ストロークの描画
-		if "stroke" in x.style and x.style["stroke"] != 'none':
-			try:
-				css["border-style"] = "solid"
-				if "stroke-opacity" in x.style:
-					color = svg.Color(x.style["stroke"])
-					color.a = float(x.style["stroke-opacity"])
-					css["border-color"] = color.toRGBA()
-				else:
-					css["border-color"] =  x.style["stroke"]
-				stroke = svg.Length(x.style.get("stroke-width",1))
-				css["border-width"] = str(stroke)
-			except:
-				pass
-				
-		#位置と大きさの設定
-		css["position"] = "absolute"
-		css["left"] = str(x.cx - x.rx - stroke/2)
-		css["top"] = str(x.cy - x.ry - stroke/2)
-		css["width"] = str(x.rx * 2 - stroke)
-		css["height"] = str(x.ry * 2 - stroke)
-		
-		#角を丸める
-		css["border-radius"] = "%s/%s" % (str(x.rx+stroke/2), str(x.ry+stroke/2))
-	
-		#フィルを指定する
-		if "fill" in x.style and x.style["fill"] != "none":
-			try:
-				if "fill-opacity" in x.style:
-					color = svg.Color(x.style["fill"])
-					color.a = float(x.style["fill-opacity"])
-					css["background-color"] = color.toRGBA()
-				else:
-					css["background-color"] = x.style["fill"]
-			except:
-				pass
-		
-		#変形
-		if x.transform:
-			#CSSとSVGの原点の違いを補正
-			transform = x.transform.toMatrix()
-			transform = transform * svg.Transform.Translate(x.cx, x.cy)
-			transform = svg.Transform.Translate(-x.cx, -x.cy) * transform
-			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
-			css["-moz-transform"] = transform.toStringMoz()
-		
-		#出力
-		css_style = "".join(["%s:%s;"%style for style in css.items()])
-		self.__css.write(".%s{%s}\n" % (name, css_style));
+			#フィルを指定する
+			if "fill" in x.style and x.style["fill"] != "none":
+				try:
+					if "fill-opacity" in x.style:
+						color = svg.Color(x.style["fill"])
+						color.a = float(x.style["fill-opacity"])
+						css["background-color"] = color.toRGBA()
+					else:
+						css["background-color"] = x.style["fill"]
+				except:
+					pass
+			
+			#変形
+			if x.transform:
+				#CSSとSVGの原点の違いを補正
+				transform = x.transform.toMatrix()
+				transform = transform * svg.Transform.Translate(x.cx, x.cy)
+				transform = svg.Transform.Translate(-x.cx, -x.cy) * transform
+				css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
+				css["-moz-transform"] = transform.toStringMoz()
+			
+			#出力
+			css_style = "".join(["%s:%s;"%style for style in css.items()])
+			self.__css.write(".%s{%s}\n" % (name, css_style));
 		self.__html.write('<div class="%s"></div>\n' % name);
 	
 	def group(self, x):
-		name = self.newName()
-		css = {}
-		stroke = svg.Length(0)
+		name = self.newName(x)
+		if name not in self.__css_classes:
+			self.__css_classes.add(name)
+			css = {}
+			stroke = svg.Length(0)
 
-		css["position"] = "absolute"
-		css["margin"] = "0px"
-		
-		#変形
-		if x.transform:
-			transform = x.transform.toMatrix()
-			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
-			css["-moz-transform"] = transform.toStringMoz()
-		
-		#出力
-		css_style = "".join(["%s:%s;"%style for style in css.items()])
-		self.__css.write(".%s{%s}\n" % (name, css_style));
+			css["position"] = "absolute"
+			css["margin"] = "0px"
+			
+			#変形
+			if x.transform:
+				transform = x.transform.toMatrix()
+				css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
+				css["-moz-transform"] = transform.toStringMoz()
+			
+			#出力
+			css_style = "".join(["%s:%s;"%style for style in css.items()])
+			self.__css.write(".%s{%s}\n" % (name, css_style));
 		self.__html.write('<div class="%s">\n' % name)
 		svg.SVGHandler.group(self, x)
 		self.__html.write('</div>\n');
-	
+		
 	def use(self, x):
-		name = self.newName()
+		name = self.newName(x)
 		css = {}
 		css["position"] = "absolute"
 		css["margin"] = "0px"
