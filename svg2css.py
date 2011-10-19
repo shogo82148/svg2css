@@ -158,7 +158,9 @@ class CSSWriter(svg.SVGHandler):
 		
 		#変形
 		if x.transform:
-			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = css["-moz-transform"] = str(x.transform)
+			transform = x.transform.toMatrix()
+			css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
+			css["-moz-transform"] = transform.toStringMoz()
 		
 		#出力
 		css_style = "".join(["%s:%s;"%style for style in css.items()])
@@ -167,12 +169,37 @@ class CSSWriter(svg.SVGHandler):
 		svg.SVGHandler.group(self, x)
 		self.__html.write('</div>\n');
 	
+	def use(self, x):
+		name = self.newName()
+		css = {}
+		css["position"] = "absolute"
+		css["margin"] = "0px"
+
+		css["left"] = str(-x.width/2)
+		css["top"] = str(-x.height/2)
+		css["width"] = str(x.width)
+		css["height"] = str(x.height)
+		
+		transform = svg.Transform.Translate(x.x, x.y)
+		if x.transform:
+			transform = x.transform.toMatrix() * transform
+		transform = svg.Transform.Translate(x.width/2, x.height/2) * transform
+		
+		css["transform"] = css["-ms-transform"] = css["-o-transform"] = css["-webkit-transform"] = str(transform)
+		css["-moz-transform"] = transform.toStringMoz()
+
+		css_style = "".join(["%s:%s;"%style for style in css.items()])
+		self.__css.write(".%s{%s}\n" % (name, css_style));
+		self.__html.write('<div class="%s">\n' % name)
+		svg.SVGHandler.use(self, x)
+		self.__html.write('</div>\n');
+		
 	def __del__(self):
 		self.__html.close()
 		self.__css.close()
 
 def main():
-	testsets = ["rect", "rect-rotate","ellipse","ellipse-rotate","opacity","droid","gradient"]
+	testsets = ["rect", "rect-rotate","ellipse","ellipse-rotate","opacity","droid","gradient","use"]
 	for name in testsets:
 		p = svg.Parser()
 		svgfile = open(name + ".svg", "r")

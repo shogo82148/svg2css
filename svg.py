@@ -33,7 +33,7 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 		elif name=="rect":
 			self.__container.append(Rect(attrs))
 		elif name=="g":
-			g = Group(attrs, self.__container)
+			g = Group(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
@@ -47,9 +47,17 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
+		elif name=="use":
+			self.__container.append(Use(attrs))
 			
 	def endElement(self, name):
 		if name=="g":
+			self.__container = self.__container.parent
+			assert self.__container
+		elif name=="def":
+			self.__container = self.__container.parent
+			assert self.__container
+		elif name=="linearGradient":
 			self.__container = self.__container.parent
 			assert self.__container
 		
@@ -58,32 +66,47 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 
 #SVGの要素を表すクラス
 class Element:
-	def __init__(self, attrs, parent=None):
-		self._parent = parent
+	__all_defalut = {
+		"transform": None,
+	}
+	def __init__(self, attrs, parent=None, default={}):
+		self.__parent = parent
+		self.__default = default
+		self.__root = None
 		self.id = attrs.get("id", "")
 		
-		if attrs.has_key("transform"):
-			self.transform = Transform(attrs.get("transform", ""))
-		else:
-			self.transform = None
+		self.transform = Transform(attrs.get("transform", ""))
 		
 		if attrs.has_key("xlink:href"):
 			self.href = attrs.get("xlink:href")
 		else:
 			self.href = None
-	
+			
 	def callHandler(self, handler):
 		pass
 	
-	@apply
-	def parent():
-		def get(self):
-			return self._parent
-		def set(self, p):
-			self._parent = p
+	@property
+	def parent(self):
+		return self.__parent
+
+	@parent.setter
+	def parent(self, p):
+		self.__parent = p
+		self.__root = None
+
+	@property
+	def root(self):
+		#if not self.__root:
+		if self.parent:
+			self.__root = self.parent.root
+		else:
+			self.__root = self
+		return self.__root
 	
-	def __getattr__(self, name):
-		raise AttributeError(name)
+	def getElementById(self, id):
+		if self.id==id:
+			return self
+		return None
 
 #他のSVG要素を格納できるコンテナ
 class Container(Element,list):
@@ -215,6 +238,17 @@ class LinearGradient(Container):
 	def callHandler(self, handler):
 		handler.linearGradient(self)
 
+class Use(Element):
+	def __init__(self, attrs, parent=None):
+		Element.__init__(self, attrs, parent)
+		self.x = Length(attrs.get("x", "0"))
+		self.y = Length(attrs.get("y", "0"))
+		self.width = Length(attrs.get("width", "0"))
+		self.height = Length(attrs.get("height", "0"))
+	
+	def callHandler(self, handler):
+		handler.use(self)
+
 #SVG内での長さを表すクラス
 class Length:
 	__length_re = re.compile(r"^(?P<length>[+\-0-9e.]*)(?P<unit>[%a-z]*)$")
@@ -229,6 +263,9 @@ class Length:
 		if unit:
 			self.__length = float(length)
 			self.__unit = unit
+		elif isinstance(length, Length):
+			self.__length = length.__length
+			self.__unit = length.__unit
 		else:
 			m = Length.__length_re.match(str(length))
 			if not m: raise
@@ -396,6 +433,9 @@ class SVGHandler:
 	
 	def linearGradient(self, x):
 		pass
+	
+	def use(self, x):
+		x.root.getElementById(x.href[1:]).callHandler(self)
 	
 	def rect(self, x):
 		pass
