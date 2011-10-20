@@ -217,15 +217,9 @@ class CSSWriter(svg.SVGHandler):
 			self.__css_classes.add(name)
 			css = CSSStyle()
 			stroke = svg.Length(0)
-			basetransform = None
 			
 			#クリップパスの設定
-			if x.clip_path:
-				m = re.match("^url\(#(.*)\)$", x.clip_path)
-				if m:
-					clippath = x.root.getElementById(m.group(1))
-					clipname, basetransform = self.clipPath(clippath, x)
-					self.__clipnames[name] = clipname
+			self.__clipPath(name, x)
 			
 			#ストロークの描画
 			if "stroke" in x.style and x.style["stroke"] != 'none':
@@ -256,12 +250,9 @@ class CSSWriter(svg.SVGHandler):
 				css["border-radius"] = x.ry+stroke/2
 		
 			#変形
-			if x.transform or basetransform:
+			if x.transform:
 				#CSSとSVGの原点の違いを補正
 				transform = x.transform.toMatrix()
-				if basetransform:
-					transform = basetransform.toMatrix() * transform
-					
 				transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
 				transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
 				css["transform"] = transform
@@ -275,7 +266,7 @@ class CSSWriter(svg.SVGHandler):
 		#クリップの設定
 		if name in self.__clipnames:
 			clipname = self.__clipnames[name]
-			self.__html.write('<div class="%s"><div class="%s"></div></div>\n' % (clipname, name))
+			self.__html.write('<div class="%s"><div class="%sinverse"><div class="%s"></div></div></div>\n' % (clipname, clipname, name))
 			return
 		
 		self.__html.write('<div class="%s"></div>\n' % name)
@@ -286,6 +277,9 @@ class CSSWriter(svg.SVGHandler):
 			self.__css_classes.add(name)
 			css = CSSStyle()
 			stroke = svg.Length(0)
+			
+			#クリップパスの設定
+			self.__clipPath(name, x)
 			
 			#ストロークの描画
 			if "stroke" in x.style and x.style["stroke"] != 'none':
@@ -323,6 +317,13 @@ class CSSWriter(svg.SVGHandler):
 			
 			#出力
 			self.__css.write(".%s{%s}\n" % (name, str(css)));
+
+		#クリップの設定
+		if name in self.__clipnames:
+			clipname = self.__clipnames[name]
+			self.__html.write('<div class="%s"><div class="%sinverse"><div class="%s"></div></div></div>\n' % (clipname, clipname, name))
+			return
+
 		self.__html.write('<div class="%s"></div>\n' % name);
 	
 	def group(self, x):
@@ -367,7 +368,17 @@ class CSSWriter(svg.SVGHandler):
 		svg.SVGHandler.use(self, x)
 		self.__html.write('</div>\n');
 	
-	def clipPath(self, x, element):
+	def __clipPath(self, element_name, element):
+		#クリップパスが設定されているか確認
+		if not element.clip_path:
+			return
+		m = re.match("^url\(#(.*)\)$", element.clip_path)
+		if not m:
+			return
+		
+		#クリップパスオブジェクトを取得
+		x = element.root.getElementById(m.group(1))
+				
 		name = self.newName()
 
 		css = CSSStyle()
@@ -398,7 +409,13 @@ class CSSWriter(svg.SVGHandler):
 			css["overflow"] = "hidden"
 		self.__css.write(".%s{%s}\n" % (name, str(css)));
 		
-		return (name, invtransform)
+		css = CSSStyle()
+		css["position"] = "absolute"
+		css["transform"] = invtransform.toMatrix()
+		self.__css.write(".%sinverse{%s}\n" % (name, str(css)));
+		self.__clipnames[element_name] = name
+		
+		return name
 		
 	def __del__(self):
 		self.__html.close()

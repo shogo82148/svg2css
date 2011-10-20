@@ -150,42 +150,6 @@
        inkscape:vp_y="0 : 1000 : 0"
        inkscape:vp_x="0 : 0.5 : 1"
        sodipodi:type="inkscape:persp3d" />
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath4085">
-      <rect
-         style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-         id="rect4087"
-         width="112.42998"
-         height="76.367531"
-         x="48.08326"
-         y="45.032406"
-         ry="36.76955" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath4089">
-      <rect
-         style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-         id="rect4091"
-         width="112.42998"
-         height="76.367531"
-         x="48.08326"
-         y="45.032406"
-         ry="36.76955" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath4093">
-      <rect
-         style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-         id="rect4095"
-         width="112.42998"
-         height="76.367531"
-         x="48.08326"
-         y="45.032406"
-         ry="36.76955" />
-    </clipPath>
     <inkscape:perspective
        id="perspective4107"
        inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
@@ -234,12 +198,12 @@
     </clipPath>
     <clipPath
        clipPathUnits="userSpaceOnUse"
-       id="clipPath4080">
+       id="clipPath4092">
       <rect
          style="fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1"
-         id="rect4082"
-         width="60.103989"
-         height="50.91169"
+         id="rect4094"
+         width="87.012245"
+         height="88.812157"
          x="88.709824"
          y="185.66197"
          ry="0"
@@ -247,12 +211,12 @@
     </clipPath>
     <clipPath
        clipPathUnits="userSpaceOnUse"
-       id="clipPath4084">
+       id="clipPath4096">
       <rect
          style="fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1"
-         id="rect4086"
-         width="60.103989"
-         height="50.91169"
+         id="rect4098"
+         width="87.012245"
+         height="88.812157"
          x="88.709824"
          y="185.66197"
          ry="0"
@@ -260,16 +224,117 @@
     </clipPath>
     <clipPath
        clipPathUnits="userSpaceOnUse"
-       id="clipPath4088">
+       id="clipPath4100">
       <rect
          style="fill:none;stroke:#000000;stroke-width:1;stroke-opacity:1"
-         id="rect4090"
-         width="60.103989"
-         height="50.91169"
+         id="rect4102"
+         width="87.012245"
+         height="88.812157"
          x="88.709824"
          y="185.66197"
          ry="0"
          transform="matrix(0.74969868,-0.66177933,0.66177933,0.74969868,0,0)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4124">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1.28779781;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4126"
+         width="119.21326"
+         height="112.84928"
+         x="360.76834"
+         y="44.4692" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4128">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1.56856191;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4130"
+         width="119.21326"
+         height="167.41977"
+         x="360.76834"
+         y="65.973152"
+         transform="matrix(1,0,-0.52232973,0.8527436,0,0)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4132">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1.28902769;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4134"
+         width="122.80082"
+         height="109.7618"
+         x="371.62518"
+         y="43.252556"
+         transform="matrix(0.79268461,0.60963195,-0.59669121,0.80247094,0,0)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4139">
+      <rect
+         y="45.032406"
+         x="48.08326"
+         height="76.367531"
+         width="112.42998"
+         id="rect4141"
+         style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4143">
+      <rect
+         y="45.032406"
+         x="48.08326"
+         height="76.367531"
+         width="112.42998"
+         id="rect4145"
+         style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4147">
+      <rect
+         y="45.032406"
+         x="48.08326"
+         height="76.367531"
+         width="112.42998"
+         id="rect4149"
+         style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4159">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4161"
+         width="118.79394"
+         height="69.296463"
+         x="47.376152"
+         y="180.79691" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4163">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4165"
+         width="118.79394"
+         height="69.296463"
+         x="47.376152"
+         y="180.79691" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4167">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4169"
+         width="118.79394"
+         height="69.296463"
+         x="47.376152"
+         y="180.79691" />
     </clipPath>
   </defs>
   <sodipodi:namedview
@@ -280,8 +345,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="207.14572"
-     inkscape:cy="308.70618"
+     inkscape:cx="174.56527"
+     inkscape:cy="137.06484"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -3021,7 +3086,7 @@
        x="28.991377"
        y="32.304485"
        ry="28.991377"
-       clip-path="url(#clipPath4093)" />
+       clip-path="url(#clipPath4147)" />
     <rect
        style="color:#000000;fill:#00ff00;stroke:#ff0000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;fill-opacity:1"
        id="rect3307"
@@ -3030,7 +3095,7 @@
        x="78.488853"
        y="57.053219"
        ry="33.941124"
-       clip-path="url(#clipPath4089)" />
+       clip-path="url(#clipPath4143)" />
     <rect
        style="color:#000000;fill:#0000ff;stroke:#00ff00;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;fill-opacity:1"
        id="rect3309"
@@ -3039,33 +3104,92 @@
        x="48.08326"
        y="75.437996"
        ry="24.04163"
-       clip-path="url(#clipPath4085)" />
+       clip-path="url(#clipPath4139)" />
     <rect
        style="fill:#0000ff;fill-opacity:1;stroke:none"
        id="rect3300"
-       width="65.760925"
-       height="47.376152"
+       width="85.559914"
+       height="60.81118"
        x="185.26198"
        y="38.668446"
        ry="23.688076"
-       clip-path="url(#clipPath4088)" />
+       clip-path="url(#clipPath4100)" />
     <rect
        style="fill:#df00ff;fill-opacity:1;stroke:none"
        id="rect3302"
-       width="67.17514"
-       height="54.44722"
-       x="231.93102"
-       y="71.195358"
+       width="55.15435"
+       height="79.195969"
+       x="243.95183"
+       y="46.446621"
        ry="21.920309"
-       clip-path="url(#clipPath4084)" />
+       clip-path="url(#clipPath4096)" />
     <rect
        style="fill:#00ffff;fill-opacity:1;stroke:none"
        id="rect3304"
-       width="33.941124"
-       height="60.81118"
+       width="62.932503"
+       height="71.417778"
        x="212.13203"
        y="74.730888"
        ry="13.435028"
-       clip-path="url(#clipPath4080)" />
+       clip-path="url(#clipPath4092)" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:13.61754799;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4104"
+       width="105.03036"
+       height="100.01908"
+       x="233.90526"
+       y="255.0127"
+       ry="30.102831"
+       transform="matrix(0.77912973,-0.62686272,0.57933545,0.81508922,0,0)"
+       clip-path="url(#clipPath4132)" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:11.24768639;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4106"
+       width="97.580734"
+       height="91.245529"
+       x="314.22635"
+       y="101.69889"
+       ry="23.258661"
+       transform="matrix(1,0,0.61252847,0.79044853,0,0)"
+       clip-path="url(#clipPath4128)" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:10;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4108"
+       width="98.287842"
+       height="77.074638"
+       x="351.43207"
+       y="93.822769"
+       ry="21.920309"
+       clip-path="url(#clipPath4124)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#00ff00;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;fill-opacity:1"
+       id="path4151"
+       sodipodi:cx="88.388344"
+       sodipodi:cy="204.83853"
+       sodipodi:rx="46.669044"
+       sodipodi:ry="25.455843"
+       d="m 135.05739,204.83853 a 46.669044,25.455843 0 1 1 -93.338091,0 46.669044,25.455843 0 1 1 93.338091,0 z"
+       clip-path="url(#clipPath4167)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#00ffff;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;fill-opacity:1"
+       id="path4153"
+       sodipodi:cx="121.26881"
+       sodipodi:cy="221.45554"
+       sodipodi:rx="46.315495"
+       sodipodi:ry="23.688076"
+       d="m 167.5843,221.45554 a 46.315495,23.688076 0 1 1 -92.630988,0 46.315495,23.688076 0 1 1 92.630988,0 z"
+       clip-path="url(#clipPath4163)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#0000ff;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;fill-opacity:1"
+       id="path4155"
+       sodipodi:cx="89.802559"
+       sodipodi:cy="222.16264"
+       sodipodi:rx="21.213203"
+       sodipodi:ry="61.164734"
+       d="m 111.01576,222.16264 a 21.213203,61.164734 0 1 1 -42.426405,0 21.213203,61.164734 0 1 1 42.426405,0 z"
+       clip-path="url(#clipPath4159)" />
   </g>
 </svg>

@@ -231,6 +231,7 @@ class Arc(Element):
 		self.rx = Length(attrs.get("sodipodi:rx", "0"))
 		self.ry = Length(attrs.get("sodipodi:ry", "0"))
 		self.style = Style(attrs.get("style", ""))
+		self.clip_path = attrs.get("clip-path", "")
 		
 	def callHandler(self, handler):
 		handler.arc(self)
