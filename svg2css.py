@@ -43,7 +43,7 @@ class CSSStyle(dict):
 			if m:
 				fill = element.root.getElementById(m.group(1))
 				if isinstance(fill, svg.LinearGradient):
-					self.__addLinearGradient(fill)
+					self.__addLinearGradient(element, fill)
 				return
 			color = svg.Color(fill)
 			if "fill-opacity" in svgstyle:
@@ -52,7 +52,7 @@ class CSSStyle(dict):
 		except:
 			print svgstyle["fill"]
 	
-	def __addLinearGradient(self, fill):
+	def __addLinearGradient(self, element, fill):
 		root = fill.root
 		stops = fill
 		while len(stops)==0 and stops.href:
@@ -65,12 +65,13 @@ class CSSStyle(dict):
 		point1 = fill.gradientTransform.toMatrix() * point1
 		point2 = fill.gradientTransform.toMatrix() * point2
 		if fill.gradientUnits == "userSpaceOnUse":
+			stroke = svg.Length(element.style.get("stroke-width",0))
 			point1 = svg.Point(
-				point1.x - svg.Length(self["left"]),
-				point1.y - svg.Length(self["top"]))
+				point1.x - svg.Length(self["left"]) - stroke,
+				point1.y - svg.Length(self["top"]) - stroke)
 			point2 = svg.Point(
-				point2.x - svg.Length(self["left"]),
-				point2.y - svg.Length(self["top"]))
+				point2.x - svg.Length(self["left"]) - stroke,
+				point2.y - svg.Length(self["top"]) - stroke)
 
 		#css3のデフォルト
 		deg = -math.atan2(point2.y-point1.y, point2.x-point1.x)/math.pi*180
@@ -86,7 +87,6 @@ class CSSStyle(dict):
 		background.append("-moz-linear-gradient" + gradient)
 		background.append("-ms-linear-gradient" + gradient)
 		background.append("-webkit-linear-gradient" + gradient)
-		print "linear-gradient" + gradient
 		
 		#webkit
 		webkit = "-webkit-gradient(linear,%f %f,%f %f," % (point1.x.px, point1.y.px, point2.x.px, point2.y.px)
@@ -104,6 +104,7 @@ class CSSStyle(dict):
 		if float(stops[-1].style.get("stop-opacity", "1"))<=0.999:
 			color.a = float(stops[-1].style.get("stop-opacity", "1"))
 		webkit += "to(%s))" % color
+		print webkit
 		background.append(webkit)
 
 		self["background"] = background
@@ -147,7 +148,7 @@ class CSSWriter(svg.SVGHandler):
 			#ストロークの描画
 			if "stroke" in x.style and x.style["stroke"] != 'none':
 				try:
-					stroke = svg.Length(x.style.get("stroke-width",1))
+					stroke = svg.Length(x.style.get("stroke-width",0))
 					css["border-width"] = stroke
 					css["border-style"] = "solid"
 					color = svg.Color(x.style["stroke"])

@@ -170,7 +170,8 @@
        y1="50"
        x2="130"
        y2="50"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-10)" />
     <inkscape:perspective
        id="perspective4089"
        inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
@@ -199,7 +200,7 @@
          id="stop4077-2" />
     </linearGradient>
     <linearGradient
-       gradientTransform="translate(120,3.6563965e-6)"
+       gradientTransform="translate(120,-9.9999963)"
        y2="50"
        x2="130"
        y1="50"
@@ -216,7 +217,7 @@
        inkscape:vp_x="0 : 0.5 : 1"
        sodipodi:type="inkscape:persp3d" />
     <linearGradient
-       gradientTransform="translate(360,1.6838086e-6)"
+       gradientTransform="translate(360,-10.00001)"
        y2="74.748734"
        x2="130.70711"
        y1="26.665478"
@@ -257,7 +258,7 @@
          id="stop4077-7" />
     </linearGradient>
     <linearGradient
-       gradientTransform="translate(240,-2.3161914e-6)"
+       gradientTransform="translate(240,-10.00001)"
        y2="75.455841"
        x2="130"
        y1="21.715729"
@@ -335,7 +336,7 @@
        fx="80"
        fy="130"
        r="50"
-       gradientTransform="matrix(1,0,0,0.5,0,65)"
+       gradientTransform="matrix(1,0,0,0.5,0,53.615593)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -346,7 +347,7 @@
        fx="200"
        fy="130"
        r="50"
-       gradientTransform="matrix(1,0,0,0.5,0,65)"
+       gradientTransform="matrix(1,0,0,0.5,7.6293945e-6,53.615593)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -357,7 +358,7 @@
        fx="297.32791"
        fy="73.532372"
        r="50"
-       gradientTransform="matrix(1.1375698,-1.0087457,0.77268313,0.87136017,-103.33269,355.24849)"
+       gradientTransform="matrix(1.1375698,-1.0087457,0.77268313,0.87136017,-103.33271,343.86408)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -368,7 +369,7 @@
        fx="410.30154"
        fy="111.61521"
        r="50"
-       gradientTransform="matrix(1.1472748,-1.1428812,0.83520455,0.83841531,-153.64861,496.15362)"
+       gradientTransform="matrix(1.1472748,-1.1428812,0.83520455,0.83841531,-153.64862,484.7692)"
        gradientUnits="userSpaceOnUse" />
     <inkscape:perspective
        id="perspective4275"
@@ -434,7 +435,7 @@
        fx="200"
        fy="130"
        r="50"
-       gradientTransform="matrix(1,0,0,0.5,234.99998,145)"
+       gradientTransform="matrix(1,0,0,0.5,234.99998,132.23117)"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        id="linearGradient4073-1-8-7">
@@ -483,7 +484,7 @@
        fx="80"
        cy="130"
        cx="80"
-       gradientTransform="matrix(1,0,0,0.5,234.99998,145)"
+       gradientTransform="matrix(1,0,0,0.5,234.99998,132.23118)"
        gradientUnits="userSpaceOnUse"
        id="radialGradient4299"
        xlink:href="#linearGradient4073-9-6"
@@ -496,7 +497,7 @@
        inkscape:vp_x="0 : 0.5 : 1"
        sodipodi:type="inkscape:persp3d" />
     <linearGradient
-       gradientTransform="translate(120,160)"
+       gradientTransform="translate(120,147.23119)"
        y2="50"
        x2="130"
        y1="50"
@@ -545,7 +546,7 @@
          id="stop4077-77" />
     </linearGradient>
     <linearGradient
-       gradientTransform="translate(8.1487646e-6,160)"
+       gradientTransform="translate(8.1487646e-6,147.23119)"
        y2="50"
        x2="130"
        y1="50"
@@ -554,6 +555,90 @@
        id="linearGradient4378"
        xlink:href="#linearGradient4073-17"
        inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4073"
+       id="linearGradient4144"
+       x1="23.284271"
+       y1="277.21469"
+       x2="133.28427"
+       y2="277.21469"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-1.3679175)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4073"
+       id="linearGradient4166"
+       x1="267.94321"
+       y1="279.336"
+       x2="377.94321"
+       y2="279.336"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(72.946201,-120.64362)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4073-17"
+       id="linearGradient4174"
+       x1="166.82693"
+       y1="258.1228"
+       x2="222.37973"
+       y2="287.82126"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.178505,-2.7821479)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4073-9-6"
+       id="linearGradient4190"
+       x1="393.80823"
+       y1="285.69995"
+       x2="503.80823"
+       y2="285.69995"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(77.126699,-255.48828)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4073"
+       id="radialGradient4198"
+       cx="80.405586"
+       cy="359.23907"
+       fx="80.405586"
+       fy="359.23907"
+       r="55"
+       gradientTransform="matrix(1,0,0,0.54545455,0,158.51378)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4073-17"
+       id="radialGradient4206"
+       cx="214.04877"
+       cy="364.18881"
+       fx="214.04877"
+       fy="364.18881"
+       r="55"
+       gradientTransform="matrix(1,0,0,0.54545455,-8.9566727,155.81392)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4073-13"
+       id="radialGradient4214"
+       cx="333.5498"
+       cy="364.18881"
+       fx="333.5498"
+       fy="364.18881"
+       r="55"
+       gradientTransform="matrix(1,0,0,0.54545455,107.85266,0.25177062)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4073-17"
+       id="radialGradient4222"
+       cx="454.46506"
+       cy="366.31015"
+       fx="454.46506"
+       fy="366.31015"
+       r="55"
+       gradientTransform="matrix(1,0,0,0.54545455,90.489764,-12.172183)"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -563,14 +648,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="203.88767"
-     inkscape:cy="245.77102"
+     inkscape:cx="300"
+     inkscape:cy="185.39038"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:snap-global="false"
-     inkscape:window-width="1024"
-     inkscape:window-height="712"
+     inkscape:window-width="1280"
+     inkscape:window-height="975"
      inkscape:window-x="-4"
      inkscape:window-y="-4"
      inkscape:window-maximized="1" />
@@ -3302,15 +3387,15 @@
        width="100"
        height="50"
        x="30"
-       y="25"
+       y="15"
        ry="25" />
     <rect
-       style="fill:url(#linearGradient4098);fill-opacity:1;stroke:none;"
+       style="fill:url(#linearGradient4098);fill-opacity:1;stroke:none"
        id="rect3299-3"
        width="100"
        height="50"
        x="150"
-       y="25"
+       y="15"
        ry="25" />
     <rect
        style="fill:url(#linearGradient4145);fill-opacity:1;stroke:none"
@@ -3318,7 +3403,7 @@
        width="100"
        height="50"
        x="270"
-       y="25"
+       y="14.999992"
        ry="25" />
     <rect
        style="fill:url(#linearGradient4098-2);fill-opacity:1;stroke:none"
@@ -3326,7 +3411,7 @@
        width="100"
        height="50"
        x="390"
-       y="25"
+       y="14.999989"
        ry="25" />
     <rect
        style="fill:url(#radialGradient4259);fill-opacity:1;stroke:none"
@@ -3334,7 +3419,7 @@
        width="100"
        height="50"
        x="30"
-       y="105"
+       y="93.615593"
        ry="25" />
     <rect
        style="fill:url(#radialGradient4261);fill-opacity:1;stroke:none"
@@ -3342,15 +3427,15 @@
        width="100"
        height="50"
        x="150"
-       y="105"
+       y="93.615593"
        ry="25" />
     <rect
        style="fill:url(#radialGradient4263);fill-opacity:1;stroke:none"
        id="rect3299-4-3"
        width="100"
        height="50"
-       x="270.00003"
-       y="105"
+       x="270"
+       y="93.615593"
        ry="25" />
     <rect
        style="fill:url(#radialGradient4265);fill-opacity:1;stroke:none"
@@ -3358,7 +3443,7 @@
        width="100"
        height="50"
        x="390.00003"
-       y="105"
+       y="93.615593"
        ry="25" />
     <rect
        style="fill:url(#radialGradient4299);fill-opacity:1;stroke:none"
@@ -3366,7 +3451,7 @@
        width="100"
        height="50"
        x="265"
-       y="185"
+       y="172.23117"
        ry="25" />
     <rect
        style="fill:url(#radialGradient4261-9);fill-opacity:1;stroke:none"
@@ -3374,7 +3459,7 @@
        width="100"
        height="50"
        x="385"
-       y="185"
+       y="172.23117"
        ry="25" />
     <rect
        style="fill:url(#linearGradient4378);fill-opacity:1;stroke:none"
@@ -3382,7 +3467,7 @@
        width="100"
        height="50"
        x="30"
-       y="185"
+       y="172.23119"
        ry="25" />
     <rect
        style="fill:url(#linearGradient4098-20);fill-opacity:1;stroke:none"
@@ -3390,7 +3475,75 @@
        width="100"
        height="50"
        x="150"
-       y="185"
+       y="172.23119"
        ry="25" />
+    <rect
+       style="color:#000000;fill:url(#linearGradient4144);fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3364"
+       width="100"
+       height="50"
+       x="28.284271"
+       y="250.84677"
+       ry="25" />
+    <rect
+       style="color:#000000;fill:url(#linearGradient4174);fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4146"
+       width="100"
+       height="50"
+       x="151.79227"
+       y="250.84677"
+       ry="25" />
+    <rect
+       style="color:#000000;fill:url(#linearGradient4166);fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4148"
+       width="100"
+       height="50"
+       x="345.88937"
+       y="133.69238"
+       ry="25"
+       transform="matrix(0.9485795,0.31653899,-0.31653899,0.9485795,0,0)" />
+    <rect
+       style="color:#000000;fill:url(#linearGradient4190);fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4150"
+       width="100"
+       height="50"
+       x="475.93488"
+       y="5.2116394"
+       ry="25"
+       transform="matrix(0.88057603,0.47390489,-0.47390489,0.88057603,0,0)" />
+    <rect
+       style="color:#000000;fill:url(#radialGradient4198);fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4152"
+       width="100"
+       height="50"
+       x="30.40559"
+       y="329.46237"
+       ry="25" />
+    <rect
+       style="color:#000000;fill:url(#radialGradient4206);fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4154"
+       width="100"
+       height="50"
+       x="155.09207"
+       y="329.46237"
+       ry="25" />
+    <rect
+       style="color:#000000;fill:url(#radialGradient4214);fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4156"
+       width="100"
+       height="50"
+       x="391.4025"
+       y="173.90024"
+       ry="25"
+       transform="matrix(0.92180059,0.38766438,-0.38766438,0.92180059,0,0)" />
+    <rect
+       style="color:#000000;fill:url(#radialGradient4222);fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4158"
+       width="100"
+       height="50"
+       x="494.95486"
+       y="162.63332"
+       ry="25"
+       transform="matrix(0.94578226,0.32480135,-0.32480135,0.94578226,0,0)" />
   </g>
 </svg>
