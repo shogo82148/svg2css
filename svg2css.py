@@ -187,6 +187,7 @@ class CSSWriter(svg.SVGHandler):
 		self.__css = open(name + ".css", "w")
 		self.__id = 0
 		self.__css_classes = set()
+		self.__clipnames = {}
 		
 	def newName(self, x=None):
 		if x and isinstance(x, svg.Element) and x.id:
@@ -216,6 +217,15 @@ class CSSWriter(svg.SVGHandler):
 			self.__css_classes.add(name)
 			css = CSSStyle()
 			stroke = svg.Length(0)
+			basetransform = None
+			
+			#クリップパスの設定
+			if x.clip_path:
+				m = re.match("^url\(#(.*)\)$", x.clip_path)
+				if m:
+					clippath = x.root.getElementById(m.group(1))
+					clipname, basetransform = self.clipPath(clippath, x)
+					self.__clipnames[name] = clipname
 			
 			#ストロークの描画
 			if "stroke" in x.style and x.style["stroke"] != 'none':
@@ -246,9 +256,12 @@ class CSSWriter(svg.SVGHandler):
 				css["border-radius"] = x.ry+stroke/2
 		
 			#変形
-			if x.transform:
+			if x.transform or basetransform:
 				#CSSとSVGの原点の違いを補正
 				transform = x.transform.toMatrix()
+				if basetransform:
+					transform = basetransform.toMatrix() * transform
+					
 				transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
 				transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
 				css["transform"] = transform
@@ -258,7 +271,13 @@ class CSSWriter(svg.SVGHandler):
 				
 			#出力
 			self.__css.write(".%s{%s}\n" % (name, str(css)))
-			
+		
+		#クリップの設定
+		if name in self.__clipnames:
+			clipname = self.__clipnames[name]
+			self.__html.write('<div class="%s"><div class="%s"></div></div>\n' % (clipname, name))
+			return
+		
 		self.__html.write('<div class="%s"></div>\n' % name)
 	
 	def arc(self, x):
@@ -347,13 +366,46 @@ class CSSWriter(svg.SVGHandler):
 		self.__html.write('<div class="%s">\n' % name)
 		svg.SVGHandler.use(self, x)
 		self.__html.write('</div>\n');
+	
+	def clipPath(self, x, element):
+		name = self.newName()
+
+		css = CSSStyle()
+		invtransform = svg.Transform("")
+		if isinstance(x[0], svg.Rect):
+			css["position"] = "absolute"
+			css["left"] = x[0].x
+			css["top"] = x[0].y
+			css["width"] = x[0].width
+			css["height"] = x[0].height
+			if x[0].rx and x[0].ry:
+				css["border-radius"] = "%s/%s" % (str(x[0].rx), str(x[0].ry))
+			elif x[0].rx:
+				css["border-radius"] = x[0].rx
+			elif x[0].ry:
+				css["border-radius"] = x[0].ry
+			
+			#座標変換
+			if x[0].transform or element.transform:
+				#CSSとSVGの原点の違いを補正
+				transform = element.transform.toMatrix() * x[0].transform.toMatrix()
+				invtransform.append(transform.inverse())
+				transform = transform * svg.Transform.Translate(x[0].x+x[0].width/2, x[0].y+x[0].height/2)
+				transform = svg.Transform.Translate(-x[0].x-x[0].width/2, -x[0].y-x[0].height/2) * transform
+				css["transform"] = transform
+			invtransform.append(svg.Transform.Translate(-x[0].x, -x[0].y))
+
+			css["overflow"] = "hidden"
+		self.__css.write(".%s{%s}\n" % (name, str(css)));
+		
+		return (name, invtransform)
 		
 	def __del__(self):
 		self.__html.close()
 		self.__css.close()
 
 def main():
-	testsets = ["rect", "rect-rotate","ellipse","ellipse-rotate","opacity","droid","gradient","use"]
+	testsets = ["rect", "rect-rotate","ellipse","ellipse-rotate","opacity","droid","gradient","use","clip"]
 	for name in testsets:
 		p = svg.Parser()
 		svgfile = open(name + ".svg", "r")

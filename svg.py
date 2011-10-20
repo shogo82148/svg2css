@@ -57,6 +57,11 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__container.append(Stop(attrs))
 		elif name=="use":
 			self.__container.append(Use(attrs))
+		elif name=="clipPath":
+			g = ClipPath(attrs)
+			self.__container.append(g)
+			self.__container = g
+			assert g.parent
 			
 	def endElement(self, name):
 		if name=="g":
@@ -69,6 +74,9 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__container = self.__container.parent
 			assert self.__container
 		elif name=="radialGradient":
+			self.__container = self.__container.parent
+			assert self.__container
+		elif name=="clipPath":
 			self.__container = self.__container.parent
 			assert self.__container
 		
@@ -209,6 +217,7 @@ class Rect(Element):
 		self.rx = Length(attrs["rx"]) if attrs.has_key("rx") else None
 		self.ry = Length(attrs["ry"]) if attrs.has_key("ry") else None
 		self.style = Style(attrs.get("style", ""))
+		self.clip_path = attrs.get("clip-path", "")
 		
 	def callHandler(self, handler):
 		handler.rect(self)
@@ -280,6 +289,14 @@ class Stop(Element):
 	
 	def callHandler(self, handler):
 		handler.use(self)
+
+class ClipPath(Container):
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+		self.gradientUnits = attrs.get("clipPathUnits", "objectBoundingBox")
+		
+	def callHandler(self, handler):
+		handler.clipPath(self)
 
 class Use(Element):
 	def __init__(self, attrs, parent=None):
@@ -375,6 +392,9 @@ class Transform(list):
 	class BaseTransform:
 		def toMatrix(self):
 			raise
+		
+		def inverse(self):
+			raise
 
 	class Translate(BaseTransform):
 		def __init__(self, x, y= "0"):
@@ -397,6 +417,9 @@ class Transform(list):
 		
 		def toMatrix(self):
 			return Transform.Matrix(1,0,0,1,self.x,self.y)
+		
+		def inverse(self):
+			return Transform.Translate(-self.x, -self.y)
 
 	class Matrix(BaseTransform):
 		def __init__(self, a, b, c, d, e, f):
@@ -431,6 +454,10 @@ class Transform(list):
 		def toMatrix(self):
 			return self
 		
+		def inverse(self):
+			det = self.a*self.d-self.b*self.c
+			return Transform.Matrix(self.d/det, -self.b/det, -self.c/det, self.a/det,0,0) * Transform.Translate(-self.e, -self.f)
+			
 		def toStringMoz(self):
 			return "matrix(%f,%f,%f,%f,%fpx,%fpx)" % (
 				self.a, self.b, self.c, self.d,
@@ -496,6 +523,9 @@ class SVGHandler:
 		pass
 
 	def radialGradient(self, x):
+		pass
+	
+	def clipPath(self, x):
 		pass
 	
 	def use(self, x):
@@ -569,9 +599,10 @@ class Color:
 			return self.toRGBA()
 
 def main():
-	filename = sys.argv[1]
-	p = Parser()
-	p.parse(open(filename, "r"))
+	m = Transform.Matrix(1,2,3,4,5,6)
+	print m
+	print m.inverse()
+	print m*m.inverse()
 	return
 
 if __name__=="__main__":
