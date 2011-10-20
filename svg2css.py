@@ -49,8 +49,8 @@ class CSSStyle(dict):
 			if "fill-opacity" in svgstyle:
 				color.a = float(svgstyle["fill-opacity"])
 			self["background-color"] = color
-		except:
-			print svgstyle["fill"]
+		except Exception,e:
+			print svgstyle["fill"], e
 	
 	def __addLinearGradient(self, element, fill):
 		root = fill.root
@@ -73,14 +73,39 @@ class CSSStyle(dict):
 				point2.x - svg.Length(self["left"]) - stroke,
 				point2.y - svg.Length(self["top"]) - stroke)
 
+		def svgOffsetToPoint(offset):
+			return point1*(1-offset) + point2*offset
+		
 		#css3のデフォルト
-		deg = -math.atan2(point2.y-point1.y, point2.x-point1.x)/math.pi*180
+		rad = -math.atan2(point2.y-point1.y, point2.x-point1.x)
+		vec = svg.Point(math.cos(rad), -math.sin(rad))
+		deg = rad/math.pi*180
+		width = svg.Length(self["width"])
+		height = svg.Length(self["height"])
+		point0 = svg.Point(0,0)
+		if 0<deg<90:
+			point0 = svg.Point(0, height)
+		elif 90<=deg:
+			point0 = svg.Point(width, height)
+		elif deg<-90:
+			point0 = svg.Point(width, 0)
+		gradientlen = (svg.Point(width, height)-point0*2) * vec
+
+		def pointToCSSOffset(point):
+			offset = (point - point0) * vec / gradientlen
+			return offset
+		
+		def svgOffsetToCSSOffset(offset):
+			return pointToCSSOffset(svgOffsetToPoint(offset))
+
 		gradient = "(%.1fdeg" % deg
+		color_stops = []
 		for stop in stops:
 			color = svg.Color(stop.style["stop-color"])
 			if float(stop.style.get("stop-opacity", "1"))<=0.999:
 				color.a = float(stop.style.get("stop-opacity", "1"))
-			gradient += ",%s %.1f%%" % (color, stop.offset*100)
+			gradient += ",%s %.1f%%" % (color, svgOffsetToCSSOffset(stop.offset)*100)
+			
 		gradient += ")"
 		background.append("linear-gradient" + gradient)
 		background.append("-o-linear-gradient" + gradient)
@@ -104,7 +129,6 @@ class CSSStyle(dict):
 		if float(stops[-1].style.get("stop-opacity", "1"))<=0.999:
 			color.a = float(stops[-1].style.get("stop-opacity", "1"))
 		webkit += "to(%s))" % color
-		print webkit
 		background.append(webkit)
 
 		self["background"] = background

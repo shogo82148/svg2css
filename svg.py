@@ -293,7 +293,10 @@ class Length:
 	@property
 	def px(self):
 		return self.__length * Length.__px_per_unit[self.__unit]
-	
+		
+	def __repr__(self):
+		return "%.2f%s" % (self.__length, self.__unit)
+		
 	def __str__(self):
 		return "%.2f%s" % (self.__length, self.__unit)
 	
@@ -316,7 +319,10 @@ class Length:
 		return Length(a.__length * b, a.__unit)
 	
 	def __div__(a, b):
-		return Length(a.__length / b, a.__unit)
+		if isinstance(b, Length):
+			return a.px/b.px
+		else:
+			return Length(a.__length / b, a.__unit)
 		
 	def __neg__(a):
 		return Length(-a.__length, a.__unit)
@@ -436,7 +442,16 @@ class Point(namedtuple('Point', 'x y')):
 	
 	def __sub__(a, b):
 		return Point(a.x-b.x, a.y-b.y)
+	
+	def __mul__(a, b):
+		if isinstance(b, Point):
+			return a.x*b.x+a.y*b.y
+		else:
+			return Point(a.x*b, a.y*b)
 
+	def __div__(a, b):
+		return Point(a.x/b, a.y/b)
+		
 class SVGHandler:
 	def svg(self, x):
 		for a in x:
@@ -501,6 +516,21 @@ class Color:
 	def toRGBA(self):
 		return "rgba(%d,%d,%d,%f)" % (self.r, self.g, self.b, self.a)
 	
+	@classmethod
+	def gradient(cls, a, b, offset):
+		ioffset = 1 - offset
+		return Color(
+			ioffset*a.r + offset*b.r,
+			ioffset*a.g + offset*b.g,
+			ioffset*a.b + offset*b.b,
+			ioffset*a.a + offset*b.a)
+			
+	def __repr__(self):
+		if self.a>0.999:
+			return self.toHex()
+		else:
+			return self.toRGBA()
+
 	def __str__(self):
 		if self.a>0.999:
 			return self.toHex()
