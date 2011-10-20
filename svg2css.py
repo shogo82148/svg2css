@@ -332,6 +332,9 @@ class CSSWriter(svg.SVGHandler):
 			self.__css_classes.add(name)
 			css = CSSStyle()
 
+			#クリップパスの設定
+			self.__clipPath(name, x)
+
 			css["position"] = "absolute"
 			css["margin"] = "0px"
 			
@@ -342,9 +345,19 @@ class CSSWriter(svg.SVGHandler):
 			
 			#出力
 			self.__css.write(".%s{%s}\n" % (name, str(css)));
+
+		if name in self.__clipnames:
+			clipname = self.__clipnames[name]
+			self.__html.write('<div class="%s"><div class="%sinverse">\n' % (clipname, clipname))
+
 		self.__html.write('<div class="%s">\n' % name)
 		svg.SVGHandler.group(self, x)
 		self.__html.write('</div>\n');
+
+		if name in self.__clipnames:
+			clipname = self.__clipnames[name]
+			self.__html.write('</div></div>\n')
+
 		
 	def use(self, x):
 		name = self.newName(x)
