@@ -44,6 +44,8 @@ class CSSStyle(dict):
 				fill = element.root.getElementById(m.group(1))
 				if isinstance(fill, svg.LinearGradient):
 					self.__addLinearGradient(element, fill)
+				elif isinstance(fill, svg.RadialGradient):
+					self.__addRadialGradient(element, fill)
 				return
 			color = svg.Color(fill)
 			if "fill-opacity" in svgstyle:
@@ -133,6 +135,51 @@ class CSSStyle(dict):
 
 		self["background"] = background
 		
+	def __addRadialGradient(self, element, fill):
+		root = fill.root
+		stops = fill
+		while len(stops)==0 and stops.href:
+			stops = root.getElementById(stops.href[1:])
+		background = []
+		
+		#座標補正
+		gradientTransform = fill.gradientTransform.toMatrix()
+		center = svg.Point(fill.cx, fill.cy)
+		finish = svg.Point(fill.fx, fill.fy)
+		center = gradientTransform * center
+		finish = gradientTransform * finish
+		
+		if fill.gradientUnits == "userSpaceOnUse":
+			stroke = svg.Length(element.style.get("stroke-width",0))
+			center = svg.Point(
+				center.x - svg.Length(self["left"]) - stroke,
+				center.y - svg.Length(self["top"]) - stroke)
+			finish = svg.Point(
+				finish.x - svg.Length(self["left"]) - stroke,
+				finish.y - svg.Length(self["top"]) - stroke)
+		
+		#半径の決定
+		zero = svg.Length("0")
+		point0 = gradientTransform * svg.Point(zero, zero)
+		rx = svg.Length(abs(gradientTransform * svg.Point(fill.r, zero) - point0), "px")
+		ry = svg.Length(abs(gradientTransform * svg.Point(zero, fill.r) - point0), "px")
+		r = fill.r
+		
+		gradient = ""
+		for stop in stops:
+			color = svg.Color(stop.style["stop-color"])
+			if float(stop.style.get("stop-opacity", "1"))<=0.999:
+				color.a = float(stop.style.get("stop-opacity", "1"))
+			gradient += ",%s %.1f%%" % (color, stop.offset*100)
+		background.append("radial-gradient(%s %s,%s %s%s)" % (center.x, center.y, rx, ry, gradient))
+		background.append("-o-radial-gradient(%s %s,%s %s%s)" % (center.x, center.y, rx, ry, gradient))
+		background.append("-moz-radial-gradient(%s %s,circle%s)" % (center.x, center.y, gradient))
+		background.append("-moz-radial-gradient(%s %s,%s %s%s)" % (center.x, center.y, rx, ry, gradient))
+		background.append("-ms-radial-gradient(%s %s,%s %s%s)" % (center.x, center.y, rx, ry, gradient))
+		background.append("-webkit-radial-gradient(%s %s,%s %s%s)" % (center.x, center.y, rx, ry, gradient))
+
+		self["background"] = background
+		
 class CSSWriter(svg.SVGHandler):
 	def __init__(self, name):
 		self.__name = name
@@ -154,9 +201,10 @@ class CSSWriter(svg.SVGHandler):
 <meta http-equiv="content-script-type" content="text/javascript" /> 
 <meta http-equiv="content-style-type" content="text/css" /> 
 <link rel="stylesheet" href="./%s.css">
+<title>%s</title>
 </head>
 <body>
-<div class="svg">\n""" % self.__name)
+<div class="svg">\n""" % (self.__name, self.__name))
 		#self.__css.write('@charset "utf-8"\n\n.a{}\n')
 		self.__css.write(".svg{top:0px;left:0px;width:%s;height:%s;position:absolute;}\n" % (str(x.width), str(x.height)))
 		svg.SVGHandler.svg(self, x)

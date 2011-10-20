@@ -5,6 +5,7 @@ import xml.sax.handler
 import sys
 import re
 from collections import namedtuple
+import math
 
 class Parser:
 	def __init__(self):
@@ -47,6 +48,11 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
+		elif name=="radialGradient":
+			g = RadialGradient(attrs)
+			self.__container.append(g)
+			self.__container = g
+			assert g.parent
 		elif name=="stop":
 			self.__container.append(Stop(attrs))
 		elif name=="use":
@@ -60,6 +66,9 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__container = self.__container.parent
 			assert self.__container
 		elif name=="linearGradient":
+			self.__container = self.__container.parent
+			assert self.__container
+		elif name=="radialGradient":
 			self.__container = self.__container.parent
 			assert self.__container
 		
@@ -247,6 +256,22 @@ class LinearGradient(Container):
 	def callHandler(self, handler):
 		handler.linearGradient(self)
 
+#円形グラデーション
+class RadialGradient(Container):
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+		self.cx = Length(attrs.get("cx", "0"))
+		self.cy = Length(attrs.get("cy", "0"))
+		self.fx = Length(attrs.get("fx", "0"))
+		self.fy = Length(attrs.get("fy", "0"))
+		self.r = Length(attrs.get("r", "0"))
+		self.gradientUnits = attrs.get("gradientUnits", "objectBoundingBox")
+		self.gradientTransform = Transform(attrs.get("gradientTransform", ""))
+		
+	def callHandler(self, handler):
+		handler.radialGradient(self)
+
+#グラデーションの色指定
 class Stop(Element):
 	def __init__(self, attrs, parent=None):
 		Element.__init__(self, attrs, parent)
@@ -452,6 +477,9 @@ class Point(namedtuple('Point', 'x y')):
 	def __div__(a, b):
 		return Point(a.x/b, a.y/b)
 		
+	def __abs__(self):
+		return math.sqrt(self.x.px*self.x.px + self.y.px*self.y.px)
+		
 class SVGHandler:
 	def svg(self, x):
 		for a in x:
@@ -465,6 +493,9 @@ class SVGHandler:
 		pass
 	
 	def linearGradient(self, x):
+		pass
+
+	def radialGradient(self, x):
 		pass
 	
 	def use(self, x):
