@@ -208,7 +208,7 @@ class CSSWriter(svg.SVGHandler):
 </head>
 <body>
 <div class="svg">\n""" % (self.__name, self.__name))
-		#self.__css.write('@charset "utf-8"\n\n.a{}\n')
+		self.__css.write('@charset "utf-8";\n')
 		self.__css.write(".svg{top:0px;left:0px;width:%s;height:%s;position:absolute;}\n" % (str(x.width), str(x.height)))
 		svg.SVGHandler.svg(self, x)
 		self.__html.write("""</div>\n</body></html>\n""")
