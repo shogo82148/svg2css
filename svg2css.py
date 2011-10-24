@@ -569,6 +569,7 @@ padding:0px;}
 			css["width"] = self.__width
 			css["height"] = self.__height
 			css["position"] = "relative"
+			css["overflow"] = "hidden"
 			self._css.write(".%s{%s}\n" % (name, str(css)));
 			self._html.write('<div class="%s">\n' % name)
 			svg.SVGHandler.group(self, x)

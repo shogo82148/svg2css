@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="800px"
@@ -14,9 +15,21 @@
    id="svg2816"
    version="1.1"
    inkscape:version="0.47 r22583"
-   sodipodi:docname="新規ドキュメント 2">
+   sodipodi:docname="slide.svg">
   <defs
      id="defs2818">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3641">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3643" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop3645" />
+    </linearGradient>
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
        inkscape:vp_x="0 : 300 : 1"
@@ -24,6 +37,15 @@
        inkscape:vp_z="800 : 300 : 1"
        inkscape:persp3d-origin="400 : 200 : 1"
        id="perspective2824" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3641"
+       id="linearGradient3647"
+       x1="-1"
+       y1="300"
+       x2="801"
+       y2="300"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -33,7 +55,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.84852814"
-     inkscape:cx="239.92734"
+     inkscape:cx="342.30487"
      inkscape:cy="242.02273"
      inkscape:current-layer="layer4"
      inkscape:document-units="px"
@@ -42,7 +64,9 @@
      inkscape:window-height="975"
      inkscape:window-x="-4"
      inkscape:window-y="-4"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:snap-bbox="true"
+     inkscape:snap-page="true" />
   <metadata
      id="metadata2821">
     <rdf:RDF>
@@ -159,6 +183,14 @@
      inkscape:label="スライド4"
      style="display:inline">
     <rect
+       style="color:#000000;fill:url(#linearGradient3647);fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3639"
+       width="800"
+       height="600"
+       x="0"
+       y="0"
+       ry="25.927248" />
+    <rect
        style="color:#000000;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect3631"
        width="67.175148"
@@ -182,5 +214,14 @@
        x="537.40118"
        y="42.564156"
        ry="25.927248" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path3637"
+       sodipodi:cx="-82.495789"
+       sodipodi:cy="319.51431"
+       sodipodi:rx="51.854496"
+       sodipodi:ry="54.211521"
+       d="m -30.641293,319.51431 a 51.854496,54.211521 0 1 1 -103.708987,0 51.854496,54.211521 0 1 1 103.708987,0 z" />
   </g>
 </svg>
