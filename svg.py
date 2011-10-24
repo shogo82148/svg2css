@@ -395,6 +395,9 @@ class Transform(list):
 	class BaseTransform:
 		def toMatrix(self):
 			raise
+			
+		def toStringMoz(self):
+			return str(self)
 		
 		def inverse(self):
 			raise

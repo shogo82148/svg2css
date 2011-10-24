@@ -30,7 +30,7 @@ class CSSStyle(dict):
 		s = ""
 		for name in ["transform", "-ms-transform", "-o-transform", "-webkit-transform"]:
 			s += "%s:%s;" % (name, style)
-		if isinstance(transform, str):
+		if isinstance(transform, str) or isinstance(transform, unicode):
 			s += "-moz-transform:%s;" % transform
 		else:
 			s += "-moz-transform:%s;" % transform.toStringMoz()
