@@ -6,6 +6,8 @@ import sys
 import svg
 import re
 import math
+import os.path
+from optparse import OptionParser
 
 class CSSStyle(dict):
 	def __str__(self):
@@ -181,10 +183,10 @@ class CSSStyle(dict):
 		self["background"] = background
 		
 class CSSWriter(svg.SVGHandler):
-	def __init__(self, name):
+	def __init__(self, name, html = None, css = None):
 		self.__name = name
-		self.__html = open(name + ".html", "w")
-		self.__css = open(name + ".css", "w")
+		self.__html = html or open(name + ".html", "w")
+		self.__css = css or open(name + ".css", "w")
 		self.__id = 0
 		self.__css_classes = set()
 		self.__clipnames = {}
@@ -435,13 +437,25 @@ class CSSWriter(svg.SVGHandler):
 		self.__css.close()
 
 def main():
-	testsets = ["rect", "rect-rotate","ellipse","ellipse-rotate","opacity","droid","gradient","use","clip"]
-	for name in testsets:
-		p = svg.Parser()
-		svgfile = open(name + ".svg", "r")
-		writer = CSSWriter(name)
-		s = p.parse(svgfile)
-		s.callHandler(writer)
+	#オプション解析
+	parser = OptionParser(usage = "usage: %prog [options] svgfile")
+	(options, args) = parser.parse_args()
+	if len(args)==0:
+		parser.print_help()
+		return
+	
+	#SVGファイル取得
+	svgfile = open(args[0], "r")
+	root, ext = os.path.splitext(args[0])
+	name = os.path.basename(root)
+	html = open(name + ".html", "w")
+	css = open(name + ".css", "w")
+
+	#解析＆変換
+	p = svg.Parser()
+	writer = CSSWriter(name, html, css)
+	s = p.parse(svgfile)
+	s.callHandler(writer)
 	return
 
 if __name__=="__main__":
