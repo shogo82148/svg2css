@@ -462,6 +462,10 @@ class SlideWriter(CSSWriter):
 			self._css.write("#%s{left:%d%%}\n" % (SlideWriter.container_prefix + str(self.__slides), self.__slides*100))
 			self._html.write('<div id="%s">' % name)
 		
+		@property
+		def slides(self):
+			return self.__slides
+		
 		def printEndTags(self):
 			self._html.write("</div>" * self.__slides + "\n")
 	
@@ -469,6 +473,7 @@ class SlideWriter(CSSWriter):
 		CSSWriter.__init__(self, name, html, css)
 		self.__name = name
 		self.__slides = 0
+		self.__all_slides = 0
 		self.__width = 0
 		self.__height = 0
 		
@@ -486,7 +491,7 @@ class SlideWriter(CSSWriter):
 		self._css.write('@charset "utf-8";\n')
 		
 		#サイズ設定
-		self._css.write(".svg{top:0px;left:0px;width:100%;height:100%;position:absolute;}\n" )
+		self._css.write(".svg{top:0px;left:0px;width:100%;height:100%;position:absolute;overflow: hidden;}\n" )
 		self.__width = x.width
 		self.__height = x.height
 		self._css.write(""".%s {
@@ -524,10 +529,23 @@ box-pack: center;
 -moz-box-pack: center;
 -o-box-pack: center;
 }\n""" % SlideWriter.container_prefix)
+
+		#スライド移動ボタンの設定
+		self._css.write(""".nextbutton, .backbutton {
+position:absolute;
+top:0px;
+height:100%;
+width:50%;
+margin:0px;
+padding:0px;}
+.nextbutton {right: 0px}
+.backbutton {left: 0px}
+""")
 		
 		#スライドの開始タグを出力
 		counter = SlideWriter.CountSlide(self._html, self._css)
 		x.callHandler(counter)
+		self.__all_slides = counter.slides
 		
 		#内容を出力
 		svg.SVGHandler.svg(self, x)
@@ -542,8 +560,9 @@ box-pack: center;
 		else:
 			self.__slides += 1
 			name = SlideWriter.container_prefix + str(self.__slides)
-			self._html.write('<div id="%s" class="%s">\n' % (name,SlideWriter.container_prefix))
+			self._html.write('<div id="%s" class="%s">\n' % (name, SlideWriter.container_prefix))
 
+			#スライドの内容を出力
 			name = self.newName(x)
 			css = CSSStyle()
 			css["margin"] = "0px auto"
@@ -553,8 +572,19 @@ box-pack: center;
 			self._css.write(".%s{%s}\n" % (name, str(css)));
 			self._html.write('<div class="%s">\n' % name)
 			svg.SVGHandler.group(self, x)
+			self._html.write('</div>\n')
 			
-			self._html.write('</div></div>\n')
+			#移動ボタン
+			backslide = self.__slides-1
+			nextslide = self.__slides+1
+			if backslide<=0:
+				backslide = self.__all_slides
+			if nextslide>self.__all_slides:
+				nextslide = 1
+			self._html.write('<a href="#slide%d" class="backbutton"></a>\n' % backslide)
+			self._html.write('<a href="#slide%d" class="nextbutton"></a>\n' % nextslide)
+
+			self._html.write('</div>\n')
 
 
 def main():
