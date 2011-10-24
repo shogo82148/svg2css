@@ -508,6 +508,7 @@ height: 100%%; }\n""" % SlideWriter.container_prefix)
 
 		#初期位置の設定
 		self._css.write(""".%s {
+overflow: hidden;
 transform: translateX(-100%%);
 -ms-transform: translateX(-100%%);
 -webkit-transform: translateX(-100%%);
