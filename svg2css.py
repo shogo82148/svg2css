@@ -562,7 +562,7 @@ padding:0px;}
 		
 		#非対応ブラウザ向けの表示
 		self._html.write(u"""
-<div id="unsupport">
+<div id="unsupport" class="container">
 <div>Sorry, This page doesn't support your browser</div>
 <div>現在使用中のブラウザでは見れません</div>
 </div>
