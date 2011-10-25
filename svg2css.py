@@ -442,6 +442,7 @@ class CSSWriter(svg.SVGHandler):
 class SlideWriter(CSSWriter):
 	slide_prefix = "slide"
 	container_prefix = "container"
+	slide_layer = "slidelayer"
 
 	#スライドの枚数を数えるクラス
 	class CountSlide(svg.SVGHandler):
@@ -530,6 +531,15 @@ box-pack: center;
 -moz-box-pack: center;
 -o-box-pack: center;
 }\n""" % SlideWriter.container_prefix)
+		
+		#スライドの内容についての設定
+		self._css.write(""".%s {
+margin:0px auto;
+width: %s;
+height: %s;
+position:relative;
+overflow:hidden;}
+""" % (SlideWriter.slide_layer, self.__width, self.__height));
 
 		#スライド移動ボタンの設定
 		self._css.write(""".nextbutton, .backbutton {
@@ -564,15 +574,7 @@ padding:0px;}
 			self._html.write('<div id="%s" class="%s">\n' % (name, SlideWriter.container_prefix))
 
 			#スライドの内容を出力
-			name = self.newName(x)
-			css = CSSStyle()
-			css["margin"] = "0px auto"
-			css["width"] = self.__width
-			css["height"] = self.__height
-			css["position"] = "relative"
-			css["overflow"] = "hidden"
-			self._css.write(".%s{%s}\n" % (name, str(css)));
-			self._html.write('<div class="%s">\n' % name)
+			self._html.write('<div class="%s">\n' % SlideWriter.slide_layer)
 			svg.SVGHandler.group(self, x)
 			self._html.write('</div>\n')
 			
