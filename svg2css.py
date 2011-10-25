@@ -8,6 +8,7 @@ import re
 import math
 import os.path
 from optparse import OptionParser
+import codecs
 
 class CSSStyle(dict):
 	def __str__(self):
@@ -188,8 +189,8 @@ class CSSStyle(dict):
 class CSSWriter(svg.SVGHandler):
 	def __init__(self, name, html = None, css = None):
 		self.__name = name
-		self._html = html or open(name + ".html", "w")
-		self._css = css or open(name + ".css", "w")
+		self._html = html or codecs.open(name + ".html", "w", "utf-8")
+		self._css = css or codecs.open(name + ".css", "w", "utf-8")
 		self.__id = 0
 		self._css_classes = set()
 		self.__clipnames = {}
@@ -551,12 +552,21 @@ margin:0px;
 padding:0px;}
 .nextbutton {right: 0px}
 .backbutton {left: 0px}
+#unsupport div {text-align: center; font-size:30px;}
 """)
 		
 		#スライドの開始タグを出力
 		counter = SlideWriter.CountSlide(self._html, self._css)
 		x.callHandler(counter)
 		self.__all_slides = counter.slides
+		
+		#非対応ブラウザ向けの表示
+		self._html.write(u"""
+<div id="unsupport">
+<div>Sorry, This page doesn't support your browser</div>
+<div>現在使用中のブラウザでは見れません</div>
+</div>
+""")
 		
 		#内容を出力
 		svg.SVGHandler.svg(self, x)
@@ -605,8 +615,8 @@ def main():
 	svgfile = open(args[0], "r")
 	root, ext = os.path.splitext(args[0])
 	name = os.path.basename(root)
-	html = open(name + ".html", "w")
-	css = open(name + ".css", "w")
+	html = codecs.open(name + ".html", "w", "utf-8")
+	css = codecs.open(name + ".css", "w", "utf-8")
 
 	#解析＆変換
 	p = svg.Parser()
