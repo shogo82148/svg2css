@@ -554,6 +554,24 @@ padding:0px;}
 .backbutton {left: 0px}
 #unsupport div {text-align: center; font-size:30px;}
 """)
+
+		#メニュー
+		self._css.write("""#menu{
+width: 100%;
+height: 60px;
+position: absolute;
+bottom: 0px;
+opacity: 0;
+-ms-transition: 0.4s;
+-webkit-transition: 0.4s;
+-moz-transition: 0.4s;
+-o-transition: 0.4s;
+transition: 0.4s;
+}
+#menu:hover {
+opacity: 1;
+}
+""")
 		
 		#スライドの開始タグを出力
 		counter = SlideWriter.CountSlide(self._html, self._css)
@@ -570,6 +588,13 @@ padding:0px;}
 		
 		#内容を出力
 		svg.SVGHandler.svg(self, x)
+		
+		#メニュー
+		
+		self._html.write("""<div id="menu">""")
+		for i in range(self.__all_slides):
+			self._html.write('<a href="#%s%d">Slide%d</a> ' % (SlideWriter.slide_prefix, i+1, i+1))
+		self._html.write("""</div>""")
 		
 		#スライドの終了タグを出力
 		counter.printEndTags()
