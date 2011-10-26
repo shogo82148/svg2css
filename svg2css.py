@@ -581,17 +581,19 @@ float:left;
 margin: 3px;
 }
 #navi li a {
-font-size: 13px;
+padding: 5px 0px 0px 0px;
+margin: 0px;
+width:25px;
+height:20px;
+font-size: 15px;
 font-weight: bold;
 text-decoration: none;
 color:black;
-width:20px;
-height:20px;
-display:table-cell;
+display:block;
 text-align: center;
 vertical-align: middle;
 border: 2px solid black;
-border-radius: 12px;
+border-radius: 14px;
 background-color: white;
 opacity: 0.5;
 -ms-transition: 0.4s;
