@@ -571,6 +571,38 @@ transition: 0.4s;
 #menu:hover {
 opacity: 1;
 }
+#navi {
+list-style:none;
+margin: 0px;
+padding: 0px;
+}
+#navi li{
+float:left;
+margin: 3px;
+}
+#navi li a {
+font-size: 13px;
+font-weight: bold;
+text-decoration: none;
+color:black;
+width:20px;
+height:20px;
+display:table-cell;
+text-align: center;
+vertical-align: middle;
+border: 2px solid black;
+border-radius: 12px;
+background-color: white;
+opacity: 0.5;
+-ms-transition: 0.4s;
+-webkit-transition: 0.4s;
+-moz-transition: 0.4s;
+-o-transition: 0.4s;
+transition: 0.4s;
+}
+#navi li a:hover{
+opacity: 1;
+}
 """)
 		
 		#スライドの開始タグを出力
@@ -592,8 +624,11 @@ opacity: 1;
 		#メニュー
 		
 		self._html.write("""<div id="menu">""")
+		self._html.write("""<ul id="navi">""")
 		for i in range(self.__all_slides):
-			self._html.write('<a href="#%s%d">Slide%d</a> ' % (SlideWriter.slide_prefix, i+1, i+1))
+			self._html.write('<li><a id="navibutton%d" href="#%s%d">%d</a></li>' % (i+1, SlideWriter.slide_prefix, i+1, i+1))
+			self._css.write('#%s%d:target #navibutton%d{opacity: 1;}\n' % (SlideWriter.slide_prefix, i+1, i+1))
+		self._html.write("""</ul>""")
 		self._html.write("""</div>""")
 		
 		#スライドの終了タグを出力
