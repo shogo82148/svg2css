@@ -516,29 +516,16 @@ transform: translateX(-100%%);
 -ms-transform: translateX(-100%%);
 -webkit-transform: translateX(-100%%);
 -moz-transform: translateX(-100%%);
--o-transform: translateX(-100%%);]
-display: box;
-display: -ms-box;
-display: -webkit-box;
-display: -moz-box;
-display: -o-box;
-box-align: center;
--ms-box-align: center;
--webkit-box-align: center;
--moz-box-align: center;
--o-box-align: center;
-box-pack: center;
--ms-box-pack: center;
--webkit-box-pack: center;
--moz-box-pack: center;
--o-box-pack: center;
+-o-transform: translateX(-100%%);
 }\n""" % SlideWriter.container_prefix)
 		
 		#スライドの内容についての設定
 		self._css.write(""".%s {
-margin:0px auto;
+top:50%%;
+left:50%%;
 width: %s;
 height: %s;
+margin: %s %s;
 position:relative;
 overflow:hidden;
 -ms-transition: 0.4s;
@@ -547,7 +534,7 @@ overflow:hidden;
 -o-transition: 0.4s;
 transition: 0.4s;
 }
-""" % (SlideWriter.slide_layer, self.__width, self.__height));
+""" % (SlideWriter.slide_layer, self.__width, self.__height, -self.__height/2, -self.__width/2));
 
 		#スライド移動ボタンの設定
 		self._css.write(""".nextbutton, .backbutton {
