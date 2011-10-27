@@ -478,6 +478,7 @@ class SlideWriter(CSSWriter):
 		self.__all_slides = 0
 		self.__width = 0
 		self.__height = 0
+		self.__scales = [("100%", 1), ("128%", 1.28), ("160%", 1.6)]
 		
 	def svg(self, x):
 		self._html.write("""<!DOCTYPE html> 
@@ -539,7 +540,13 @@ margin:0px auto;
 width: %s;
 height: %s;
 position:relative;
-overflow:hidden;}
+overflow:hidden;
+-ms-transition: 0.4s;
+-webkit-transition: 0.4s;
+-moz-transition: 0.4s;
+-o-transition: 0.4s;
+transition: 0.4s;
+}
 """ % (SlideWriter.slide_layer, self.__width, self.__height));
 
 		#スライド移動ボタンの設定
@@ -606,6 +613,11 @@ transition: 0.4s;
 opacity: 1;
 }
 """)
+
+		#スケール調整用ラジオボタン
+		self._css.write('input.scaleradio{display:none;}')
+		for i in range(len(self.__scales)):
+			self._html.write('<input id="scale%d" type="radio" name="scaleradio" class="scaleradio"/>' % i)
 		
 		#スライドの開始タグを出力
 		counter = SlideWriter.CountSlide(self._html, self._css)
@@ -624,13 +636,20 @@ opacity: 1;
 		svg.SVGHandler.svg(self, x)
 		
 		#メニュー
-		
 		self._html.write("""<div id="menu">""")
 		self._html.write("""<ul id="navi">""")
 		for i in range(self.__all_slides):
 			self._html.write('<li><a id="navibutton%d" href="#%s%d">%d</a></li>' % (i+1, SlideWriter.slide_prefix, i+1, i+1))
 			self._css.write('#%s%d:target #navibutton%d{opacity: 1;}\n' % (SlideWriter.slide_prefix, i+1, i+1))
 		self._html.write("""</ul>""")
+		
+		for i, t in enumerate(self.__scales):
+			self._html.write('<label for="scale%d">%s</label>' % (i, t[0]))
+			self._css.write("""#scale%d:checked ~ div *.slidelayer{
+-webkit-transform:scale(%f);-o-transform:scale(%f);-moz-transform:scale(%f);-ms-transform:scale(%f);transform:scale(%f);}
+#scale%d:checked ~div * label[for="scale%d"]{outline: dotted 2px #f93;}
+""" % (i, t[1], t[1], t[1], t[1], t[1], i, i))
+			
 		self._html.write("""</div>""")
 		
 		#スライドの終了タグを出力
