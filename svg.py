@@ -7,13 +7,19 @@ import re
 from collections import namedtuple
 import math
 
+inkscape = u"http://www.inkscape.org/namespaces/inkscape"
+svg = u"http://www.w3.org/2000/svg"
+sodipodi = u"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xlink = u"http://www.w3.org/1999/xlink"
+
 class Parser:
 	def __init__(self):
 		self.__parser = xml.sax.make_parser()
 		self.__handler = SVGXMLHandler()
 		self.__parser.setContentHandler(self.__handler)
 		self.__parser.setFeature(xml.sax.handler.feature_external_ges, False)
-	
+		self.__parser.setFeature(xml.sax.handler.feature_namespaces, True)
+		
 	def parse(self, data):
 		self.__parser.parse(data)
 		return self.__handler.getSVG()
@@ -24,58 +30,58 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 		self.__container = None
 		self.__svg = None
 		
-	def startElement(self, name, attrs):
-		type = attrs.get('sodipodi:type', '')
+	def startElementNS(self, name, qname, attrs):
+		type = attrs.get(('sodipodi','type'), '')
 		if type=="arc":
 			self.__container.append(Arc(attrs))
-		elif name=="svg":
+		elif name==(svg,u"svg"):
 			self.__container = SVG(attrs)
 			self.__svg = self.__container
-		elif name=="rect":
+		elif name==(svg,"rect"):
 			self.__container.append(Rect(attrs))
-		elif name=="g":
+		elif name==(svg,"g"):
 			g = Group(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
-		elif name=="defs":
+		elif name==(svg,"defs"):
 			g = Define(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
-		elif name=="linearGradient":
+		elif name==(svg,"linearGradient"):
 			g = LinearGradient(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
-		elif name=="radialGradient":
+		elif name==(svg,"radialGradient"):
 			g = RadialGradient(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
-		elif name=="stop":
+		elif name==(svg,"stop"):
 			self.__container.append(Stop(attrs))
-		elif name=="use":
+		elif name==(svg,"use"):
 			self.__container.append(Use(attrs))
-		elif name=="clipPath":
+		elif name==(svg,"clipPath"):
 			g = ClipPath(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
-		elif name=="text":
+		elif name==(svg,"text"):
 			g = Text(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
-		elif name=="tspan":
+		elif name==(svg,"tspan"):
 			g = TSpan(attrs)
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
 			
-	def endElement(self, name):
-		if name in ["g", "defs", "linearGradient",
-			"radialGradient", "clipPath", "text", "tspan"]:
+	def endElementNS(self, name, qname):
+		if name in [(svg,"g"), (svg,"defs"), (svg,"linearGradient"),
+			(svg,"radialGradient"), (svg,"clipPath"), (svg,"text"), (svg,"tspan")]:
 			
 			self.__container = self.__container.parent
 			assert self.__container
@@ -96,12 +102,12 @@ class Element:
 		self.__parent = parent
 		self.__default = default
 		self.__root = None
-		self.id = attrs.get("id", "")
+		self.id = attrs.get((None,"id"), "")
 		
-		self.transform = Transform(attrs.get("transform", ""))
+		self.transform = Transform(attrs.get((None,"transform"), ""))
 		
-		if attrs.has_key("xlink:href"):
-			self.href = attrs.get("xlink:href")
+		if attrs.has_key((xlink, "href")):
+			self.href = attrs.get((xlink,"href"))
 		else:
 			self.href = None
 			
@@ -202,10 +208,10 @@ class Container(Element,list):
 class SVG(Container):
 	def __init__(self, attrs, parent=None):
 		Container.__init__(self, attrs, parent)
-		self.x = Length(attrs.get("x", "0"))
-		self.y = Length(attrs.get("y", "0"))
-		self.width = Length(attrs.get("width", "0"))
-		self.height = Length(attrs.get("height", "0"))
+		self.x = Length(attrs.get((None,"x"), "0"))
+		self.y = Length(attrs.get((None,"y"), "0"))
+		self.width = Length(attrs.get((None,"width"), "0"))
+		self.height = Length(attrs.get((None,"height"), "0"))
 		
 	def callHandler(self, handler):
 		handler.svg(self)
@@ -214,14 +220,14 @@ class SVG(Container):
 class Rect(Element):
 	def __init__(self, attrs, parent=None):
 		Element.__init__(self, attrs, parent)
-		self.x = Length(attrs.get("x", "0"))
-		self.y = Length(attrs.get("y", "0"))
-		self.width = Length(attrs.get("width", "0"))
-		self.height = Length(attrs.get("height", "0"))
-		self.rx = Length(attrs["rx"]) if attrs.has_key("rx") else None
-		self.ry = Length(attrs["ry"]) if attrs.has_key("ry") else None
-		self.style = Style(attrs.get("style", ""))
-		self.clip_path = attrs.get("clip-path", "")
+		self.x = Length(attrs.get((None,"x"), "0"))
+		self.y = Length(attrs.get((None,"y"), "0"))
+		self.width = Length(attrs.get((None,"width"), "0"))
+		self.height = Length(attrs.get((None,"height"), "0"))
+		self.rx = Length(attrs[(None,"rx")]) if attrs.has_key((None,"rx")) else None
+		self.ry = Length(attrs[(None,"ry")]) if attrs.has_key((None,"ry")) else None
+		self.style = Style(attrs.get((None,"style"), ""))
+		self.clip_path = attrs.get((None,"clip-path"), "")
 		
 	def callHandler(self, handler):
 		handler.rect(self)
@@ -230,12 +236,12 @@ class Rect(Element):
 class Arc(Element):
 	def __init__(self, attrs, parent=None):
 		Element.__init__(self, attrs, parent)
-		self.cx = Length(attrs.get("sodipodi:cx", "0"))
-		self.cy = Length(attrs.get("sodipodi:cy", "0"))
-		self.rx = Length(attrs.get("sodipodi:rx", "0"))
-		self.ry = Length(attrs.get("sodipodi:ry", "0"))
-		self.style = Style(attrs.get("style", ""))
-		self.clip_path = attrs.get("clip-path", "")
+		self.cx = Length(attrs.get((sodipodi,"cx"), "0"))
+		self.cy = Length(attrs.get((sodipodi,"cy"), "0"))
+		self.rx = Length(attrs.get((sodipodi,"rx"), "0"))
+		self.ry = Length(attrs.get((sodipodi,"ry"), "0"))
+		self.style = Style(attrs.get((None,"style"), ""))
+		self.clip_path = attrs.get((None,"clip-path"), "")
 		
 	def callHandler(self, handler):
 		handler.arc(self)
@@ -244,8 +250,8 @@ class Arc(Element):
 class Group(Container):
 	def __init__(self, attrs, parent=None):
 		Container.__init__(self, attrs, parent)
-		self.clip_path = attrs.get("clip-path", "")
-		self.groupmode = attrs.get("inkscape:groupmode", "")
+		self.clip_path = attrs.get((None,"clip-path"), "")
+		self.groupmode = attrs.get((inkscape,"groupmode"), "")
 	
 	def callHandler(self, handler):
 		handler.group(self)
@@ -262,10 +268,10 @@ class Define(Container):
 class Text(Container):
 	def __init__(self, attrs, parent=None):
 		Container.__init__(self, attrs, parent)
-		self.x = Length(attrs.get("x", "0"))
-		self.y = Length(attrs.get("y", "0"))
-		self.style = Style(attrs.get("style", ""))
-		self.clip_path = attrs.get("clip-path", "")
+		self.x = Length(attrs.get((None,"x"), "0"))
+		self.y = Length(attrs.get((None,"y"), "0"))
+		self.style = Style(attrs.get((None,"style"), ""))
+		self.clip_path = attrs.get((None,"clip-path"), "")
 		
 	def callHandler(self, handler):
 		handler.text(self)
@@ -274,9 +280,9 @@ class Text(Container):
 class TSpan(Container):
 	def __init__(self, attrs, parent=None):
 		Container.__init__(self, attrs, parent)
-		self.x = Length(attrs.get("x", "0"))
-		self.y = Length(attrs.get("y", "0"))
-		self.style = Style(attrs.get("style", ""))
+		self.x = Length(attrs.get((None,"x"), "0"))
+		self.y = Length(attrs.get((None,"y"), "0"))
+		self.style = Style(attrs.get((None,"style"), ""))
 		
 	def callHandler(self, handler):
 		handler.tspan(self)
@@ -293,12 +299,12 @@ class Characters(Element):
 class LinearGradient(Container):
 	def __init__(self, attrs, parent=None):
 		Container.__init__(self, attrs, parent)
-		self.x1 = Length(attrs.get("x1", "0"))
-		self.y1 = Length(attrs.get("y1", "0"))
-		self.x2 = Length(attrs.get("x2", "0"))
-		self.y2 = Length(attrs.get("y2", "0"))
-		self.gradientUnits = attrs.get("gradientUnits", "objectBoundingBox")
-		self.gradientTransform = Transform(attrs.get("gradientTransform", ""))
+		self.x1 = Length(attrs.get((None,"x1"), "0"))
+		self.y1 = Length(attrs.get((None,"y1"), "0"))
+		self.x2 = Length(attrs.get((None,"x2"), "0"))
+		self.y2 = Length(attrs.get((None,"y2"), "0"))
+		self.gradientUnits = attrs.get((None,"gradientUnits"), "objectBoundingBox")
+		self.gradientTransform = Transform(attrs.get((None,"gradientTransform"), ""))
 		
 	def callHandler(self, handler):
 		handler.linearGradient(self)
@@ -307,13 +313,13 @@ class LinearGradient(Container):
 class RadialGradient(Container):
 	def __init__(self, attrs, parent=None):
 		Container.__init__(self, attrs, parent)
-		self.cx = Length(attrs.get("cx", "0"))
-		self.cy = Length(attrs.get("cy", "0"))
-		self.fx = Length(attrs.get("fx", "0"))
-		self.fy = Length(attrs.get("fy", "0"))
-		self.r = Length(attrs.get("r", "0"))
-		self.gradientUnits = attrs.get("gradientUnits", "objectBoundingBox")
-		self.gradientTransform = Transform(attrs.get("gradientTransform", ""))
+		self.cx = Length(attrs.get((None,"cx"), "0"))
+		self.cy = Length(attrs.get((None,"cy"), "0"))
+		self.fx = Length(attrs.get((None,"fx"), "0"))
+		self.fy = Length(attrs.get((None,"fy"), "0"))
+		self.r = Length(attrs.get((None,"r"), "0"))
+		self.gradientUnits = attrs.get((None,"gradientUnits"), "objectBoundingBox")
+		self.gradientTransform = Transform(attrs.get((None,"gradientTransform"), ""))
 		
 	def callHandler(self, handler):
 		handler.radialGradient(self)
@@ -322,8 +328,8 @@ class RadialGradient(Container):
 class Stop(Element):
 	def __init__(self, attrs, parent=None):
 		Element.__init__(self, attrs, parent)
-		self.offset = float(attrs.get("offset", "0"))
-		self.style = Style(attrs.get("style", ""))
+		self.offset = float(attrs.get((None,"offset"), "0"))
+		self.style = Style(attrs.get((None,"style"), ""))
 	
 	def callHandler(self, handler):
 		handler.use(self)
@@ -331,7 +337,7 @@ class Stop(Element):
 class ClipPath(Container):
 	def __init__(self, attrs, parent=None):
 		Container.__init__(self, attrs, parent)
-		self.gradientUnits = attrs.get("clipPathUnits", "objectBoundingBox")
+		self.gradientUnits = attrs.get((None,"clipPathUnits"), "objectBoundingBox")
 		
 	def callHandler(self, handler):
 		handler.clipPath(self)
@@ -339,10 +345,10 @@ class ClipPath(Container):
 class Use(Element):
 	def __init__(self, attrs, parent=None):
 		Element.__init__(self, attrs, parent)
-		self.x = Length(attrs.get("x", "0"))
-		self.y = Length(attrs.get("y", "0"))
-		self.width = Length(attrs.get("width", "0"))
-		self.height = Length(attrs.get("height", "0"))
+		self.x = Length(attrs.get((None,"x"), "0"))
+		self.y = Length(attrs.get((None,"y"), "0"))
+		self.width = Length(attrs.get((None,"width"), "0"))
+		self.height = Length(attrs.get((None,"height"), "0"))
 	
 	def callHandler(self, handler):
 		handler.use(self)
