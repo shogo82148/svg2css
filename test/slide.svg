@@ -472,7 +472,7 @@
      inkscape:zoom="0.84852814"
      inkscape:cx="445.54879"
      inkscape:cy="252.73799"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      inkscape:document-units="px"
      showgrid="false"
      inkscape:window-width="1024"
@@ -505,7 +505,8 @@
      id="layer1"
      inkscape:label="スライド1"
      inkscape:groupmode="layer"
-     style="display:inline">
+     style="display:none"
+     sodipodi:insensitive="true">
     <rect
        style="color:#000000;fill:url(#linearGradient3657);fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect3649"
@@ -1918,8 +1919,7 @@ String.prototype.trim = function()
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="スライド2"
-     style="display:none"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <use
        style="display:inline"
        x="0"

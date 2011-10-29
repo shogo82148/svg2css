@@ -31,7 +31,7 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 		self.__svg = None
 		
 	def startElementNS(self, name, qname, attrs):
-		type = attrs.get(('sodipodi','type'), '')
+		type = attrs.get((sodipodi,'type'), '')
 		if type=="arc":
 			self.__container.append(Arc(attrs))
 		elif name==(svg,u"svg"):
