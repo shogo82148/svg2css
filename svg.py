@@ -62,24 +62,28 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__container.append(g)
 			self.__container = g
 			assert g.parent
+		elif name=="text":
+			g = Text(attrs)
+			self.__container.append(g)
+			self.__container = g
+			assert g.parent
+		elif name=="tspan":
+			g = TSpan(attrs)
+			self.__container.append(g)
+			self.__container = g
+			assert g.parent
 			
 	def endElement(self, name):
-		if name=="g":
+		if name in ["g", "defs", "linearGradient",
+			"radialGradient", "clipPath", "text", "tspan"]:
+			
 			self.__container = self.__container.parent
 			assert self.__container
-		elif name=="defs":
-			self.__container = self.__container.parent
-			assert self.__container
-		elif name=="linearGradient":
-			self.__container = self.__container.parent
-			assert self.__container
-		elif name=="radialGradient":
-			self.__container = self.__container.parent
-			assert self.__container
-		elif name=="clipPath":
-			self.__container = self.__container.parent
-			assert self.__container
-		
+	
+	def characters(self, content):
+		if isinstance(self.__container, TSpan):
+			self.__container.append(Characters(content))
+	
 	def getSVG(self):
 		return self.__svg
 
@@ -253,6 +257,37 @@ class Define(Container):
 		
 	def callHandler(self, handler):
 		handler.define(self)
+
+#textタグ
+class Text(Container):
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+		self.x = Length(attrs.get("x", "0"))
+		self.y = Length(attrs.get("y", "0"))
+		self.style = Style(attrs.get("style", ""))
+		self.clip_path = attrs.get("clip-path", "")
+		
+	def callHandler(self, handler):
+		handler.text(self)
+
+#tspanタグ
+class TSpan(Container):
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+		self.x = Length(attrs.get("x", "0"))
+		self.y = Length(attrs.get("y", "0"))
+		self.style = Style(attrs.get("style", ""))
+		
+	def callHandler(self, handler):
+		handler.tspan(self)
+
+class Characters(Element):
+	def __init__(self, content, parent = None):
+		Element.__init__(self, {}, parent)
+		self.content = content
+	
+	def callHandler(self, handler):
+		handler.characters(self)
 
 #線形グラデーション
 class LinearGradient(Container):
@@ -541,6 +576,17 @@ class SVGHandler:
 		pass
 	
 	def arc(self, x):
+		pass
+
+	def text(self, x):
+		for a in x:
+			a.callHandler(self)
+
+	def tspan(self, x):
+		for a in x:
+			a.callHandler(self)
+			
+	def characters(self, x):
 		pass
 
 class Color:

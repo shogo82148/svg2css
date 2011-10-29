@@ -475,8 +475,8 @@
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="975"
+     inkscape:window-width="1024"
+     inkscape:window-height="712"
      inkscape:window-x="-4"
      inkscape:window-y="-4"
      inkscape:window-maximized="1"
@@ -497,7 +497,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1901,12 +1901,24 @@ String.prototype.trim = function()
 
 </script>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+       x="627.11017"
+       y="582"
+       id="text2932"><tspan
+         sodipodi:role="line"
+         id="tspan2934"
+         x="627.11017"
+         y="582"><tspan
+   style="font-size:72px"
+   id="tspan2977">1</tspan>ページ目</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="スライド2"
-     style="display:inline"
+     style="display:none"
      sodipodi:insensitive="true">
     <use
        style="display:inline"
