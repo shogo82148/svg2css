@@ -444,13 +444,10 @@ class CSSWriter(svg.SVGHandler):
 			clipname = self.__clipnames[name]
 			self._html.write('<div class="%s"><div class="%sinverse">\n' % (clipname, clipname))
 
-		self._html.write('<div class="%s">\n' % name)
-		max_hight = svg.Length(0)
+		self._html.write('<div class="%s"><span class="svg-text-adj">&nbsp;</span>' % name)
 		for a in x:
 			if isinstance(a, svg.TSpan):
-				hight = self.__text_contents(a)
-				if max_hight<hight:
-					max_hight = hight
+				self.__text_contents(a)
 			elif isinstance(a, svg.Characters):
 				self._html.write(a.content)
 		self._html.write('</div>\n');
@@ -472,15 +469,13 @@ class CSSWriter(svg.SVGHandler):
 			
 			#フォントに関する属性をコピー
 			if "font-size" in x.style:
-				hight = css["font-size"] = svg.Length(x.style["font-size"])
-				if max_hight<hight:
-					max_hight = hight
+				css["font-size"] = svg.Length(x.style["font-size"])
 					
 			for stylename in ["font-style", "font-weight", "font-family"]:
 				if stylename in x.style:
 					css[stylename] = x.style[stylename]
 			css["left"] = x.x
-			css["top"] = x.y - max_hight
+			css["top"] = x.y - svg.Length("1000px")
 			
 			#変形
 			if x.transform:
@@ -489,19 +484,21 @@ class CSSWriter(svg.SVGHandler):
 			
 			#出力
 			self._css.write(".%s{%s}\n" % (name, str(css)))
-
+			
+		if "svg-text-adj" not in self._css_classes:
+			self._css_classes.add("svg-text-adj")
+			self._css.write(".svg-text-adj{font-size:0px;vertical-align: 1000px;}\n")
 
 	#テキストの中身
 	def __text_contents(self, x):
 		name = self.newName(x)
-		max_hight = svg.Length(0)
 		if name not in self._css_classes:
 			self._css_classes.add(name)
 			css = CSSStyle()
 
 			#フォントに関する属性をコピー
 			if "font-size" in x.style:
-				max_hight = css["font-size"] = svg.Length(x.style["font-size"])
+				css["font-size"] = svg.Length(x.style["font-size"])
 			for stylename in ["font-style", "font-weight", "font-family"]:
 				if stylename in x.style:
 					css[stylename] = x.style[stylename]
@@ -512,13 +509,10 @@ class CSSWriter(svg.SVGHandler):
 		self._html.write('<span class="%s">' % name)
 		for a in x:
 			if isinstance(a, svg.TSpan):
-				hight = self.__text_contents(a)
-				if max_hight<hight:
-					max_hight = hight
+				self.__text_contents(a)
 			elif isinstance(a, svg.Characters):
 				self._html.write(a.content)
 		self._html.write('</span>')
-		return max_hight
 		
 	def __del__(self):
 		self._html.close()
