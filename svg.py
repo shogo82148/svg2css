@@ -421,6 +421,25 @@ class Length:
 	
 	def __float__(a):
 		return a.px
+	
+	def __lt__(a, b):
+		return a.px < b.px
+		
+	def __le__(a, b):
+		return a.px <= b.px
+	
+	def __eq__(a, b):
+		return a.px == b.px
+		
+	def __ne__(a, b):
+		return a.px != b.px
+		
+	def __gt__(a, b):
+		return a.px > b.px
+		
+	def __ge__(a, b):
+		return a.px >= b.px
+
 
 
 #スタイル
