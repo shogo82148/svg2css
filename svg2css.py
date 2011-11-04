@@ -522,6 +522,19 @@ class SlideWriter(CSSWriter):
 	slide_prefix = "slide"
 	container_prefix = "container"
 	slide_layer = "slidelayer"
+	
+	#標準的なディスプレイのサイズ
+	display_sizes = [
+		(640, 480),
+		(800, 600),
+		(1024, 768),
+		(1280, 800),
+		(1280, 1024),
+		(1366, 768),
+		(1680, 1050),
+		(1920, 1080),
+		(1920, 1200),
+	]
 
 	#スライドの枚数を数えるクラス
 	class CountSlide(svg.SVGHandler):
@@ -557,6 +570,18 @@ class SlideWriter(CSSWriter):
 		self.__width = 0
 		self.__height = 0
 		self.__scales = [("100%", 1), ("128%", 1.28), ("160%", 1.6)]
+	
+	#自動サイズ調整用CSSを出力
+	def autosize(self):
+		w0 = float(self.__width)
+		h0 = float(self.__height)
+		sizes = sorted(SlideWriter.display_sizes)
+		for i, size in enumerate(sizes):
+			w, h = size
+			scale = min(w/w0, h/h0)
+			css = CSSStyle()
+			css['transform'] = "scale(%f)" % scale
+			self._css.write("""@media screen and (min-device-width:%dpx) and (min-device-height:%dpx) {.slidelayer{%s}}\n""" % (w, h, str(css)))
 		
 	def svg(self, x):
 		self._html.write("""<!DOCTYPE html> 
@@ -579,6 +604,7 @@ class SlideWriter(CSSWriter):
 position: absolute; 
 width: 100%%; 
 height: 100%%; }\n""" % SlideWriter.container_prefix)
+		self.autosize()
 		
 		#アニメーションの設定
 		self._css.write(""".%s {
