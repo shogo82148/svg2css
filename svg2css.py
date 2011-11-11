@@ -9,6 +9,8 @@ import math
 import os.path
 from optparse import OptionParser
 import codecs
+from xml.sax.saxutils import escape
+from xml.sax.saxutils import quoteattr
 
 class CSSStyle(dict):
 	def __str__(self):
@@ -511,7 +513,7 @@ class CSSWriter(svg.SVGHandler):
 			if isinstance(a, svg.TSpan):
 				self.__text_contents(a)
 			elif isinstance(a, svg.Characters):
-				self._html.write(a.content)
+				self._html.write(escape(a.content))
 		self._html.write('</span>')
 	
 	def image(self, x):
@@ -545,10 +547,10 @@ class CSSWriter(svg.SVGHandler):
 		#クリップの設定
 		if name in self.__clipnames:
 			clipname = self.__clipnames[name]
-			self._html.write('<div class="%s"><div class="%sinverse"><image class="%s" src="%s" /></div></div>\n' % (clipname, clipname, name, x.href))
+			self._html.write('<div class="%s"><div class="%sinverse"><image class="%s" src=%s /></div></div>\n' % (clipname, clipname, name, quoteattr(os.path.basename(x.href))))
 			return
 		
-		self._html.write('<image class="%s" src="%s" />\n' % (name, x.href))
+		self._html.write('<image class="%s" src=%s />\n' % (name, quoteattr(os.path.basename(x.href))))
 		
 	def __del__(self):
 		self._html.close()
