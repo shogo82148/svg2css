@@ -513,6 +513,42 @@ class CSSWriter(svg.SVGHandler):
 			elif isinstance(a, svg.Characters):
 				self._html.write(a.content)
 		self._html.write('</span>')
+	
+	def image(self, x):
+		name = self.newName(x)
+		if name not in self._css_classes:
+			self._css_classes.add(name)
+			css = CSSStyle()
+			stroke = svg.Length(0)
+			
+			#クリップパスの設定
+			self.__clipPath(name, x)
+			
+			#位置と大きさの設定
+			css["position"] = "absolute"
+			css["left"] = x.x
+			css["top"] = x.y
+			css["width"] = x.width
+			css["height"] = x.height
+			
+			#変形
+			if x.transform:
+				#CSSとSVGの原点の違いを補正
+				transform = x.transform.toMatrix()
+				transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
+				transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
+				css["transform"] = transform
+
+			#出力
+			self._css.write(".%s{%s}\n" % (name, str(css)))
+		
+		#クリップの設定
+		if name in self.__clipnames:
+			clipname = self.__clipnames[name]
+			self._html.write('<div class="%s"><div class="%sinverse"><image class="%s" src="%s" /></div></div>\n' % (clipname, clipname, name, x.href))
+			return
+		
+		self._html.write('<image class="%s" src="%s" />\n' % (name, x.href))
 		
 	def __del__(self):
 		self._html.close()

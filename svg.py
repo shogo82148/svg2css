@@ -40,6 +40,7 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			"clipPath": ClipPath,
 			"text": Text,
 			"tspan": TSpan,
+			"image": Image,
 		}
 		
 	def startElementNS(self, name, qname, attrs):
@@ -330,6 +331,18 @@ class Use(Element):
 	def callHandler(self, handler):
 		handler.use(self)
 
+class Image(Element):
+	def __init__(self, attrs, parent=None):
+		Element.__init__(self, attrs, parent)
+		self.x = Length(attrs.get((None,"x"), "0"))
+		self.y = Length(attrs.get((None,"y"), "0"))
+		self.width = Length(attrs.get((None,"width"), "0"))
+		self.height = Length(attrs.get((None,"height"), "0"))
+		self.clip_path = attrs.get((None,"clip-path"), "")
+
+	def callHandler(self, handler):
+		handler.image(self)
+
 #SVG内での長さを表すクラス
 class Length:
 	__length_re = re.compile(r"^(?P<length>[+\-0-9e.]*)(?P<unit>[%a-z]*)$")
@@ -587,6 +600,9 @@ class SVGHandler:
 	def tspan(self, x):
 		for a in x:
 			a.callHandler(self)
+			
+	def image(self, x):
+		pass
 			
 	def characters(self, x):
 		pass
