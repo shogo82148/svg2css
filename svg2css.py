@@ -9,6 +9,8 @@ import math
 import os.path
 from optparse import OptionParser
 import codecs
+from xml.sax.saxutils import escape
+from xml.sax.saxutils import quoteattr
 
 class CSSStyle(dict):
 	def __str__(self):
@@ -530,13 +532,62 @@ class CSSWriter(svg.SVGHandler):
 			if isinstance(a, svg.TSpan):
 				self.__text_contents(a)
 			elif isinstance(a, svg.Characters):
-				self._html(a.content)
+				self._html(escape(a.content))
 		self._html('</span>')
+	
+	def image(self, x):
+		name = self.newName(x)
+		if name not in self._css_classes:
+			self._css_classes.add(name)
+			css = CSSStyle()
+			stroke = svg.Length(0)
+			
+			#クリップパスの設定
+			self.__clipPath(name, x)
+			
+			#位置と大きさの設定
+			css["position"] = "absolute"
+			css["left"] = x.x
+			css["top"] = x.y
+			css["width"] = x.width
+			css["height"] = x.height
+			
+			#変形
+			if x.transform:
+				#CSSとSVGの原点の違いを補正
+				transform = x.transform.toMatrix()
+				transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
+				transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
+				css["transform"] = transform
 
+			#出力
+			self._css(cls=name, style=css)
+		
+		#クリップの設定
+		if name in self.__clipnames:
+			clipname = self.__clipnames[name]
+			self._html('<div class="%s"><div class="%sinverse"><image class="%s" src=%s /></div></div>\n' % (clipname, clipname, name, quoteattr(os.path.basename(x.href))))
+			return
+		
+		self._html('<image class="%s" src=%s />\n' % (name, quoteattr(os.path.basename(x.href))))
+		
 class SlideWriter(CSSWriter):
 	slide_prefix = "slide"
 	container_prefix = "container"
 	slide_layer = "slidelayer"
+	
+	#標準的なディスプレイのサイズ
+	display_sizes = [
+		(640, 480),
+		(800, 600),
+		(1024, 768),
+		(1280, 800),
+		(1280, 1024),
+		(1366, 768),
+		(1680, 1050),
+		(1920, 1080),
+		(1920, 1200),
+	]
 
 	#スライドの枚数を数えるクラス
 	class CountSlide(svg.SVGHandler):
@@ -571,6 +622,18 @@ class SlideWriter(CSSWriter):
 		self.__width = 0
 		self.__height = 0
 		self.__scales = [("100%", 1), ("128%", 1.28), ("160%", 1.6)]
+	
+	#自動サイズ調整用CSSを出力
+	def autosize(self):
+		w0 = float(self.__width)
+		h0 = float(self.__height)
+		sizes = sorted(SlideWriter.display_sizes)
+		for i, size in enumerate(sizes):
+			w, h = size
+			scale = min(w/w0, h/h0)
+			css = CSSStyle()
+			css['transform'] = "scale(%f)" % scale
+			self._css("""@media screen and (min-device-width:%dpx) and (min-device-height:%dpx) {.slidelayer{%s}}\n""" % (w, h, str(css)))
 		
 	def svg(self, x):
 		self._html('<div class="svg">')
@@ -583,6 +646,7 @@ class SlideWriter(CSSWriter):
 position: absolute; 
 width: 100%%; 
 height: 100%%; }\n""" % SlideWriter.container_prefix)
+		self.autosize()
 		
 		#アニメーションの設定
 		self._css(""".%s {

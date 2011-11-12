@@ -28,6 +28,19 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 	def __init__(self):
 		self.__container = None
 		self.__svg = None
+		self.__elements = {
+			"rect": Rect,
+			"g": Group,
+			"defs": Define,
+			"linearGradient": LinearGradient,
+			"radialGradient": RadialGradient,
+			"stop": Stop,
+			"use": Use,
+			"clipPath": ClipPath,
+			"text": Text,
+			"tspan": TSpan,
+			"image": Image,
+		}
 		
 	def startElementNS(self, name, qname, attrs):
 		type = attrs.get((sodipodi,'type'), '')
@@ -36,54 +49,19 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 		elif name==(svg,u"svg"):
 			self.__container = SVG(attrs)
 			self.__svg = self.__container
-		elif name==(svg,"rect"):
-			self.__container.append(Rect(attrs))
-		elif name==(svg,"g"):
-			g = Group(attrs)
-			self.__container.append(g)
-			self.__container = g
-			assert g.parent
-		elif name==(svg,"defs"):
-			g = Define(attrs)
-			self.__container.append(g)
-			self.__container = g
-			assert g.parent
-		elif name==(svg,"linearGradient"):
-			g = LinearGradient(attrs)
-			self.__container.append(g)
-			self.__container = g
-			assert g.parent
-		elif name==(svg,"radialGradient"):
-			g = RadialGradient(attrs)
-			self.__container.append(g)
-			self.__container = g
-			assert g.parent
-		elif name==(svg,"stop"):
-			self.__container.append(Stop(attrs))
-		elif name==(svg,"use"):
-			self.__container.append(Use(attrs))
-		elif name==(svg,"clipPath"):
-			g = ClipPath(attrs)
-			self.__container.append(g)
-			self.__container = g
-			assert g.parent
-		elif name==(svg,"text"):
-			g = Text(attrs)
-			self.__container.append(g)
-			self.__container = g
-			assert g.parent
-		elif name==(svg,"tspan"):
-			g = TSpan(attrs)
-			self.__container.append(g)
-			self.__container = g
-			assert g.parent
+		elif name[0]==svg and name[1] in self.__elements:
+			element = self.__elements[name[1]]
+			e = element(attrs)
+			self.__container.append(e)
+			if issubclass(element, Container):
+				self.__container = e
 			
 	def endElementNS(self, name, qname):
-		if name in [(svg,"g"), (svg,"defs"), (svg,"linearGradient"),
-			(svg,"radialGradient"), (svg,"clipPath"), (svg,"text"), (svg,"tspan")]:
+		if (name[0]==svg and 
+			name[1] in self.__elements and
+			issubclass(self.__elements[name[1]], Container)):
 			
 			self.__container = self.__container.parent
-			assert self.__container
 	
 	def characters(self, content):
 		if isinstance(self.__container, TSpan):
@@ -352,6 +330,18 @@ class Use(Element):
 	def callHandler(self, handler):
 		handler.use(self)
 
+class Image(Element):
+	def __init__(self, attrs, parent=None):
+		Element.__init__(self, attrs, parent)
+		self.x = Length(attrs.get((None,"x"), "0"))
+		self.y = Length(attrs.get((None,"y"), "0"))
+		self.width = Length(attrs.get((None,"width"), "0"))
+		self.height = Length(attrs.get((None,"height"), "0"))
+		self.clip_path = attrs.get((None,"clip-path"), "")
+
+	def callHandler(self, handler):
+		handler.image(self)
+
 #SVG内での長さを表すクラス
 class Length:
 	__length_re = re.compile(r"^(?P<length>[+\-0-9e.]*)(?P<unit>[%a-z]*)$")
@@ -611,6 +601,9 @@ class SVGHandler:
 	def tspan(self, x):
 		for a in x:
 			a.callHandler(self)
+			
+	def image(self, x):
+		pass
 			
 	def characters(self, x):
 		pass

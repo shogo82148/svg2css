@@ -39,9 +39,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4"
-     inkscape:cx="278.42772"
-     inkscape:cy="76.279987"
+     inkscape:zoom="2"
+     inkscape:cx="333.70905"
+     inkscape:cy="17.868199"
      inkscape:document-units="px"
      inkscape:current-layer="svg2"
      showgrid="false"
@@ -240,4 +240,14 @@
      height="1"
      x="38"
      y="339.5" />
+  <text
+     xml:space="preserve"
+     style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Century;-inkscape-font-specification:Century"
+     x="317"
+     y="339.5"
+     id="text2861"><tspan
+       sodipodi:role="line"
+       id="tspan2863"
+       x="317"
+       y="339.5">&lt;a href=&quot;./&quot;&gt;a&lt;/a&gt;</tspan></text>
 </svg>
