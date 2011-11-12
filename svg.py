@@ -4,7 +4,6 @@ import xml.sax
 import xml.sax.handler
 import sys
 import re
-from collections import namedtuple
 import math
 
 inkscape = u"http://www.inkscape.org/namespaces/inkscape"
@@ -552,8 +551,10 @@ class Transform(list):
 			ret = m * ret
 		return ret
 
-class Point(namedtuple('Point', 'x y')):
-	__slots__ = ()
+class Point:
+	def __init__(self, x, y):
+		self.x = Length(x)
+		self.y = Length(y)
 	
 	def __add__(a, b):
 		return Point(a.x+b.x, a.y+b.y)
