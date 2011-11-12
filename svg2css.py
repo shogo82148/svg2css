@@ -187,10 +187,9 @@ class CSSStyle(dict):
 		self["background"] = background
 		
 class CSSWriter(svg.SVGHandler):
-	def __init__(self, name, html = None, css = None):
-		self.__name = name
-		self._html = html or codecs.open(name + ".html", "w", "utf-8")
-		self._css = css or codecs.open(name + ".css", "w", "utf-8")
+	def __init__(self):
+		self._css_data = u""
+		self._html_data = u""
 		self.__id = 0
 		self._css_classes = set()
 		self.__clipnames = {}
@@ -200,22 +199,42 @@ class CSSWriter(svg.SVGHandler):
 			return "svg" + x.id
 		self.__id = self.__id + 1
 		return "id%04d" % self.__id
-		
-	def svg(self, x):
-		self._html.write("""<!DOCTYPE html> 
+	
+	def _css(self, s=None, cls=None, id=None, style=None):
+		if s:
+			self._css_data += s
+		if cls and style:
+			self._css_data += ".%s{%s}\n" % (cls, str(style))
+		if id and style:
+			self._css_data += "#%s{%s}\n" % (cls, str(style))
+	
+	def _html(self, s):
+		self._html_data += s
+	
+	def getHTML(self, title="", cssfile=None):
+		ret = """<!DOCTYPE html>
+<html>
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="content-script-type" content="text/javascript" /> 
-<meta http-equiv="content-style-type" content="text/css" /> 
-<link rel="stylesheet" href="./%s.css">
-<title>%s</title>
-</head>
-<body>
-<div class="svg">\n""" % (self.__name, self.__name))
-		self._css.write('@charset "utf-8";\n')
-		self._css.write(".svg{top:0px;left:0px;width:%s;height:%s;position:absolute;}\n" % (str(x.width), str(x.height)))
+<meta http-equiv="content-style-type" content="text/css" />
+"""
+		if cssfile:
+			ret += '<link rel="stylesheet" type="text/css" href="%s" />\n' % cssfile
+		else:
+			ret += '<style type="text/css">\n%s</style>\n' % self._css_data
+		ret += '<title>%s</title>\n' % title
+		ret += '</head>\n<body>\n' + self._html_data + '</body>\n</html>\n'
+		return ret
+		
+	def getCSS(self):
+		return self._css_data
+	
+	def svg(self, x):
+		self._css(".svg{top:0px;left:0px;width:%s;height:%s;position:absolute;}\n" % (str(x.width), str(x.height)))
+		self._html('<div class="svg">\n')
 		svg.SVGHandler.svg(self, x)
-		self._html.write("""</div>\n</body></html>\n""")
+		self._html('</div>\n')
 		
 	def rect(self, x):
 		name = self.newName(x)
@@ -267,15 +286,15 @@ class CSSWriter(svg.SVGHandler):
 			css.addFill(x)
 				
 			#出力
-			self._css.write(".%s{%s}\n" % (name, str(css)))
+			self._css(cls=name, style=css)
 		
 		#クリップの設定
 		if name in self.__clipnames:
 			clipname = self.__clipnames[name]
-			self._html.write('<div class="%s"><div class="%sinverse"><div class="%s"></div></div></div>\n' % (clipname, clipname, name))
+			self._html('<div class="%s"><div class="%sinverse"><div class="%s"></div></div></div>\n' % (clipname, clipname, name))
 			return
 		
-		self._html.write('<div class="%s"></div>\n' % name)
+		self._html('<div class="%s"></div>\n' % name)
 	
 	def arc(self, x):
 		name = self.newName(x)
@@ -322,15 +341,15 @@ class CSSWriter(svg.SVGHandler):
 				css["transform"] = transform
 			
 			#出力
-			self._css.write(".%s{%s}\n" % (name, str(css)));
+			self._css(cls=name, style=css)
 
 		#クリップの設定
 		if name in self.__clipnames:
 			clipname = self.__clipnames[name]
-			self._html.write('<div class="%s"><div class="%sinverse"><div class="%s"></div></div></div>\n' % (clipname, clipname, name))
+			self._html('<div class="%s"><div class="%sinverse"><div class="%s"></div></div></div>\n' % (clipname, clipname, name))
 			return
 
-		self._html.write('<div class="%s"></div>\n' % name);
+		self._html('<div class="%s"></div>\n' % name);
 	
 	def group(self, x):
 		name = self.newName(x)
@@ -350,19 +369,19 @@ class CSSWriter(svg.SVGHandler):
 				css["transform"] = transform
 			
 			#出力
-			self._css.write(".%s{%s}\n" % (name, str(css)));
+			self._css(cls=name, style=css)
 
 		if name in self.__clipnames:
 			clipname = self.__clipnames[name]
-			self._html.write('<div class="%s"><div class="%sinverse">\n' % (clipname, clipname))
+			self._html('<div class="%s"><div class="%sinverse">\n' % (clipname, clipname))
 
-		self._html.write('<div class="%s">\n' % name)
+		self._html('<div class="%s">\n' % name)
 		svg.SVGHandler.group(self, x)
-		self._html.write('</div>\n');
+		self._html('</div>\n');
 
 		if name in self.__clipnames:
 			clipname = self.__clipnames[name]
-			self._html.write('</div></div>\n')
+			self._html('</div></div>\n')
 
 		
 	def use(self, x):
@@ -382,10 +401,10 @@ class CSSWriter(svg.SVGHandler):
 		transform = svg.Transform.Translate(x.width/2, x.height/2) * transform
 		css["transform"] = transform
 
-		self._css.write(".%s{%s}\n" % (name, str(css)));
-		self._html.write('<div class="%s">\n' % name)
+		self._css(cls=name, style=css)
+		self._html('<div class="%s">\n' % name)
 		svg.SVGHandler.use(self, x)
-		self._html.write('</div>\n');
+		self._html('</div>\n');
 	
 	def __clipPath(self, element_name, element):
 		#クリップパスが設定されているか確認
@@ -426,12 +445,12 @@ class CSSWriter(svg.SVGHandler):
 			invtransform.append(svg.Transform.Translate(-x[0].x, -x[0].y))
 
 			css["overflow"] = "hidden"
-		self._css.write(".%s{%s}\n" % (name, str(css)));
+		self._css(cls=name, style=css)
 		
 		css = CSSStyle()
 		css["position"] = "absolute"
 		css["transform"] = invtransform.toMatrix()
-		self._css.write(".%sinverse{%s}\n" % (name, str(css)));
+		self._css(cls=name+"inverse", style=css)
 		self.__clipnames[element_name] = name
 		
 		return name
@@ -442,19 +461,19 @@ class CSSWriter(svg.SVGHandler):
 				
 		if name in self.__clipnames:
 			clipname = self.__clipnames[name]
-			self._html.write('<div class="%s"><div class="%sinverse">\n' % (clipname, clipname))
+			self._html('<div class="%s"><div class="%sinverse">\n' % (clipname, clipname))
 
-		self._html.write('<div class="%s"><span class="svg-text-adj">&nbsp;</span>' % name)
+		self._html('<div class="%s"><span class="svg-text-adj">&nbsp;</span>' % name)
 		for a in x:
 			if isinstance(a, svg.TSpan):
 				self.__text_contents(a)
 			elif isinstance(a, svg.Characters):
-				self._html.write(a.content)
-		self._html.write('</div>\n');
+				self._html(a.content)
+		self._html('</div>\n');
 
 		if name in self.__clipnames:
 			clipname = self.__clipnames[name]
-			self._html.write('</div></div>\n')
+			self._html('</div></div>\n')
 
 		#スタイル定義を出力
 		if name not in self._css_classes:
@@ -483,11 +502,11 @@ class CSSWriter(svg.SVGHandler):
 				css["transform"] = transform
 			
 			#出力
-			self._css.write(".%s{%s}\n" % (name, str(css)))
+			self._css(cls=name, style=css)
 			
 		if "svg-text-adj" not in self._css_classes:
 			self._css_classes.add("svg-text-adj")
-			self._css.write(".svg-text-adj{font-size:0px;vertical-align: 1000px;}\n")
+			self._css(".svg-text-adj{font-size:0px;vertical-align: 1000px;}\n")
 
 	#テキストの中身
 	def __text_contents(self, x):
@@ -504,19 +523,15 @@ class CSSWriter(svg.SVGHandler):
 					css[stylename] = x.style[stylename]
 			
 			#出力
-			self._css.write(".%s{%s}\n" % (name, str(css)))
+			self._css(cls=name, style=css)
 
-		self._html.write('<span class="%s">' % name)
+		self._html('<span class="%s">' % name)
 		for a in x:
 			if isinstance(a, svg.TSpan):
 				self.__text_contents(a)
 			elif isinstance(a, svg.Characters):
-				self._html.write(a.content)
-		self._html.write('</span>')
-		
-	def __del__(self):
-		self._html.close()
-		self._css.close()
+				self._html(a.content)
+		self._html('</span>')
 
 class SlideWriter(CSSWriter):
 	slide_prefix = "slide"
@@ -538,20 +553,19 @@ class SlideWriter(CSSWriter):
 			
 			css = CSSStyle()
 			css["transform"] = "translateX(-%d%%)" % (self.__slides * 100)
-			self._css.write("#%s:target .%s {%s}\n" % (name, SlideWriter.container_prefix, str(css)));
-			self._css.write("#%s{left:%d%%}\n" % (SlideWriter.container_prefix + str(self.__slides), self.__slides*100))
-			self._html.write('<div id="%s">' % name)
+			self._css("#%s:target .%s {%s}\n" % (name, SlideWriter.container_prefix, str(css)));
+			self._css("#%s{left:%d%%}\n" % (SlideWriter.container_prefix + str(self.__slides), self.__slides*100))
+			self._html('<div id="%s">' % name)
 		
 		@property
 		def slides(self):
 			return self.__slides
 		
 		def printEndTags(self):
-			self._html.write("</div>" * self.__slides + "\n")
+			self._html("</div>" * self.__slides + "\n")
 	
-	def __init__(self, name, html = None, css = None):
-		CSSWriter.__init__(self, name, html, css)
-		self.__name = name
+	def __init__(self):
+		CSSWriter.__init__(self)
 		self.__slides = 0
 		self.__all_slides = 0
 		self.__width = 0
@@ -559,36 +573,26 @@ class SlideWriter(CSSWriter):
 		self.__scales = [("100%", 1), ("128%", 1.28), ("160%", 1.6)]
 		
 	def svg(self, x):
-		self._html.write("""<!DOCTYPE html> 
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="content-script-type" content="text/javascript" /> 
-<meta http-equiv="content-style-type" content="text/css" /> 
-<link rel="stylesheet" href="./%s.css">
-<title>Slide: %s</title>
-</head>
-<body>
-<div class="svg">""" % (self.__name, self.__name))
-		self._css.write('@charset "utf-8";\n')
+		self._html('<div class="svg">')
 		
 		#サイズ設定
-		self._css.write(".svg{top:0px;left:0px;width:100%;height:100%;position:absolute;overflow: hidden;}\n" )
+		self._css(".svg{top:0px;left:0px;width:100%;height:100%;position:absolute;overflow: hidden;}\n" )
 		self.__width = x.width
 		self.__height = x.height
-		self._css.write(""".%s {
+		self._css(""".%s {
 position: absolute; 
 width: 100%%; 
 height: 100%%; }\n""" % SlideWriter.container_prefix)
 		
 		#アニメーションの設定
-		self._css.write(""".%s {
+		self._css(""".%s {
 -ms-transition: -ms-transform 0.8s;
 -webkit-transition: -webkit-transform 0.8s;
 -moz-transition: -moz-transform 0.8s;
 -o-transition: -o-transform 0.8s; }\n""" % SlideWriter.container_prefix)
 
 		#初期位置の設定
-		self._css.write(""".%s {
+		self._css(""".%s {
 overflow: hidden;
 transform: translateX(-100%%);
 -ms-transform: translateX(-100%%);
@@ -598,7 +602,7 @@ transform: translateX(-100%%);
 }\n""" % SlideWriter.container_prefix)
 		
 		#スライドの内容についての設定
-		self._css.write(""".%s {
+		self._css(""".%s {
 top:50%%;
 left:50%%;
 width: %s;
@@ -615,7 +619,7 @@ transition: 0.4s;
 """ % (SlideWriter.slide_layer, self.__width, self.__height, -self.__height/2, -self.__width/2));
 
 		#スライド移動ボタンの設定
-		self._css.write(""".nextbutton, .backbutton {
+		self._css(""".nextbutton, .backbutton {
 position:absolute;
 top:0px;
 height:100%;
@@ -628,7 +632,7 @@ padding:0px;}
 """)
 
 		#メニュー
-		self._css.write("""#menu{
+		self._css("""#menu{
 width: 100%;
 height: 60px;
 position: absolute;
@@ -680,9 +684,9 @@ opacity: 1;
 """)
 
 		#スケール調整用ラジオボタン
-		self._css.write('input.scaleradio{display:none;}')
+		self._css('input.scaleradio{display:none;}')
 		for i in range(len(self.__scales)):
-			self._html.write('<input id="scale%d" type="radio" name="scaleradio" class="scaleradio"/>' % i)
+			self._html('<input id="scale%d" type="radio" name="scaleradio" class="scaleradio"/>' % i)
 		
 		#スライドの開始タグを出力
 		counter = SlideWriter.CountSlide(self._html, self._css)
@@ -690,7 +694,7 @@ opacity: 1;
 		self.__all_slides = counter.slides
 		
 		#非対応ブラウザ向けの表示
-		self._html.write(u"""
+		self._html(u"""
 <div id="unsupport" class="container">
 <div>Sorry, This page doesn't support your browser</div>
 <div>現在使用中のブラウザでは見れません</div>
@@ -701,25 +705,25 @@ opacity: 1;
 		svg.SVGHandler.svg(self, x)
 		
 		#メニュー
-		self._html.write("""<div id="menu">""")
-		self._html.write("""<ul id="navi">""")
+		self._html("""<div id="menu">""")
+		self._html("""<ul id="navi">""")
 		for i in range(self.__all_slides):
-			self._html.write('<li><a id="navibutton%d" href="#%s%d">%d</a></li>' % (i+1, SlideWriter.slide_prefix, i+1, i+1))
-			self._css.write('#%s%d:target #navibutton%d{opacity: 1;}\n' % (SlideWriter.slide_prefix, i+1, i+1))
-		self._html.write("""</ul>""")
+			self._html('<li><a id="navibutton%d" href="#%s%d">%d</a></li>' % (i+1, SlideWriter.slide_prefix, i+1, i+1))
+			self._css('#%s%d:target #navibutton%d{opacity: 1;}\n' % (SlideWriter.slide_prefix, i+1, i+1))
+		self._html("""</ul>""")
 		
 		for i, t in enumerate(self.__scales):
-			self._html.write('<label for="scale%d">%s</label>' % (i, t[0]))
-			self._css.write("""#scale%d:checked ~ div *.slidelayer{
+			self._html('<label for="scale%d">%s</label>' % (i, t[0]))
+			self._css("""#scale%d:checked ~ div *.slidelayer{
 -webkit-transform:scale(%f);-o-transform:scale(%f);-moz-transform:scale(%f);-ms-transform:scale(%f);transform:scale(%f);}
 #scale%d:checked ~div * label[for="scale%d"]{outline: dotted 2px #f93;}
 """ % (i, t[1], t[1], t[1], t[1], t[1], i, i))
 			
-		self._html.write("""</div>""")
+		self._html("""</div>""")
 		
 		#スライドの終了タグを出力
 		counter.printEndTags()
-		self._html.write("""</div></body></html>\n""")
+		self._html("""</div></body></html>\n""")
 
 	def group(self, x):
 		if x.groupmode!="layer":
@@ -727,12 +731,12 @@ opacity: 1;
 		else:
 			self.__slides += 1
 			name = SlideWriter.container_prefix + str(self.__slides)
-			self._html.write('<div id="%s" class="%s">\n' % (name, SlideWriter.container_prefix))
+			self._html('<div id="%s" class="%s">\n' % (name, SlideWriter.container_prefix))
 
 			#スライドの内容を出力
-			self._html.write('<div class="%s">\n' % SlideWriter.slide_layer)
+			self._html('<div class="%s">\n' % SlideWriter.slide_layer)
 			svg.SVGHandler.group(self, x)
-			self._html.write('</div>\n')
+			self._html('</div>\n')
 			
 			#移動ボタン
 			backslide = self.__slides-1
@@ -741,10 +745,10 @@ opacity: 1;
 				backslide = self.__all_slides
 			if nextslide>self.__all_slides:
 				nextslide = 1
-			self._html.write('<a href="#slide%d" class="backbutton"></a>\n' % backslide)
-			self._html.write('<a href="#slide%d" class="nextbutton"></a>\n' % nextslide)
+			self._html('<a href="#slide%d" class="backbutton"></a>\n' % backslide)
+			self._html('<a href="#slide%d" class="nextbutton"></a>\n' % nextslide)
 
-			self._html.write('</div>\n')
+			self._html('</div>\n')
 
 
 def main():
@@ -767,11 +771,15 @@ def main():
 	#解析＆変換
 	p = svg.Parser()
 	if options.slide:
-		writer = SlideWriter(name, html, css)
+		writer = SlideWriter()
 	else:
-		writer = CSSWriter(name, html, css)
+		writer = CSSWriter()
 	s = p.parse(svgfile)
 	s.callHandler(writer)
+	
+	#書き出し
+	html.write(writer.getHTML(title=name, cssfile=name+".css"))
+	css.write(writer.getCSS())
 	return
 
 if __name__=="__main__":
