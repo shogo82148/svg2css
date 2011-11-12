@@ -16,6 +16,8 @@
    version="1.1"
    inkscape:version="0.47 r22583"
    sodipodi:docname="droid.svg">
+  <title
+     id="title2837">ドロイド君</title>
   <defs
      id="defs4">
     <inkscape:perspective
@@ -69,7 +71,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4.0299249"
-     inkscape:cx="181.70004"
+     inkscape:cx="148.69694"
      inkscape:cy="919.14668"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -106,7 +108,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>ドロイド君</dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -115,13 +117,13 @@
      inkscape:groupmode="layer"
      id="layer1">
     <image
-       sodipodi:absref="C:\Documents and Settings\shogo\My Documents\My Dropbox\LT\svg-css\android_logo.gif"
+       sodipodi:absref="C:\Documents and Settings\shogo\My Documents\workspace\svg2css\test\android_logo.gif"
        xlink:href="android_logo.gif"
-       y="22.647894"
-       x="25.142843"
-       id="image2826"
+       width="315.42856"
        height="236.57143"
-       width="315.42856" />
+       id="image2826"
+       x="25.142843"
+       y="22.647894" />
     <rect
        style="fill:#a5ca39;fill-opacity:1;stroke:none"
        id="rect2830"

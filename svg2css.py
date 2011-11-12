@@ -49,7 +49,7 @@ class CSSStyle(dict):
 			fill = svgstyle["fill"]
 			m = CSSStyle.__re_fill_url.match(fill)
 			if m:
-				fill = element.root.getElementById(m.group(1))
+				fill = element.getRoot().getElementById(m.group(1))
 				if isinstance(fill, svg.LinearGradient):
 					self.__addLinearGradient(element, fill)
 				elif isinstance(fill, svg.RadialGradient):
@@ -63,7 +63,7 @@ class CSSStyle(dict):
 			print svgstyle["fill"], e
 	
 	def __addLinearGradient(self, element, fill):
-		root = fill.root
+		root = fill.getRoot()
 		stops = fill
 		while len(stops)==0 and stops.href:
 			stops = root.getElementById(stops.href[1:])
@@ -124,7 +124,7 @@ class CSSStyle(dict):
 		background.append("-webkit-linear-gradient" + gradient)
 		
 		#webkit
-		webkit = "-webkit-gradient(linear,%f %f,%f %f," % (point1.x.px, point1.y.px, point2.x.px, point2.y.px)
+		webkit = "-webkit-gradient(linear,%f %f,%f %f," % (point1.x.px(), point1.y.px(), point2.x.px(), point2.y.px())
 		color = svg.Color(stops[0].style["stop-color"])
 		if float(stops[0].style.get("stop-opacity", "1"))<=0.999:
 			color.a = float(stops[0].style.get("stop-opacity", "1"))
@@ -144,7 +144,7 @@ class CSSStyle(dict):
 		self["background"] = background
 		
 	def __addRadialGradient(self, element, fill):
-		root = fill.root
+		root = fill.getRoot()
 		stops = fill
 		while len(stops)==0 and stops.href:
 			stops = root.getElementById(stops.href[1:])
@@ -417,7 +417,7 @@ class CSSWriter(svg.SVGHandler):
 			return
 		
 		#クリップパスオブジェクトを取得
-		x = element.root.getElementById(m.group(1))
+		x = element.getRoot().getElementById(m.group(1))
 				
 		name = self.newName()
 
@@ -592,28 +592,24 @@ class SlideWriter(CSSWriter):
 	#スライドの枚数を数えるクラス
 	class CountSlide(svg.SVGHandler):
 		def __init__(self, html, css):
-			self.__slides = 0
+			self.slides = 0
 			self._html = html
 			self._css = css
 		
 		def group(self, x):
 			if x.groupmode!="layer":
 				return
-			self.__slides += 1
-			name = SlideWriter.slide_prefix + str(self.__slides)
+			self.slides += 1
+			name = SlideWriter.slide_prefix + str(self.slides)
 			
 			css = CSSStyle()
-			css["transform"] = "translateX(-%d%%)" % (self.__slides * 100)
+			css["transform"] = "translateX(-%d%%)" % (self.slides * 100)
 			self._css("#%s:target .%s {%s}\n" % (name, SlideWriter.container_prefix, str(css)));
-			self._css("#%s{left:%d%%}\n" % (SlideWriter.container_prefix + str(self.__slides), self.__slides*100))
+			self._css("#%s{left:%d%%}\n" % (SlideWriter.container_prefix + str(self.slides), self.slides*100))
 			self._html('<div id="%s">' % name)
 		
-		@property
-		def slides(self):
-			return self.__slides
-		
 		def printEndTags(self):
-			self._html("</div>" * self.__slides + "\n")
+			self._html("</div>" * self.slides + "\n")
 	
 	def __init__(self):
 		CSSWriter.__init__(self)
@@ -820,6 +816,8 @@ def main():
 	parser = OptionParser(usage = "usage: %prog [options] svgfile")
 	parser.add_option("-s", "--slide", dest="slide",
 		action="store_true", default=False, help="Make slides")
+	parser.add_option("--html", dest="html", help="Output HTML File")
+	parser.add_option("--css", dest="css", help="Output CSS File")
 	(options, args) = parser.parse_args()
 	if len(args)==0:
 		parser.print_help()
@@ -827,10 +825,6 @@ def main():
 	
 	#SVGファイル取得
 	svgfile = open(args[0], "r")
-	root, ext = os.path.splitext(args[0])
-	name = os.path.basename(root)
-	html = codecs.open(name + ".html", "w", "utf-8")
-	css = codecs.open(name + ".css", "w", "utf-8")
 
 	#解析＆変換
 	p = svg.Parser()
@@ -842,8 +836,19 @@ def main():
 	s.callHandler(writer)
 	
 	#書き出し
-	html.write(writer.getHTML(title=name, cssfile=name+".css"))
-	css.write(writer.getCSS())
+	html_data = ""
+	if options.css:
+		html_data = writer.getHTML(cssfile=options.css)
+		css = codecs.open(options.css, "w", "utf-8")
+		css.write(writer.getCSS())
+	else:
+		html_data = writer.getHTML()
+	
+	html = sys.stdout
+	if options.html:
+		html = codecs.open(options.html, "w", "utf-8")
+	html.write(html_data)
+	
 	return
 
 if __name__=="__main__":

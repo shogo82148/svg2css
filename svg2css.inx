@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <_name>HTML+CSS Output</_name>
+    <id>org.inkscape.output.HTMLCSS</id>
+	<dependency type="executable" location="extensions">svg2css.py</dependency>
+	<dependency type="executable" location="extensions">svg.py</dependency>
+    <output>
+		<extension>.html</extension>
+		<mimetype>text/html</mimetype>
+		<_filetypename>HTML+CSS (*.html)</_filetypename>
+		<_filetypetooltip>HTML and CSS</_filetypetooltip>
+		<dataloss>true</dataloss>
+	</output>
+    <script>
+        <command reldir="extensions" interpreter="python">svg2css.py</command>
+	</script>
+</inkscape-extension>

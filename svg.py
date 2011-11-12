@@ -61,7 +61,7 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			name[1] in self.__elements and
 			issubclass(self.__elements[name[1]], Container)):
 			
-			self.__container = self.__container.parent
+			self.__container = self.__container.getParent()
 	
 	def characters(self, content):
 		if isinstance(self.__container, TSpan):
@@ -91,20 +91,16 @@ class Element:
 	def callHandler(self, handler):
 		pass
 	
-	@property
-	def parent(self):
+	def getParent(self):
 		return self.__parent
 
-	@parent.setter
-	def parent(self, p):
+	def setParent(self, p):
 		self.__parent = p
 		self.__root = None
 
-	@property
-	def root(self):
-		#if not self.__root:
-		if self.parent:
-			self.__root = self.parent.root
+	def getRoot(self):
+		if self.__parent:
+			self.__root = self.__parent.getRoot()
 		else:
 			self.__root = self
 		return self.__root
@@ -144,17 +140,17 @@ class Container(Element,list):
 		return x
 	
 	def __removeChild(self, x):
-		x.parent = None
+		x.setParent(None)
 		self.__removeId(x)
 		
 	def __appendChild(self, x):
-		parent = x.parent
+		parent = x.getParent()
 		if parent==self:
 			return
 		if parent:
 			index = parent.index(x)
 			parent.remove(index)
-		x.parent = self
+		x.setParent(self)
 		self.__appendId(x)
 	
 	def __removeId(self, x):
@@ -163,8 +159,8 @@ class Container(Element,list):
 		if isinstance(x, Container):
 			for id,child in x.__childids.iteritems():
 				del self.__childids[id]
-		if self.parent:
-			self.parent.__removeId(x)
+		if self.getParent():
+			self.getParent().__removeId(x)
 	
 	def __appendId(self, x):
 		id = x.id
@@ -173,8 +169,8 @@ class Container(Element,list):
 		if isinstance(x, Container):
 			for id,child in x.__childids.iteritems():
 				self.__childids[id] = child
-		if self.parent:
-			self.parent.__appendId(x)
+		if self.getParent():
+			self.getParent().__appendId(x)
 	
 	def getElementById(self, id):
 		if self.id==id:
@@ -365,7 +361,6 @@ class Length:
 			self.__length = float(m.group('length'))
 			self.__unit = m.group('unit') or "px"
 	
-	@property
 	def px(self):
 		return self.__length * Length.__px_per_unit[self.__unit]
 		
@@ -377,15 +372,15 @@ class Length:
 	
 	def __add__(a, b):
 		if isinstance(b, Length):
-			return Length(a.px + b.px, "px")
+			return Length(a.px() + b.px(), "px")
 		else:
-			return Length(a.px + b, "px")
+			return Length(a.px() + b, "px")
 
 	def __sub__(a, b):
 		if isinstance(b, Length):
-			return Length(a.px - b.px, "px")
+			return Length(a.px() - b.px(), "px")
 		else:
-			return Length(a.px - b, "px")
+			return Length(a.px() - b, "px")
 	
 	def __mul__(a, b):
 		return Length(a.__length * b, a.__unit)
@@ -395,7 +390,7 @@ class Length:
 	
 	def __div__(a, b):
 		if isinstance(b, Length):
-			return a.px/b.px
+			return a.px()/b.px()
 		else:
 			return Length(a.__length / b, a.__unit)
 		
@@ -409,25 +404,25 @@ class Length:
 		return Length(abs(a.__length), a.__unit)
 	
 	def __float__(a):
-		return a.px
+		return a.px()
 	
 	def __lt__(a, b):
-		return a.px < b.px
+		return a.px() < b.px()
 		
 	def __le__(a, b):
-		return a.px <= b.px
+		return a.px() <= b.px()
 	
 	def __eq__(a, b):
-		return a.px == b.px
+		return a.px() == b.px()
 		
 	def __ne__(a, b):
-		return a.px != b.px
+		return a.px() != b.px()
 		
 	def __gt__(a, b):
-		return a.px > b.px
+		return a.px() > b.px()
 		
 	def __ge__(a, b):
-		return a.px >= b.px
+		return a.px() >= b.px()
 
 
 
@@ -466,7 +461,7 @@ class Transform(list):
 				return Transform.Translate(a.x+self.x, a.y+self.y)
 			elif isinstance(a, Transform.BaseTransform):
 				m = a.toMatrix()
-				return Transform.Matrix(m.a, m.b, m.c, m.d, m.e+self.x.px, m.f+self.y.px)
+				return Transform.Matrix(m.a, m.b, m.c, m.d, m.e+self.x.px(), m.f+self.y.px())
 			else:
 				raise
 		
@@ -562,7 +557,7 @@ class Point:
 		return Point(a.x/b, a.y/b)
 		
 	def __abs__(self):
-		return math.sqrt(self.x.px*self.x.px + self.y.px*self.y.px)
+		return math.sqrt(self.x.px()*self.x.px() + self.y.px()*self.y.px())
 		
 class SVGHandler:
 	def svg(self, x):
@@ -586,7 +581,7 @@ class SVGHandler:
 		pass
 	
 	def use(self, x):
-		x.root.getElementById(x.href[1:]).callHandler(self)
+		x.getRoot().getElementById(x.href[1:]).callHandler(self)
 	
 	def rect(self, x):
 		pass
