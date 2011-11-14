@@ -11,6 +11,7 @@ from optparse import OptionParser
 import codecs
 from xml.sax.saxutils import escape
 from xml.sax.saxutils import quoteattr
+sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
 
 class CSSStyle(dict):
 	def __str__(self):
