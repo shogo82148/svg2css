@@ -253,9 +253,16 @@ class Text(Container):
 class TSpan(Container):
 	def __init__(self, attrs, parent=None):
 		Container.__init__(self, attrs, parent)
-		self.x = Length(attrs.get((None,"x"), "0"))
-		self.y = Length(attrs.get((None,"y"), "0"))
+		if (None,"x") in attrs:
+			self.x = Length(attrs.get((None,"x")))
+		else:
+			self.x = None
+		if (None,"y") in attrs:
+			self.y = Length(attrs.get((None,"y")))
+		else:
+			self.y = None
 		self.style = Style(attrs.get((None,"style"), ""))
+		self.role = attrs.get((sodipodi, "role"))
 		
 	def callHandler(self, handler):
 		handler.tspan(self)

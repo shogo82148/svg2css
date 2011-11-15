@@ -469,7 +469,7 @@ class CSSWriter(svg.SVGHandler):
 		self._html('<div class="%s"><span class="svg-text-adj">&nbsp;</span>' % name)
 		for a in x:
 			if isinstance(a, svg.TSpan):
-				self.__text_contents(a)
+				self.__text_contents(a, x.x, x.y)
 			elif isinstance(a, svg.Characters):
 				self._html(a.content)
 		self._html('</div>\n');
@@ -492,7 +492,8 @@ class CSSWriter(svg.SVGHandler):
 			#フォントに関する属性をコピー
 			if "font-size" in x.style:
 				css["font-size"] = svg.Length(x.style["font-size"])
-					
+			if "fill" in x.style:
+				css["color"] = svg.Color(x.style["fill"])
 			for stylename in ["font-style", "font-weight", "font-family"]:
 				if stylename in x.style:
 					css[stylename] = x.style[stylename]
@@ -504,6 +505,8 @@ class CSSWriter(svg.SVGHandler):
 				transform = x.transform.toMatrix()
 				css["transform"] = transform
 			
+			css["white-space"] = "pre"
+			
 			#出力
 			self._css(cls=name, style=css)
 			
@@ -512,7 +515,7 @@ class CSSWriter(svg.SVGHandler):
 			self._css(".svg-text-adj{font-size:0px;vertical-align: 1000px;}\n")
 
 	#テキストの中身
-	def __text_contents(self, x):
+	def __text_contents(self, x, x0=0, y0=0):
 		name = self.newName(x)
 		if name not in self._css_classes:
 			self._css_classes.add(name)
@@ -521,17 +524,29 @@ class CSSWriter(svg.SVGHandler):
 			#フォントに関する属性をコピー
 			if "font-size" in x.style:
 				css["font-size"] = svg.Length(x.style["font-size"])
+			if "fill" in x.style:
+				css["color"] = svg.Color(x.style["fill"])
 			for stylename in ["font-style", "font-weight", "font-family"]:
 				if stylename in x.style:
 					css[stylename] = x.style[stylename]
+			
+			if x.role=="line":
+				css["display"] = "block"
+			
+			if x.x or x.y:
+				css["position"] = "absolute"
+				css["left"] = x.x - x0
+				css["top"] = x.y - y0
 			
 			#出力
 			self._css(cls=name, style=css)
 
 		self._html('<span class="%s">' % name)
+		if x.x or x.y:
+			self._html('<span class="svg-text-adj">&nbsp;</span>')
 		for a in x:
 			if isinstance(a, svg.TSpan):
-				self.__text_contents(a)
+				self.__text_contents(a, x.x, x.y)
 			elif isinstance(a, svg.Characters):
 				self._html(escape(a.content))
 		self._html('</span>')
