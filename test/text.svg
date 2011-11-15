@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="600"
@@ -17,6 +18,25 @@
    sodipodi:docname="text.svg">
   <defs
      id="defs4">
+    <linearGradient
+       id="linearGradient3715">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop3717" />
+      <stop
+         id="stop3791"
+         offset="0.09957405"
+         style="stop-color:#ff0000;stop-opacity:1;" />
+      <stop
+         id="stop3789"
+         offset="0.56177163"
+         style="stop-color:#00ff00;stop-opacity:1;" />
+      <stop
+         style="stop-color:#0000ff;stop-opacity:1;"
+         offset="1"
+         id="stop3719" />
+    </linearGradient>
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
        inkscape:vp_x="0 : 526.18109 : 1"
@@ -31,6 +51,15 @@
        inkscape:vp_y="0 : 1000 : 0"
        inkscape:vp_x="0 : 0.5 : 1"
        sodipodi:type="inkscape:persp3d" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3715"
+       id="linearGradient3721"
+       x1="36"
+       y1="288.23417"
+       x2="98.774826"
+       y2="288.23416"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -39,9 +68,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3620499"
-     inkscape:cx="301.9346"
-     inkscape:cy="179.60512"
+     inkscape:zoom="1.3512408"
+     inkscape:cx="139.25669"
+     inkscape:cy="109.11824"
      inkscape:document-units="px"
      inkscape:current-layer="svg2"
      showgrid="false"
@@ -103,7 +132,7 @@
      y="88" />
   <text
      xml:space="preserve"
-     style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Century;-inkscape-font-specification:Century"
+     style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#ff0000;font-family:Century;-inkscape-font-specification:Century;stroke-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
      x="38"
      y="128.47099"
      id="text3667"><tspan
@@ -111,7 +140,7 @@
        id="tspan3669"
        x="38"
        y="128.47099"
-       style="font-family:Arial Black;-inkscape-font-specification:Arial Black">abcdefghijklmnopqrstuvwxyz</tspan></text>
+       style="font-family:Arial Black;-inkscape-font-specification:Arial Black;stroke:#ff0000;stroke-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none">abcdefghijklmnopqrstuvwxyz</tspan></text>
   <rect
      style="color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
      id="rect3674"
@@ -225,4 +254,16 @@
        x="38"
        y="249.18167"
        id="tspan2866">    これはテキストのテストです</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+     x="38"
+     y="270.18616"
+     id="text3681"><tspan
+       sodipodi:role="line"
+       id="tspan3683"
+       x="38"
+       y="270.18616"><tspan
+   style="font-size:72px;fill:#00ff00;fill-opacity:0.4782609"
+   id="tspan3685">透明度</tspan>を指定するテスト</tspan></text>
 </svg>

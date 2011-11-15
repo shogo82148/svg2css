@@ -494,6 +494,8 @@ class CSSWriter(svg.SVGHandler):
 				css["font-size"] = svg.Length(x.style["font-size"])
 			if "fill" in x.style:
 				css["color"] = svg.Color(x.style["fill"])
+				if "fill-opacity" in x.style:
+					css["color"].a = float(x.style["fill-opacity"])
 			for stylename in ["font-style", "font-weight", "font-family"]:
 				if stylename in x.style:
 					css[stylename] = x.style[stylename]
@@ -526,6 +528,8 @@ class CSSWriter(svg.SVGHandler):
 				css["font-size"] = svg.Length(x.style["font-size"])
 			if "fill" in x.style:
 				css["color"] = svg.Color(x.style["fill"])
+				if "fill-opacity" in x.style:
+					css["color"].a = float(x.style["fill-opacity"])
 			for stylename in ["font-style", "font-weight", "font-family"]:
 				if stylename in x.style:
 					css[stylename] = x.style[stylename]
