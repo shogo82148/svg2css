@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="400"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="text-shadow.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3715">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop3717" />
+      <stop
+         id="stop3791"
+         offset="0.09957405"
+         style="stop-color:#ff0000;stop-opacity:1;" />
+      <stop
+         id="stop3789"
+         offset="0.56177163"
+         style="stop-color:#00ff00;stop-opacity:1;" />
+      <stop
+         style="stop-color:#0000ff;stop-opacity:1;"
+         offset="1"
+         id="stop3719" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective3616"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3715"
+       id="linearGradient3721"
+       x1="36"
+       y1="288.23417"
+       x2="98.774826"
+       y2="288.23416"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       id="filter3644"
+       x="-0.01283409"
+       width="1.0256682"
+       y="-0.18464334"
+       height="1.3692867">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.3020313"
+         id="feGaussianBlur3646" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3648"
+       x="-0.012708049"
+       width="1.0254161"
+       y="-0.21537565"
+       height="1.4307513">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.695"
+         id="feGaussianBlur3650" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3652">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.095625"
+         id="feGaussianBlur3654" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3680">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.0874609"
+         id="feGaussianBlur3682" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3700"
+       x="-0.026152791"
+       width="1.0523056"
+       y="-0.29155959"
+       height="1.5831192">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.9307812"
+         id="feGaussianBlur3702" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3704">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.91386719"
+         id="feGaussianBlur3706" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.3512408"
+     inkscape:cx="233.04586"
+     inkscape:cy="197.12315"
+     inkscape:document-units="px"
+     inkscape:current-layer="svg2"
+     showgrid="false"
+     inkscape:snap-global="true"
+     inkscape:window-width="1024"
+     inkscape:window-height="712"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="0,1"
+       position="38,312"
+       id="guide2824" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="38,200.81833"
+       id="guide2826" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="38,271.529"
+       id="guide3606" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="38,228.3323"
+       id="guide3764" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="38,155.91705"
+       id="guide3776" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="38,104.6518"
+       id="guide3778" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="38,60.5"
+       id="guide3795" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <rect
+     style="color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+     id="rect3665"
+     width="433.64023"
+     height="1"
+     x="38"
+     y="88" />
+  <text
+     xml:space="preserve"
+     style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#ff0000;font-family:Century;-inkscape-font-specification:Century;stroke-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter3648)"
+     x="38"
+     y="128.47099"
+     id="text3667"><tspan
+       sodipodi:role="line"
+       id="tspan3669"
+       x="38"
+       y="128.47099"
+       style="font-family:Arial Black;-inkscape-font-specification:Arial Black;stroke:#ff0000;stroke-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none">abcdefghijklmnopqrstuvwxyz</tspan></text>
+  <rect
+     style="color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+     id="rect3674"
+     width="516.18793"
+     height="1"
+     x="38.183765"
+     y="128.47099" />
+  <text
+     xml:space="preserve"
+     style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Century;-inkscape-font-specification:Century;filter:url(#filter3644)"
+     x="38"
+     y="88"
+     id="text3661"><tspan
+       sodipodi:role="line"
+       id="tspan3663"
+       x="38"
+       y="88">a<tspan
+   style="fill:#1a1a1a"
+   id="tspan2838">b</tspan><tspan
+   style="fill:#333333"
+   id="tspan2840">c</tspan><tspan
+   style="fill:#4d4d4d"
+   id="tspan2842">d</tspan><tspan
+   style="fill:#666666"
+   id="tspan2844">e</tspan><tspan
+   style="fill:#808080"
+   id="tspan2846">f</tspan><tspan
+   style="fill:#999999"
+   id="tspan2848">g</tspan><tspan
+   style="fill:#b3b3b3"
+   id="tspan2850">h</tspan><tspan
+   style="fill:#cccccc"
+   id="tspan2852">i</tspan><tspan
+   style="fill:#e6e6e6"
+   id="tspan2854">j</tspan><tspan
+   style="fill:#ececec"
+   id="tspan2856">k</tspan><tspan
+   style="fill:#f2f2f2"
+   id="tspan2858">l</tspan><tspan
+   style="fill:#f9f9f9"
+   id="tspan2860">m</tspan><tspan
+   style="fill:#ffffff"
+   id="tspan2862">n</tspan><tspan
+   style="fill:#800000"
+   id="tspan2865">o</tspan><tspan
+   style="fill:#ff0000"
+   id="tspan2867">p</tspan><tspan
+   style="fill:#808000"
+   id="tspan2869">q</tspan><tspan
+   style="fill:#ffff00"
+   id="tspan2871">r</tspan><tspan
+   style="fill:#008000"
+   id="tspan2873">s</tspan><tspan
+   style="fill:#00ff00"
+   id="tspan2875">t</tspan><tspan
+   style="fill:#008080"
+   id="tspan2877">u</tspan><tspan
+   style="fill:#00ffff"
+   id="tspan2879">v</tspan><tspan
+   style="fill:#000080"
+   id="tspan2881">w</tspan><tspan
+   style="fill:#0000ff"
+   id="tspan2883">x</tspan><tspan
+   style="fill:#800080"
+   id="tspan2885">y</tspan><tspan
+   style="fill:#ff00ff"
+   id="tspan2887">z</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Century;-inkscape-font-specification:Century;filter:url(#filter3652)"
+     x="38"
+     y="171.66769"
+     id="text3772"><tspan
+       sodipodi:role="line"
+       id="tspan3774"
+       x="38"
+       y="171.66769"
+       style="font-family:MS PMincho;-inkscape-font-specification:MS PMincho">日本語のテスト</tspan></text>
+  <rect
+     style="color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+     id="rect3785"
+     width="531.71295"
+     height="1"
+     x="38"
+     y="171.66769" />
+  <text
+     xml:space="preserve"
+     style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Century;-inkscape-font-specification:Century;filter:url(#filter3700)"
+     x="290.56924"
+     y="171.66769"
+     id="text2861"><tspan
+       sodipodi:role="line"
+       id="tspan2863"
+       x="290.56924"
+       y="171.66769">&lt;a href=&quot;./&quot;&gt;a&lt;/a&gt;</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic;filter:url(#filter3704)"
+     x="38"
+     y="199.18167"
+     id="text2859"><tspan
+       sodipodi:role="line"
+       id="tspan2861"
+       x="38"
+       y="199.18167">This is a test of text.</tspan><tspan
+       sodipodi:role="line"
+       x="38"
+       y="224.18167"
+       id="tspan2864">  This is a test of text</tspan><tspan
+       sodipodi:role="line"
+       x="38"
+       y="249.18167"
+       id="tspan2866">    これはテキストのテストです</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:20px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic;filter:url(#filter3680)"
+     x="38"
+     y="270.18616"
+     id="text3681"><tspan
+       sodipodi:role="line"
+       id="tspan3683"
+       x="38"
+       y="270.18616"><tspan
+   style="font-size:72px;fill:#00ff00;fill-opacity:0.4782609"
+   id="tspan3685">透明度</tspan>を指定するテスト</tspan></text>
+</svg>

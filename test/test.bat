@@ -10,3 +10,4 @@ python ..\svg2css.py --html clip.html --css clip.css clip.svg
 python ..\svg2css.py --html text.html --css text.css text.svg
 python ..\svg2css.py --html image.html --css image.css image.svg
 python ..\svg2css.py --html slide.html --css slide.css --slide slide.svg
+python ..\svg2css.py --html text-shadow.html --css text-shadow.css text-shadow.svg

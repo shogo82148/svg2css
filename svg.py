@@ -40,6 +40,8 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			"text": Text,
 			"tspan": TSpan,
 			"image": Image,
+			"filter": Filter,
+			"feGaussianBlur": FEGaussianBlur,
 		}
 		
 	def startElementNS(self, name, qname, attrs):
@@ -345,6 +347,23 @@ class Image(Element):
 	def callHandler(self, handler):
 		handler.image(self)
 
+
+class Filter(Container):
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+		
+	def callHandler(self, handler):
+		handler.filter(self)
+
+class FilterEffect(Element):
+	def __init__(self, attrs, parent=None):
+		Element.__init__(self, attrs, parent)
+
+class FEGaussianBlur(FilterEffect):
+	def __init__(self, attrs, parent=None):
+		FilterEffect.__init__(self, attrs, parent)
+		self.stdDeviation = Length(attrs.get((None,"stdDeviation"), "0"))
+	
 #SVG内での長さを表すクラス
 class Length:
 	__length_re = re.compile(r"^(?P<length>[+\-0-9e.]*)(?P<unit>[%a-z]*)$")
@@ -414,22 +433,22 @@ class Length:
 		return a.px()
 	
 	def __lt__(a, b):
-		return a.px() < b.px()
+		return a.px() < Length(b).px()
 		
 	def __le__(a, b):
-		return a.px() <= b.px()
+		return a.px() <= Length(b).px()
 	
 	def __eq__(a, b):
-		return a.px() == b.px()
+		return a.px() == Length(b).px()
 		
 	def __ne__(a, b):
-		return a.px() != b.px()
+		return a.px() != Length(b).px()
 		
 	def __gt__(a, b):
-		return a.px() > b.px()
+		return a.px() > Length(b).px()
 		
 	def __ge__(a, b):
-		return a.px() >= b.px()
+		return a.px() >= Length(b).px()
 
 
 
@@ -608,6 +627,9 @@ class SVGHandler:
 		pass
 			
 	def characters(self, x):
+		pass
+		
+	def filter(self, x):
 		pass
 
 class Color:

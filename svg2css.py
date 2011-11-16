@@ -13,6 +13,14 @@ from xml.sax.saxutils import escape
 from xml.sax.saxutils import quoteattr
 sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
 
+__re_url = re.compile("url\(#(.*)\)")
+def getURL(s):
+	global __re_url
+	m = __re_url.match(s)
+	if m:
+		return m.group(1)
+	return None
+
 class CSSStyle(dict):
 	def __str__(self):
 		s = ""
@@ -461,15 +469,22 @@ class CSSWriter(svg.SVGHandler):
 	#テキスト
 	def text(self, x):
 		name = self.newName(x)
-				
+		
 		if name in self.__clipnames:
 			clipname = self.__clipnames[name]
 			self._html('<div class="%s"><div class="%sinverse">\n' % (clipname, clipname))
+			
+		blur = 0
+		filterURL = getURL(x.style.get("filter", ""))
+		if filterURL:
+			filter = x.getRoot().getElementById(filterURL)
+			if filter and isinstance(filter[0], svg.FEGaussianBlur):
+				blur = filter[0].stdDeviation * 1.7
 
 		self._html('<div class="%s"><span class="svg-text-adj">&nbsp;</span>' % name)
 		for a in x:
 			if isinstance(a, svg.TSpan):
-				self.__text_contents(a, x.x, x.y)
+				self.__text_contents(a, x.x, x.y, blur)
 			elif isinstance(a, svg.Characters):
 				self._html(a.content)
 		self._html('</div>\n');
@@ -496,6 +511,10 @@ class CSSWriter(svg.SVGHandler):
 				css["color"] = svg.Color(x.style["fill"])
 				if "fill-opacity" in x.style:
 					css["color"].a = float(x.style["fill-opacity"])
+				if blur>0.001:
+					css["text-shadow"] = "0px 0px %s %s" % (blur, css["color"])
+					css["color"] = [css["color"], svg.Color(0,0,0,0)]
+					
 			for stylename in ["font-style", "font-weight", "font-family"]:
 				if stylename in x.style:
 					css[stylename] = x.style[stylename]
@@ -517,7 +536,7 @@ class CSSWriter(svg.SVGHandler):
 			self._css(".svg-text-adj{font-size:0px;vertical-align: 1000px;}\n")
 
 	#テキストの中身
-	def __text_contents(self, x, x0=0, y0=0):
+	def __text_contents(self, x, x0=0, y0=0, blur=0):
 		name = self.newName(x)
 		if name not in self._css_classes:
 			self._css_classes.add(name)
@@ -530,6 +549,9 @@ class CSSWriter(svg.SVGHandler):
 				css["color"] = svg.Color(x.style["fill"])
 				if "fill-opacity" in x.style:
 					css["color"].a = float(x.style["fill-opacity"])
+				if blur>0.001:
+					css["text-shadow"] = "0px 0px %s %s" % (blur, css["color"])
+					css["color"] = [css["color"], svg.Color(0,0,0,0)]
 			for stylename in ["font-style", "font-weight", "font-family"]:
 				if stylename in x.style:
 					css[stylename] = x.style[stylename]
@@ -550,7 +572,7 @@ class CSSWriter(svg.SVGHandler):
 			self._html('<span class="svg-text-adj">&nbsp;</span>')
 		for a in x:
 			if isinstance(a, svg.TSpan):
-				self.__text_contents(a, x.x, x.y)
+				self.__text_contents(a, x.x, x.y, blur)
 			elif isinstance(a, svg.Characters):
 				self._html(escape(a.content))
 		self._html('</span>')
