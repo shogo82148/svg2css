@@ -360,26 +360,26 @@ class CSSWriter(svg.SVGHandler):
 				
 				#位置と大きさの設定
 				css["position"] = "absolute"
-				css["left"] = x + blur
-				css["top"] = y + blur
-				css["width"] = width - 2*blur
-				css["height"] = height - 2*blur
+				css["left"] = x - 10000
+				css["top"] = y - 10000
+				css["width"] = width
+				css["height"] = height
 			
 				#角を丸める
 				if rx and ry:
-					css["border-radius"] = "%s/%s" % (str(rx-blur), str(ry-blur))
+					css["border-radius"] = "%s/%s" % (rx, ry)
 				elif rx:
-					css["border-radius"] = rx-blur
+					css["border-radius"] = rx
 				elif ry:
-					css["border-radius"] = ry-blur
+					css["border-radius"] = ry
 			
 				#フィルを指定する
 				css.addFill(element)
 			
 				#ぼかしを適用
-				css["box-shadow"] = "0px 0px %s %s %s" % (blur, blur, css["background-color"])
-				css["-webkit-box-shadow"] = "0px 0px %s %s %s" % (blur*1.8, blur*1.05, css["background-color"])
-				css["-o-box-shadow"] = "0px 0px %s %s %s" % (blur*1.8, blur*1.05, css["background-color"])
+				css["box-shadow"] = "10000px 10000px %s %s" % (blur, css["background-color"])
+				css["-webkit-box-shadow"] = "10000px 10000px %s %s" % (blur*1.8, css["background-color"])
+				css["-o-box-shadow"] = "10000px 10000px %s %s" % (blur*1.8, css["background-color"])
 
 				#変形
 				if element.transform:
