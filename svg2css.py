@@ -248,53 +248,76 @@ class CSSWriter(svg.SVGHandler):
 		self._html('</div>\n')
 		
 	def rect(self, x):
-		name = self.newName(x)
+		self.__round_rect(
+			element = x,
+			x = x.x,
+			y = x.y,
+			width = x.width,
+			height = x.height,
+			rx = x.rx,
+			ry = x.ry
+		)
+	
+	def arc(self, x):
+		self.__round_rect(
+			element = x,
+			x = x.cx-x.rx,
+			y = x.cy-x.ry,
+			width = x.rx*2,
+			height = x.ry*2,
+			rx = x.rx,
+			ry = x.ry
+		)
+
+	
+	def __round_rect(self, element, x, y, width, height, rx = 0, ry = 0):
+		name = self.newName(element)
 		if name not in self._css_classes:
 			self._css_classes.add(name)
 			css = CSSStyle()
 			stroke = svg.Length(0)
 			
 			#クリップパスの設定
-			self.__clipPath(name, x)
+			self.__clipPath(name, element)
 			
 			#ストロークの描画
-			if "stroke" in x.style and x.style["stroke"] != 'none':
+			if "stroke" in element.style and element.style["stroke"] != 'none':
 				try:
-					stroke = svg.Length(x.style.get("stroke-width",0))
+					stroke = svg.Length(element.style.get("stroke-width",0))
 					css["border-width"] = stroke
 					css["border-style"] = "solid"
-					color = svg.Color(x.style["stroke"])
-					if "stroke-opacity" in x.style:
-						color.a = float(x.style["stroke-opacity"])
+					color = svg.Color(element.style["stroke"])
+					if "stroke-opacity" in element.style:
+						color.a = float(element.style["stroke-opacity"])
 					css["border-color"] = color
 				except:
 					pass
 			
 			#位置と大きさの設定
 			css["position"] = "absolute"
-			css["left"] = x.x - stroke/2
-			css["top"] = x.y - stroke/2
-			css["width"] = x.width - stroke
-			css["height"] = x.height - stroke
+			css["left"] = x - stroke/2
+			css["top"] = y - stroke/2
+			css["width"] = width - stroke
+			css["height"] = height - stroke
 			
 			#角を丸める
-			if x.rx and x.ry:
-				css["border-radius"] = "%s/%s" % (str(x.rx+stroke/2), str(x.ry+stroke/2))
-			elif x.rx:
-				css["border-radius"] = x.rx+stroke/2
-			elif x.ry:
-				css["border-radius"] = x.ry+stroke/2
+			if rx and ry:
+				css["border-radius"] = "%s/%s" % (str(rx+stroke/2), str(ry+stroke/2))
+			elif rx:
+				css["border-radius"] = rx+stroke/2
+			elif ry:
+				css["border-radius"] = ry+stroke/2
 		
 			#変形
-			if x.transform:
+			if element.transform:
 				#CSSとSVGの原点の違いを補正
-				transform = x.transform.toMatrix()
-				transform = transform * svg.Transform.Translate(x.x+x.width/2, x.y+x.height/2)
-				transform = svg.Transform.Translate(-x.x-x.width/2, -x.y-x.height/2) * transform
+				transform = element.transform.toMatrix()
+				transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
+				transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
 				css["transform"] = transform
 
 			#フィルを指定する
-			css.addFill(x)
+			css.addFill(element)
 				
 			#出力
 			self._css(cls=name, style=css)
@@ -306,61 +329,6 @@ class CSSWriter(svg.SVGHandler):
 			return
 		
 		self._html('<div class="%s"></div>\n' % name)
-	
-	def arc(self, x):
-		name = self.newName(x)
-		if name not in self._css_classes:
-			self._css_classes.add(name)
-			css = CSSStyle()
-			stroke = svg.Length(0)
-			
-			#クリップパスの設定
-			self.__clipPath(name, x)
-			
-			#ストロークの描画
-			if "stroke" in x.style and x.style["stroke"] != 'none':
-				try:
-					stroke = svg.Length(x.style.get("stroke-width",1))
-					css["border-width"] = stroke
-					css["border-style"] = "solid"
-					color = svg.Color(x.style["stroke"])
-					if "stroke-opacity" in x.style:
-						color.a = float(x.style["stroke-opacity"])
-					css["border-color"] = color
-				except:
-					pass
-					
-			#位置と大きさの設定
-			css["position"] = "absolute"
-			css["left"] = str(x.cx - x.rx - stroke/2)
-			css["top"] = str(x.cy - x.ry - stroke/2)
-			css["width"] = str(x.rx * 2 - stroke)
-			css["height"] = str(x.ry * 2 - stroke)
-			
-			#角を丸める
-			css["border-radius"] = "%s/%s" % (str(x.rx+stroke/2), str(x.ry+stroke/2))
-		
-			#フィルを指定する
-			css.addFill(x)
-			
-			#変形
-			if x.transform:
-				#CSSとSVGの原点の違いを補正
-				transform = x.transform.toMatrix()
-				transform = transform * svg.Transform.Translate(x.cx, x.cy)
-				transform = svg.Transform.Translate(-x.cx, -x.cy) * transform
-				css["transform"] = transform
-			
-			#出力
-			self._css(cls=name, style=css)
-
-		#クリップの設定
-		if name in self.__clipnames:
-			clipname = self.__clipnames[name]
-			self._html('<div class="%s"><div class="%sinverse"><div class="%s"></div></div></div>\n' % (clipname, clipname, name))
-			return
-
-		self._html('<div class="%s"></div>\n' % name);
 	
 	def group(self, x):
 		name = self.newName(x)
