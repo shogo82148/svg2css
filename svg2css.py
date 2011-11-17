@@ -24,7 +24,7 @@ def getURL(s):
 class CSSStyle(dict):
 	def __str__(self):
 		s = ""
-		for name,style in self.iteritems():
+		for name,style in sorted(self.iteritems(), key=lambda x: len(x[0])):
 			if name=="transform":
 				s += CSSStyle.__transform(style)
 				continue
@@ -271,6 +271,18 @@ class CSSWriter(svg.SVGHandler):
 
 	
 	def __round_rect(self, element, x, y, width, height, rx = 0, ry = 0):
+		blur = 0
+		filterURL = getURL(element.style.get("filter", ""))
+		if filterURL:
+			filter = element.getRoot().getElementById(filterURL)
+			if filter and isinstance(filter[0], svg.FEGaussianBlur):
+				blur = filter[0].stdDeviation * 1.7
+				try:
+					self.__blured_round_rect(element, x, y, width, height, rx, ry, blur)
+					return
+				except:
+					pass
+	
 		name = self.newName(element)
 		if name not in self._css_classes:
 			self._css_classes.add(name)
@@ -308,6 +320,9 @@ class CSSWriter(svg.SVGHandler):
 			elif ry:
 				css["border-radius"] = ry+stroke/2
 		
+			#フィルを指定する
+			css.addFill(element)
+			
 			#変形
 			if element.transform:
 				#CSSとSVGの原点の違いを補正
@@ -315,9 +330,6 @@ class CSSWriter(svg.SVGHandler):
 				transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
 				transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
 				css["transform"] = transform
-
-			#フィルを指定する
-			css.addFill(element)
 				
 			#出力
 			self._css(cls=name, style=css)
@@ -330,6 +342,117 @@ class CSSWriter(svg.SVGHandler):
 		
 		self._html('<div class="%s"></div>\n' % name)
 	
+	def __blured_round_rect(self, element, x, y, width, height, rx = 0, ry = 0, blur=0):
+		name = self.newName(element)
+		namefill = name + "-fill"
+		namestroke = name + "-stroke"
+		hasfill = "fill" in element.style and element.style["fill"] != 'none'
+		hasstroke = "stroke" in element.style and element.style["stroke"] != 'none'
+		
+		#フィルの描画
+		if not hasstroke and hasfill:
+			if namefill not in self._css_classes:
+				self._css_classes.add(namefill)
+				css = CSSStyle()
+			
+				#クリップパスの設定
+				self.__clipPath(namefill, element)
+				
+				#位置と大きさの設定
+				css["position"] = "absolute"
+				css["left"] = x + blur
+				css["top"] = y + blur
+				css["width"] = width - 2*blur
+				css["height"] = height - 2*blur
+			
+				#角を丸める
+				if rx and ry:
+					css["border-radius"] = "%s/%s" % (str(rx-blur), str(ry-blur))
+				elif rx:
+					css["border-radius"] = rx-blur
+				elif ry:
+					css["border-radius"] = ry-blur
+			
+				#フィルを指定する
+				css.addFill(element)
+			
+				#ぼかしを適用
+				css["box-shadow"] = "0px 0px %s %s %s" % (blur, blur, css["background-color"])
+				css["-webkit-box-shadow"] = "0px 0px %s %s %s" % (blur*1.8, blur*1.05, css["background-color"])
+				css["-o-box-shadow"] = "0px 0px %s %s %s" % (blur*1.8, blur*1.05, css["background-color"])
+
+				#変形
+				if element.transform:
+					#CSSとSVGの原点の違いを補正
+					transform = element.transform.toMatrix()
+					transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
+					transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
+					css["transform"] = transform
+					
+				#出力
+				self._css(cls=namefill, style=css)
+		
+			#クリップの設定
+			if namefill in self.__clipnames:
+				clipname = self.__clipnames[namefill]
+				self._html('<div class="%s"><div class="%sinverse"><div class="%s"></div></div></div>\n' % (clipname, clipname, name))
+				return
+			
+			self._html('<div class="%s"></div>\n' % namefill)
+		
+		#ストロークの描画
+		if hasstroke:
+			if namestroke not in self._css_classes:
+				self._css_classes.add(namestroke)
+				css = CSSStyle()
+			
+				#クリップパスの設定
+				self.__clipPath(namestroke, element)
+				
+				#位置と大きさの設定
+				css["position"] = "absolute"
+				css["left"] = x
+				css["top"] = y
+				css["width"] = width
+				css["height"] = height
+			
+				#角を丸める
+				if rx and ry:
+					css["border-radius"] = "%s/%s" % (str(rx), str(ry))
+				elif rx:
+					css["border-radius"] = rx
+				elif ry:
+					css["border-radius"] = ry
+			
+				#ぼかしを適用
+				stroke = svg.Length(element.style.get("stroke-width",0))
+				color = svg.Color(element.style["stroke"])
+				if "stroke-opacity" in element.style:
+					color.a = float(element.style["stroke-opacity"])
+				css["box-shadow"] = "0px 0px %s %s %s" % (blur, stroke/2, color) + ", 0px 0px %s %s %s inset" % (blur, stroke/2, color)
+
+				#フィルを指定する
+				css.addFill(element)
+
+				#変形
+				if element.transform:
+					#CSSとSVGの原点の違いを補正
+					transform = element.transform.toMatrix()
+					transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
+					transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
+					css["transform"] = transform
+					
+				#出力
+				self._css(cls=namestroke, style=css)
+		
+			#クリップの設定
+			if namestroke in self.__clipnames:
+				namestroke = self.__clipnames[name]
+				self._html('<div class="%s"><div class="%sinverse"><div class="%s"></div></div></div>\n' % (clipname, clipname, name))
+				return
+			
+			self._html('<div class="%s"></div>\n' % namestroke)
+
 	def group(self, x):
 		name = self.newName(x)
 		if name not in self._css_classes:
