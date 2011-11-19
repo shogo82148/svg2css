@@ -227,7 +227,8 @@ class Group(Container):
 		Container.__init__(self, attrs, parent)
 		self.clip_path = attrs.get((None,"clip-path"), "")
 		self.groupmode = attrs.get((inkscape,"groupmode"), "")
-	
+		self.style = Style(attrs.get((None,"style"), ""))
+
 	def callHandler(self, handler):
 		handler.group(self)
 
@@ -331,7 +332,8 @@ class Use(Element):
 		self.y = Length(attrs.get((None,"y"), "0"))
 		self.width = Length(attrs.get((None,"width"), "0"))
 		self.height = Length(attrs.get((None,"height"), "0"))
-	
+		self.style = Style(attrs.get((None,"style"), ""))
+
 	def callHandler(self, handler):
 		handler.use(self)
 

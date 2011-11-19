@@ -330,6 +330,10 @@ class CSSWriter(svg.SVGHandler):
 				transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
 				transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
 				css["transform"] = transform
+			
+			#透明度を指定
+			if "opacity" in element.style:
+				css["opacity"] = element.style["opacity"]
 				
 			#出力
 			self._css(cls=name, style=css)
@@ -388,7 +392,11 @@ class CSSWriter(svg.SVGHandler):
 					transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
 					transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
 					css["transform"] = transform
-					
+
+					#透明度を指定
+				if "opacity" in element.style:
+					css["opacity"] = element.style["opacity"]
+
 				#出力
 				self._css(cls=namefill, style=css)
 		
@@ -441,7 +449,11 @@ class CSSWriter(svg.SVGHandler):
 					transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
 					transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
 					css["transform"] = transform
-					
+
+				#透明度を指定
+				if "opacity" in element.style:
+					css["opacity"] = element.style["opacity"]
+
 				#出力
 				self._css(cls=namestroke, style=css)
 		
@@ -469,7 +481,14 @@ class CSSWriter(svg.SVGHandler):
 			if x.transform:
 				transform = x.transform.toMatrix()
 				css["transform"] = transform
-			
+
+			#透明度を指定
+			if "opacity" in x.style:
+				css["opacity"] = x.style["opacity"]
+
+			if x.style.get("display", "inline")=="none":
+				css["display"] = "none"
+
 			#出力
 			self._css(cls=name, style=css)
 
@@ -496,6 +515,10 @@ class CSSWriter(svg.SVGHandler):
 		if x.transform:
 			transform = x.transform.toMatrix() * transform
 		css["transform"] = transform
+
+		#透明度を指定
+		if "opacity" in x.style:
+			css["opacity"] = x.style["opacity"]
 
 		self._css(cls=name, style=css)
 		self._html('<div class="%s">\n' % name)
