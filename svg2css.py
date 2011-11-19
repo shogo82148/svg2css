@@ -491,16 +491,10 @@ class CSSWriter(svg.SVGHandler):
 		css = CSSStyle()
 		css["position"] = "absolute"
 		css["margin"] = "0px"
-
-		css["left"] = str(-x.width/2)
-		css["top"] = str(-x.height/2)
-		css["width"] = str(x.width)
-		css["height"] = str(x.height)
 		
 		transform = svg.Transform.Translate(x.x, x.y)
 		if x.transform:
 			transform = x.transform.toMatrix() * transform
-		transform = svg.Transform.Translate(x.width/2, x.height/2) * transform
 		css["transform"] = transform
 
 		self._css(cls=name, style=css)
