@@ -15,6 +15,8 @@
    version="1.1"
    inkscape:version="0.47 r22583"
    sodipodi:docname="box-shadow.svg">
+  <title
+     id="title2863">Test of Blur with box-shadow</title>
   <defs
      id="defs4">
     <inkscape:perspective
@@ -75,18 +77,6 @@
          inkscape:collect="always"
          stdDeviation="12.88"
          id="feGaussianBlur4092" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter4204"
-       x="-0.888"
-       width="2.776"
-       y="-0.888"
-       height="2.776">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="22.2"
-         id="feGaussianBlur4206" />
     </filter>
     <filter
        inkscape:collect="always"
@@ -205,14 +195,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="355.14783"
+     inkscape:cx="222.14783"
      inkscape:cy="213.48756"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:snap-global="true"
-     inkscape:window-width="1280"
-     inkscape:window-height="975"
+     inkscape:window-width="1024"
+     inkscape:window-height="712"
      inkscape:window-x="-4"
      inkscape:window-y="-4"
      inkscape:window-maximized="1"
@@ -235,7 +225,22 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Test of Blur with box-shadow</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ichinose Shogo</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:language>ja</dc:language>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>css</rdf:li>
+            <rdf:li>blur</rdf:li>
+            <rdf:li>box-shadow</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>SVGのrectに対するぼかし効果をCSSのbox-shadowによって実現するテスト</dc:description>
       </cc:Work>
     </rdf:RDF>
   </metadata>

@@ -17,6 +17,8 @@
    version="1.1"
    inkscape:version="0.47 r22583"
    sodipodi:docname="slide.svg">
+  <title
+     id="title2935">Test of Slides</title>
   <defs
      id="defs2818">
     <linearGradient
@@ -470,7 +472,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.84852814"
-     inkscape:cx="445.54879"
+     inkscape:cx="288.80679"
      inkscape:cy="252.73799"
      inkscape:current-layer="layer2"
      inkscape:document-units="px"
@@ -497,7 +499,21 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Test of Slides</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ichinose Shogo</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:language>ja</dc:language>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>css</rdf:li>
+            <rdf:li>slide</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Pure CSSでスライドショーをおこうなうテスト</dc:description>
       </cc:Work>
     </rdf:RDF>
   </metadata>

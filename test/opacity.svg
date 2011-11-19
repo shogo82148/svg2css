@@ -7,7 +7,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="600"
@@ -16,6 +15,8 @@
    version="1.1"
    inkscape:version="0.47 r22583"
    sodipodi:docname="opacity.svg">
+  <title
+     id="title3299">Test of Alpha Color</title>
   <defs
      id="defs4">
     <inkscape:perspective
@@ -160,7 +161,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="144.37611"
+     inkscape:cx="50.330911"
      inkscape:cy="202.04131"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
@@ -179,8 +180,36 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Test of Alpha Color</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ichinose Shogo</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>css</rdf:li>
+            <rdf:li>alpha</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>色のアルファ値の設定により、透過を実現するテスト</dc:description>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g

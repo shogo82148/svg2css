@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+svg2css
+An Inkscape plugin that converts SVG to HTML+CSS
+Copyright 2011 Ichinose Shogo
+"""
+
 
 import sys
 import svg
@@ -204,6 +210,12 @@ class CSSWriter(svg.SVGHandler):
 		self.__id = 0
 		self._css_classes = set()
 		self.__clipnames = {}
+		self.__title = ""
+		self.__author = ""
+		self.__description = ""
+		self.__language = ""
+		self.__license = ""
+		self.__keywords = []
 		
 	def newName(self, x=None):
 		if x and isinstance(x, svg.Element) and x.id:
@@ -222,19 +234,32 @@ class CSSWriter(svg.SVGHandler):
 	def _html(self, s):
 		self._html_data += s
 	
-	def getHTML(self, title="", cssfile=None):
+	def getHTML(self, title=None, cssfile=None):
 		ret = """<!DOCTYPE html>
 <html>
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="content-script-type" content="text/javascript" /> 
 <meta http-equiv="content-style-type" content="text/css" />
+<meta name="generator" content="svg2css" />
 """
+		#メタデータを挿入
+		if self.__author:
+			ret += '<meta name="author" content=%s />\n' % quoteattr(self.__author)
+		if self.__description:
+			ret += '<meta name="description" content=%s />\n' % quoteattr(self.__description)
+		if self.__keywords:
+			ret += '<meta name="keywords" content=%s />\n' % quoteattr(",".join(self.__keywords))
+		if self.__language:
+			ret += '<meta http-equiv="content-language" content=%s />\n' % quoteattr(self.__language)
+		if self.__license:
+			ret += '<link rel="license" href=%s />\n' % quoteattr(self.__license)
+
 		if cssfile:
-			ret += '<link rel="stylesheet" type="text/css" href="%s" />\n' % cssfile
+			ret += '<link rel="stylesheet" type="text/css" href=%s />\n' % quoteattr(cssfile)
 		else:
 			ret += '<style type="text/css">\n%s</style>\n' % self._css_data
-		ret += '<title>%s</title>\n' % title
+		ret += '<title>%s</title>\n' % (title or self.__title)
 		ret += '</head>\n<body>\n' + self._html_data + '</body>\n</html>\n'
 		return ret
 		
@@ -246,7 +271,22 @@ class CSSWriter(svg.SVGHandler):
 		self._html('<div class="svg">\n')
 		svg.SVGHandler.svg(self, x)
 		self._html('</div>\n')
-		
+	
+	def title(self, x):
+		self.__title = x.getTitle()
+	
+	def metadata(self, x):
+		author = x.getAuthor()
+		if author: self.__author = author
+		description = x.getDescription()
+		if description: self.__description = description
+		language = x.getLanguage()
+		if language: self.__language = language
+		license = x.getLicense()
+		if license: self.__license = license
+		keywords = x.getKeywords()
+		if keywords: self.__keywords = keywords
+	
 	def rect(self, x):
 		self.__round_rect(
 			element = x,

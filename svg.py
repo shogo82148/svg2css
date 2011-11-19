@@ -1,5 +1,11 @@
 # -*- coding:utf-8 -*-
 
+"""
+svg2css
+An Inkscape plugin that converts SVG to HTML+CSS
+Copyright 2011 Ichinose Shogo
+"""
+
 import xml.sax
 import xml.sax.handler
 import sys
@@ -42,6 +48,8 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			"image": Image,
 			"filter": Filter,
 			"feGaussianBlur": FEGaussianBlur,
+			"title": Title,
+			"metadata": Metadata,
 		}
 		
 	def startElementNS(self, name, qname, attrs):
@@ -57,16 +65,22 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 			self.__container.append(e)
 			if issubclass(element, Container):
 				self.__container = e
-			
+		else:
+			e = UnknowElement(attrs, tag=name)
+			self.__container.append(e)
+			self.__container = e
+
 	def endElementNS(self, name, qname):
 		if (name[0]==svg and 
 			name[1] in self.__elements and
 			issubclass(self.__elements[name[1]], Container)):
 			
 			self.__container = self.__container.getParent()
+		elif isinstance(self.__container,UnknowElement) and self.__container.tag==name:
+			self.__container = self.__container.getParent()
 	
 	def characters(self, content):
-		if isinstance(self.__container, TSpan):
+		if isinstance(self.__container, (TSpan, Title, UnknowElement)):
 			self.__container.append(Characters(content))
 	
 	def getSVG(self):
@@ -74,14 +88,12 @@ class SVGXMLHandler(xml.sax.handler.ContentHandler):
 
 #SVGの要素を表すクラス
 class Element:
-	__all_defalut = {
-		"transform": None,
-	}
 	def __init__(self, attrs, parent=None, default={}):
 		self.__parent = parent
 		self.__default = default
 		self.__root = None
 		self.id = attrs.get((None,"id"), "")
+		self.attrs = attrs.copy()
 		
 		self.transform = Transform(attrs.get((None,"transform"), ""))
 		
@@ -190,6 +202,109 @@ class SVG(Container):
 		
 	def callHandler(self, handler):
 		handler.svg(self)
+
+class UnknowElement(Container):
+	def __init__(self, attrs, parent=None, tag=None):
+		Container.__init__(self, attrs, parent)
+		self.tag = tag
+		
+	def callHandler(self, handler):
+		handler.unknown(self)
+
+#SVGの表題
+class Title(Container):
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+		
+	def callHandler(self, handler):
+		handler.title(self)
+	
+	def getTitle(self):
+		title = ""
+		for node in self:
+			if isinstance(node, Characters):
+				title += node.content
+		return title
+
+#メタデータ
+class Metadata(Container):
+	__dc = "http://purl.org/dc/elements/1.1/"
+	__cc = "http://creativecommons.org/ns#"
+	__rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	
+	def __init__(self, attrs, parent=None):
+		Container.__init__(self, attrs, parent)
+		self.__author = ""
+		self.__description = ""
+		self.__language = ""
+		self.__license = ""
+		self.__keywords = []
+		
+	def callHandler(self, handler):
+		handler.metadata(self)
+	
+	def __getContent(self, node):
+		content = ""
+		for n in node:
+			if isinstance(n, Characters):
+				content += n.content
+		return content
+
+	def __getCreator(self, node):
+		if isinstance(node, UnknowElement):
+			tag = node.tag
+			if tag==(Metadata.__dc, "title"):
+				self.__author = self.__getContent(node)
+				return
+		
+		if isinstance(node, Container):
+			for n in node:
+				self.__getCreator(n)
+
+	def __getMetadata(self, node):
+		if isinstance(node, UnknowElement):
+			tag = node.tag
+			if tag==(Metadata.__dc, "language"):
+				self.__language = self.__getContent(node)
+				return
+			elif tag==(Metadata.__dc, "description"):
+				self.__description = self.__getContent(node)
+				return
+			elif tag==(Metadata.__dc, "creator"):
+				self.__getCreator(node)
+				return
+			elif tag==(Metadata.__cc, "license"):
+				self.__license = node.attrs.get((Metadata.__rdf, "resource"), "")
+				return
+			elif tag==(Metadata.__rdf, "li"):
+				self.__keywords.append(self.__getContent(node))
+				return
+		
+		if isinstance(node, Container):
+			for n in node:
+				self.__getMetadata(n)
+
+	def getAuthor(self):
+		self.__getMetadata(self)
+		return self.__author
+	
+	def getDescription(self):
+		self.__getMetadata(self)
+		return self.__description
+		
+	def getLanguage(self):
+		self.__getMetadata(self)
+		return self.__language
+	
+	def getLicense(self):
+		self.__getMetadata(self)
+		return self.__license
+	
+	def getKeywords(self):
+		self.__keywords = []
+		self.__getMetadata(self)
+		return self.__keywords
+
 
 #長方形
 class Rect(Element):
@@ -592,6 +707,9 @@ class SVGHandler:
 		for a in x:
 			a.callHandler(self)
 	
+	def title(self, x):
+		pass
+	
 	def group(self, x):
 		for a in x:
 			a.callHandler(self)
@@ -632,6 +750,12 @@ class SVGHandler:
 		pass
 		
 	def filter(self, x):
+		pass
+		
+	def metadata(self, x):
+		pass
+
+	def unknown(self, x):
 		pass
 
 class Color:

@@ -16,6 +16,8 @@
    version="1.1"
    inkscape:version="0.47 r22583"
    sodipodi:docname="clip.svg">
+  <title
+     id="title3407">Test of Clip</title>
   <defs
      id="defs4">
     <linearGradient
@@ -796,7 +798,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="402.62842"
+     inkscape:cx="308.58322"
      inkscape:cy="222.88551"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
@@ -815,8 +817,36 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Test of Clip</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ichinose Shogo</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:language>ja</dc:language>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>svg.css</rdf:li>
+            <rdf:li>clip</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>SVGのクリップをCSSを用いて実現するテスト</dc:description>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g

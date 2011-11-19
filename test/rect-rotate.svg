@@ -15,6 +15,8 @@
    version="1.1"
    inkscape:version="0.47 r22583"
    sodipodi:docname="rect-rotate.svg">
+  <title
+     id="title2825">Test of Rotating Rect</title>
   <defs
      id="defs4">
     <inkscape:perspective
@@ -33,7 +35,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="108.9866"
+     inkscape:cx="170.04118"
      inkscape:cy="263.27889"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -52,7 +54,15 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Test of Rotating Rect</dc:title>
+        <dc:language>ja</dc:language>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>css</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>CSSを用いて回転した長方形を描くテスト</dc:description>
       </cc:Work>
     </rdf:RDF>
   </metadata>

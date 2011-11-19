@@ -16,6 +16,8 @@
    version="1.1"
    inkscape:version="0.47 r22583"
    sodipodi:docname="use.svg">
+  <title
+     id="title2832">Test of Use</title>
   <defs
      id="defs4">
     <inkscape:perspective
@@ -47,9 +49,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35355339"
-     inkscape:cx="267.4962"
-     inkscape:cy="189.94448"
+     inkscape:zoom="1"
+     inkscape:cx="188.84958"
+     inkscape:cy="230.82665"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -67,7 +69,21 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Test of Use</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ichinose Shogo</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:language>ja</dc:language>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>css</rdf:li>
+            <rdf:li>use</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>SVGのuseタグにより複製された要素をCSSに変換するテスト</dc:description>
       </cc:Work>
     </rdf:RDF>
   </metadata>

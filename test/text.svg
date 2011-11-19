@@ -16,6 +16,8 @@
    version="1.1"
    inkscape:version="0.47 r22583"
    sodipodi:docname="text.svg">
+  <title
+     id="title2868">Test of Text</title>
   <defs
      id="defs4">
     <linearGradient
@@ -69,8 +71,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.3512408"
-     inkscape:cx="139.25669"
-     inkscape:cy="109.11824"
+     inkscape:cx="267.696"
+     inkscape:cy="240.27584"
      inkscape:document-units="px"
      inkscape:current-layer="svg2"
      showgrid="false"
@@ -119,8 +121,37 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Test of Text</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ichinose Shogo</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+        <dc:description>SVGのtextタグをHTML+CSSに変換するテスト</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>css</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>text</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:language>ja</dc:language>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <rect

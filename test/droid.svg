@@ -17,7 +17,7 @@
    inkscape:version="0.47 r22583"
    sodipodi:docname="droid.svg">
   <title
-     id="title2837">ドロイド君</title>
+     id="title2834">Android Robot</title>
   <defs
      id="defs4">
     <inkscape:perspective
@@ -70,11 +70,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.0299249"
-     inkscape:cx="148.69694"
-     inkscape:cy="919.14668"
+     inkscape:zoom="1.0074812"
+     inkscape:cx="15.069208"
+     inkscape:cy="974.94165"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:window-width="1024"
      inkscape:window-height="712"
@@ -108,24 +108,61 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>ドロイド君</dc:title>
+        <dc:title>Android Robot</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ichinose Shogo</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+        <dc:language>ja</dc:language>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>css</rdf:li>
+            <rdf:li>Android Robot</rdf:li>
+            <rdf:li>droid</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>ドロイド君をCSSを使って描画するテスト</dc:description>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="レイヤー 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     style="display:none">
     <image
        sodipodi:absref="C:\Documents and Settings\shogo\My Documents\workspace\svg2css\test\android_logo.gif"
        xlink:href="android_logo.gif"
-       width="315.42856"
-       height="236.57143"
-       id="image2826"
+       y="22.647894"
        x="25.142843"
-       y="22.647894" />
+       id="image2826"
+       height="236.57143"
+       width="315.42856" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="レイヤー"
+     style="display:inline">
     <rect
-       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline"
        id="rect2830"
        width="24.364952"
        height="76.112457"
@@ -133,7 +170,7 @@
        y="106.35433"
        ry="11.616755" />
     <rect
-       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline"
        id="rect2830-2"
        width="24.364952"
        height="75.818886"
@@ -141,7 +178,7 @@
        y="106.59844"
        ry="11.616755" />
     <rect
-       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline"
        id="rect3626"
        width="24.243662"
        height="56.063465"
@@ -149,7 +186,7 @@
        y="185.14622"
        ry="11.616755" />
     <rect
-       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline"
        id="rect3626-6"
        width="24.243662"
        height="56.063465"
@@ -157,7 +194,7 @@
        y="184.38861"
        ry="11.616755" />
     <rect
-       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline"
        id="rect3650"
        width="110.92019"
        height="87.121269"
@@ -165,7 +202,7 @@
        y="114.43554"
        ry="11.616755" />
     <rect
-       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline"
        id="rect3652"
        width="110.92019"
        height="122.34391"
@@ -173,7 +210,7 @@
        y="53.832413"
        ry="51.51778" />
     <rect
-       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline"
        id="rect3654"
        width="3.5355339"
        height="29.7995"
@@ -182,7 +219,7 @@
        ry="1.767767"
        transform="matrix(0.87562738,-0.48298725,0.48298725,0.87562738,0,0)" />
     <rect
-       style="fill:#a5ca39;fill-opacity:1;stroke:none"
+       style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline"
        id="rect3654-9"
        width="3.5355339"
        height="29.7995"
@@ -193,7 +230,7 @@
        inkscape:transform-center-x="2.6516504"
        inkscape:transform-center-y="-2.7779195" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline"
        id="rect3678"
        width="8.8388348"
        height="9.3439112"
@@ -201,7 +238,7 @@
        y="75.35527"
        ry="4.4194174" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline"
        id="rect3678-7"
        width="8.8388348"
        height="9.3439112"
@@ -211,7 +248,7 @@
        inkscape:transform-center-x="15.404826"
        inkscape:transform-center-y="-0.69447988" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline"
        id="rect3704"
        width="116.73573"
        height="4.1669521"

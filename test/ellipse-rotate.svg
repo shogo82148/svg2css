@@ -15,6 +15,8 @@
    version="1.1"
    inkscape:version="0.47 r22583"
    sodipodi:docname="ellipse-rotate.svg">
+  <title
+     id="title2816">Test of Rotating Ellipse</title>
   <defs
      id="defs4">
     <inkscape:perspective
@@ -33,7 +35,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="228.31519"
+     inkscape:cx="95.31519"
      inkscape:cy="221.49747"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -52,8 +54,38 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title>Test of Rotating Ellipse</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ichinose Shogo</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:language>ja</dc:language>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>css</rdf:li>
+            <rdf:li>ellipse</rdf:li>
+            <rdf:li>rotate</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>CSSで楕円を回転させるテスト</dc:description>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
@@ -69,7 +101,7 @@
        sodipodi:cy="166"
        sodipodi:rx="100"
        sodipodi:ry="100"
-       d="m 273,166 a 100,100 0 1 1 -200,0 100,100 0 1 1 200,0 z"
+       d="M 273,166 C 273,221.22847 228.22847,266 173,266 117.77153,266 73,221.22847 73,166 73,110.77153 117.77153,66 173,66 c 55.22847,0 100,44.77153 100,100 z"
        transform="matrix(0.15155445,-0.0875,0.5,0.8660254,54.281081,636.73946)" />
     <path
        sodipodi:type="arc"
@@ -79,7 +111,7 @@
        sodipodi:cy="127"
        sodipodi:rx="100"
        sodipodi:ry="100"
-       d="m 469,127 a 100,100 0 1 1 -200,0 100,100 0 1 1 200,0 z"
+       d="m 469,127 c 0,55.22847 -44.77153,100 -100,100 -55.22847,0 -100,-44.77153 -100,-100 0,-55.228475 44.77153,-100 100,-100 55.22847,0 100,44.771525 100,100 z"
        transform="matrix(0.13832379,-0.07986127,0.5148613,0.89176593,282.57114,683.57673)" />
     <path
        sodipodi:type="arc"
@@ -89,7 +121,7 @@
        sodipodi:cy="272"
        sodipodi:rx="100"
        sodipodi:ry="25"
-       d="m 215,272 a 100,25 0 1 1 -200,0 100,25 0 1 1 200,0 z"
+       d="m 215,272 c 0,13.80712 -44.77153,25 -100,25 -55.228475,0 -100,-11.19288 -100,-25 0,-13.80712 44.771525,-25 100,-25 55.22847,0 100,11.19288 100,25 z"
        transform="matrix(0.8660254,-0.5,0.5,0.8660254,-109.59292,767.30327)" />
     <path
        sodipodi:type="arc"
@@ -99,7 +131,7 @@
        sodipodi:cy="276"
        sodipodi:rx="99"
        sodipodi:ry="25"
-       d="m 446,276 a 99,25 0 1 1 -198,0 99,25 0 1 1 198,0 z"
+       d="m 446,276 c 0,13.80712 -44.32381,25 -99,25 -54.67619,0 -99,-11.19288 -99,-25 0,-13.80712 44.32381,-25 99,-25 54.67619,0 99,11.19288 99,25 z"
        transform="matrix(0.8660254,-0.5,0.5,0.8660254,-40.510815,902.83917)" />
   </g>
 </svg>
