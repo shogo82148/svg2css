@@ -582,13 +582,16 @@ class Transform(list):
 	class BaseTransform:
 		def toMatrix(self):
 			raise
+		
+		def __mul__(self, a):
+			return self.toMatrix() * a
 			
 		def toStringMoz(self):
 			return str(self)
 		
 		def inverse(self):
-			raise
-
+			return self.toMatrix().inverse()
+			
 	class Translate(BaseTransform):
 		def __init__(self, x, y= "0"):
 			self.x = Length(x)
@@ -655,11 +658,106 @@ class Transform(list):
 			return "matrix(%f,%f,%f,%f,%fpx,%fpx)" % (
 				self.a, self.b, self.c, self.d,
 				self.e, self.f)
+
+	class Scale(BaseTransform):
+		def __init__(self, sx, sy=None):
+			self.sx = float(sx)
+			if sy:
+				self.sy = float(sy)
+			else:
+				self.sy = float(sx)
 		
+		def __str__(self):
+			return "scale(%f,%f)" % (
+				self.sx, self.sy)
+				
+		def __mul__(self, a):
+			if isinstance(a, Point):
+				return Point(
+					self.sx*a.x,
+					self.sy*a.y)
+			elif isinstance(a, Transform.Scale):
+				return Transform.Scale(self.sx*a.sx, self.sy*a.sy)
+			elif isinstance(a, Transform.BaseTransform):
+				m = a.toMatrix()
+				return Transform.Matrix(self.sx*m.a,
+					self.sy*m.b,
+					self.sx*m.c,
+					self.sy*m.d,
+					self.sx*m.e,
+					self.sy*m.f)
+			else:
+				raise
+		
+		def toMatrix(self):
+			return Transform.Matrix(self.sx, 0, 0, self.sy,
+					0, 0)
+		
+		def inverse(self):
+			return Transform.Scale(1.0/self.sx, 1.0/self.sy)
+
+	class Rotate(BaseTransform):
+		def __init__(self, angle, cx=None, cy=None):
+			self.angle = float(angle)
+			if cx and cy:
+				self.cx = Length(cx)
+				self.cy = Length(cy)
+			else:
+				self.cx = None
+				self.cy = None
+		
+		def __str__(self):
+			if cx and cy:
+				return "rotate(%fdeg)" % self.angle
+			else:
+				return str(self.toMatrix())
+		
+		def toMatrix(self):
+			a = math.radians(self.angle)
+			m = Transform.Matrix(
+				math.cos(a), math.sin(a), -math.sin(a), math.cos(a), 0, 0)
+			if cx and cy:
+				m = ( Transform.Translate(self.cx, self.cy) * m * 
+					Transform.Translate(-self.cx, -self.cy) )
+			return m
+		
+		def inverse(self):
+			return Transform.Rotate(-self.angle, self.cx, self.cy)
+
+	class SkewX(BaseTransform):
+		def __init__(self, angle):
+			self.angle = float(angle)
+		
+		def __str__(self):
+			return "skewX(%fdeg)" % self.angle
+		
+		def toMatrix(self):
+			a = math.radians(self.angle)
+			m = Transform.Matrix(
+				1, 0, math.tan(a), 1, 0, 0)
+			return m
+
+	class SkewY(BaseTransform):
+		def __init__(self, angle):
+			self.angle = float(angle)
+		
+		def __str__(self):
+			return "skewY(%fdeg)" % self.angle
+		
+		def toMatrix(self):
+			a = math.radians(self.angle)
+			m = Transform.Matrix(
+				1, math.tan(a), 0, 1, 0, 0)
+			return m
+
 	__filter_re = re.compile(r"(?P<name>[a-z]+)\((?P<args>[e+\-0-9,.]*)\)", re.I)
 	__transforms_dict = {
 		"translate": Translate,
 		"matrix": Matrix,
+		"scale": Scale,
+		"rotate": Rotate,
+		"skewX": SkewX,
+		"skewY": SkewY,
 	}
 	def __init__(self, s):
 		list.__init__(self)
