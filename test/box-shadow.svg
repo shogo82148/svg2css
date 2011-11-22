@@ -272,17 +272,18 @@
        x="22"
        y="826.36218"
        ry="20"
-       rx="50" />
+       rx="50"
+       transform="matrix(0.88962231,0.45669699,-0.45669699,0.88962231,396.76174,61.089205)" />
     <path
        sodipodi:type="arc"
-       style="color:#000000;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;filter:url(#filter4090)"
+       style="color:#000000;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;filter:url(#filter4090);enable-background:accumulate"
        id="path2826"
        sodipodi:cx="208.5"
        sodipodi:cy="87"
        sodipodi:rx="53.5"
        sodipodi:ry="27"
-       d="m 262,87 c 0,14.91169 -23.95277,27 -53.5,27 -29.54723,0 -53.5,-12.08831 -53.5,-27 0,-14.911688 23.95277,-27 53.5,-27 29.54723,0 53.5,12.088312 53.5,27 z"
-       transform="translate(-2,757.36218)" />
+       d="m 262,87 a 53.5,27 0 1 1 -107,0 53.5,27 0 1 1 107,0 z"
+       transform="matrix(0.90764148,0.41974628,-0.41974628,0.90764148,53.774678,677.88027)" />
     <path
        sodipodi:type="arc"
        style="color:#000000;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;filter:url(#filter3898)"
@@ -338,7 +339,8 @@
        width="100"
        height="50"
        x="173"
-       y="944.36218" />
+       y="944.36218"
+       transform="matrix(0.86958787,0.49377822,-0.49377822,0.86958787,507.73183,16.30404)" />
     <rect
        style="fill:#00ff00;stroke:#ff0000;stroke-width:20;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3834-1-5);fill-opacity:1"
        id="rect3599-4-7"
@@ -349,11 +351,12 @@
        ry="20"
        rx="50" />
     <rect
-       style="fill:#00ff00;stroke:#0000ff;stroke-width:20;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3721-4);fill-opacity:1"
+       style="fill:#00ff00;fill-opacity:1;stroke:#0000ff;stroke-width:20;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3721-4)"
        id="rect2816-4-1"
        width="100"
        height="50"
        x="468"
-       y="946.36218" />
+       y="946.36218"
+       transform="matrix(0.82613409,0.56347357,-0.56347357,0.82613409,637.39945,-122.99254)" />
   </g>
 </svg>

@@ -429,8 +429,8 @@ class CSSWriter(svg.SVGHandler):
 				if element.transform:
 					#CSSとSVGの原点の違いを補正
 					transform = element.transform.toMatrix()
-					transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
-					transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
+					transform = transform * svg.Transform.Translate(x-10000+width/2, y-10000+height/2)
+					transform = svg.Transform.Translate(-x+10000-width/2, -y+10000-height/2) * transform
 					css["transform"] = transform
 
 					#透明度を指定
