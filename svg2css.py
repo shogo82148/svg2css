@@ -1000,6 +1000,17 @@ opacity: 1;
 
 			self._html('</div>\n')
 
+#svgファイルからオプションを取り出す
+jessyink = "https://launchpad.net/jessyink"
+class SVGOptionParser(svg.SVGHandler):
+	def __init__(self, svgdata):
+		self.jessyink = False
+		svgdata.callHandler(self)
+	
+	def group(self, x):
+		if x.attrs.get((jessyink, "module"), "") == "core_main":
+			self.jessyink = True
+		svg.SVGHandler.group(self, x)
 
 def main():
 	#オプション解析
@@ -1018,11 +1029,12 @@ def main():
 
 	#解析＆変換
 	p = svg.Parser()
-	if options.slide:
+	s = p.parse(svgfile)
+	opt = SVGOptionParser(s)
+	if options.slide or opt.jessyink:
 		writer = SlideWriter()
 	else:
 		writer = CSSWriter()
-	s = p.parse(svgfile)
 	s.callHandler(writer)
 	
 	#書き出し
