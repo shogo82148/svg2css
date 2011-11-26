@@ -1012,7 +1012,12 @@ class AnimeWriter(CSSWriter):
 	
 	def svg(self, x):
 		#サイズ設定
-		self._css(".svg{top:0px;left:0px;width:100%;height:100%;position:absolute;overflow: hidden;}\n" )
+		self._css(""".svg{
+top:50%%;left:50%%;
+width:%s;height:%s;
+margin:%s %s;
+position:absolute;overflow: hidden;}
+""" % (x.width, x.height, -x.height/2, -x.width/2) )
 
 		#内容を出力
 		self._html('<div class="svg">')
