@@ -13,3 +13,4 @@ python ..\svg2css.py --html slide.html --css slide.css slide.svg
 python ..\svg2css.py --html text-shadow.html --css text-shadow.css text-shadow.svg
 python ..\svg2css.py --html box-shadow.html --css box-shadow.css box-shadow.svg
 python ..\svg2css.py --html display.html --css display.css display.svg
+python ..\svg2css.py --html anime.html --css anime.css --anime slide.svg

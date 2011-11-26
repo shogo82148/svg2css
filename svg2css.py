@@ -1000,6 +1000,116 @@ opacity: 1;
 
 			self._html('</div>\n')
 
+#アニメーションを行う
+class AnimeWriter(CSSWriter):
+	def __init__(self):
+		CSSWriter.__init__(self)
+		self.__in_frame = False
+		self.__num_frame = 0
+		self.__fps = 10
+	
+	def svg(self, x):
+		#サイズ設定
+		self._css(".svg{top:0px;left:0px;width:100%;height:100%;position:absolute;overflow: hidden;}\n" )
+
+		#内容を出力
+		self._html('<div class="svg">')
+		svg.SVGHandler.svg(self, x)
+		self._html('</div>\n')
+
+		#アニメーションの設定
+		anime_time = float(self.__num_frame) / self.__fps
+		self._css(""".frame{
+-webkit-animation-duration: %fs;
+-webkit-animation-timing-function: linear;
+-webkit-animation-iteration-count: infinite;
+-moz-animation-duration: %fs;
+-moz-animation-timing-function: linear;
+-moz-animation-iteration-count: infinite;
+-o-animation-duration: %fs;
+-o-animation-timing-function: linear;
+-o-animation-iteration-count: infinite;
+-ms-animation-duration: %fs;
+-ms-animation-timing-function: linear;
+-ms-animation-iteration-count: infinite;
+}
+""" % (anime_time, anime_time, anime_time, anime_time))
+
+		#各フレームの表示設定
+		num = self.__num_frame
+		for i in xrange(self.__num_frame):
+			#webkit
+			self._css("@-webkit-keyframes frame%d{\n" % i)
+			if i!=0:
+				self._css("0%{visibility: hidden;}\n")
+				self._css("%f%%{visibility: hidden;}\n" % ((i-0.01)*100.0/num))
+			self._css("%f%%{visibility: visible;}\n" % (i*100.0/num))
+			if i<num-1:
+				self._css("%f%%{visibility: visible;}\n" % ((i+1)*100.0/num))
+				self._css("%f%%{visibility: hidden;}\n" % ((i+1.01)*100.0/num))
+				self._css("100%{visibility: hidden;}\n")
+			else:
+				self._css("100%{visibility: visible;}\n")
+			self._css("}\n")
+			self._css("#frame%d{-webkit-animation-name: frame%d;}\n" % (i,i))
+			
+			#moz
+			self._css("@-moz-keyframes frame%d{\n" % i)
+			if i!=0:
+				self._css("0%{visibility: hidden;}\n")
+				self._css("%f%%{visibility: hidden;}\n" % ((i-0.01)*100.0/num))
+			self._css("%f%%{visibility: visible;}\n" % (i*100.0/num))
+			if i<num-1:
+				self._css("%f%%{visibility: visible;}\n" % ((i+1)*100.0/num))
+				self._css("%f%%{visibility: hidden;}\n" % ((i+1.01)*100.0/num))
+				self._css("100%{visibility: hidden;}\n")
+			else:
+				self._css("100%{visibility: visible;}\n")
+			self._css("}\n")
+			self._css("#frame%d{-moz-animation-name: frame%d;}\n" % (i,i))
+			
+			#opera
+			self._css("@-o-keyframes frame%d{\n" % i)
+			self._css("0%{opacity: 0;}\n")
+			if i!=0:
+				self._css("%f%%{opacity: 0;}\n" % ((i-0.1)*100.0/num))
+			self._css("%f%%{opacity: 1;}\n" % (i*100.0/num))
+			if i<num-1:
+				self._css("%f%%{opacity: 1;}\n" % ((i+1)*100.0/num))
+				self._css("%f%%{opacity: 0;}\n" % ((i+1.1)*100.0/num))
+				self._css("100%{opacity: 0;}\n")
+			else:
+				self._css("100%{opacity: 1;}\n")
+			self._css("}\n")
+			self._css("#frame%d{-o-animation-name: frame%d;}\n" % (i,i))
+			
+			#ms
+			self._css("@-ms-keyframes frame%d{\n" % i)
+			if i!=0:
+				self._css("0%{visibility: hidden;}\n")
+				self._css("%f%%{visibility: hidden;}\n" % ((i-0.01)*100.0/num))
+			self._css("%f%%{visibility: visible;}\n" % (i*100.0/num))
+			if i<num-1:
+				self._css("%f%%{visibility: visible;}\n" % ((i+1)*100.0/num))
+				self._css("%f%%{visibility: hidden;}\n" % ((i+1.01)*100.0/num))
+				self._css("100%{visibility: hidden;}\n")
+			else:
+				self._css("100%{visibility: visible;}\n")
+			self._css("}\n")
+			self._css("#frame%d{-ms-animation-name: frame%d;}\n" % (i,i))
+			
+	def group(self, x):
+		if self.__in_frame or x.groupmode!="layer":
+			CSSWriter.group(self, x)
+		else:
+			self.__in_frame = True
+			self._html('<div id="frame%d" class="frame">\n' % self.__num_frame)
+			svg.SVGHandler.group(self, x)
+			self._html('</div>\n')
+			self.__num_frame += 1
+			self.__in_frame = False
+
+
 #svgファイルからオプションを取り出す
 jessyink = "https://launchpad.net/jessyink"
 class SVGOptionParser(svg.SVGHandler):
@@ -1017,6 +1127,8 @@ def main():
 	parser = OptionParser(usage = "usage: %prog [options] svgfile")
 	parser.add_option("-s", "--slide", dest="slide",
 		action="store_true", default=False, help="Make slides")
+	parser.add_option("-a", "--anime", dest="anime",
+		action="store_true", default=False, help="Make Anime")
 	parser.add_option("--html", dest="html", help="Output HTML File")
 	parser.add_option("--css", dest="css", help="Output CSS File")
 	(options, args) = parser.parse_args()
@@ -1031,7 +1143,9 @@ def main():
 	p = svg.Parser()
 	s = p.parse(svgfile)
 	opt = SVGOptionParser(s)
-	if options.slide or opt.jessyink:
+	if options.anime:
+		writer = AnimeWriter()
+	elif options.slide or opt.jessyink:
 		writer = SlideWriter()
 	else:
 		writer = CSSWriter()
