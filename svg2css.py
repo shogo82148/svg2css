@@ -19,6 +19,19 @@ from xml.sax.saxutils import escape
 from xml.sax.saxutils import quoteattr
 sys.stdout = codecs.getwriter('utf_8')(sys.stdout)
 
+#標準的なディスプレイのサイズ
+display_sizes = [
+	(640, 480),
+	(800, 600),
+	(1024, 768),
+	(1280, 800),
+	(1280, 1024),
+	(1366, 768),
+	(1680, 1050),
+	(1920, 1080),
+	(1920, 1200),
+]
+
 __re_url = re.compile("url\(#(.*)\)")
 def getURL(s):
 	global __re_url
@@ -765,19 +778,6 @@ class SlideWriter(CSSWriter):
 	slide_prefix = "slide"
 	container_prefix = "container"
 	slide_layer = "slidelayer"
-	
-	#標準的なディスプレイのサイズ
-	__display_sizes = [
-		(640, 480),
-		(800, 600),
-		(1024, 768),
-		(1280, 800),
-		(1280, 1024),
-		(1366, 768),
-		(1680, 1050),
-		(1920, 1080),
-		(1920, 1200),
-	]
 
 	#スライドの枚数を数えるクラス
 	class CountSlide(svg.SVGHandler):
@@ -824,7 +824,7 @@ class SlideWriter(CSSWriter):
 			scaleset.add("%.2f" % scale)
 		
 		#最大化した場合に画面ぴったりになるよう調整
-		for w, h in SlideWriter.__display_sizes:
+		for w, h in display_sizes:
 			scale = min(float(w)/w0, float(h)/h0)
 			scaleset.add("%.2f" % scale)
 			
@@ -1009,7 +1009,34 @@ class AnimeWriter(CSSWriter):
 		self.__in_frame = False
 		self.__num_frame = 0
 		self.__fps = 10
-	
+		
+	#自動サイズ調整用CSSを出力
+	def autosize(self, width, height):
+		w0 = float(width)
+		h0 = float(height)
+		steps = 100		#拡大率の数
+		min_scale = 0.1	#最小の拡大率
+		max_scale = 10.0 #最大の拡大率
+		
+		#min_scaleからmax_scaleの間で自動縮小・拡大
+		a = math.log(max_scale/min_scale)/steps
+		scaleset = set()
+		for i in range(steps+1):
+			scale = math.exp(a*i)*min_scale
+			scaleset.add("%.2f" % scale)
+		
+		#最大化した場合に画面ぴったりになるよう調整
+		for w, h in display_sizes:
+			scale = min(float(w)/w0, float(h)/h0)
+			scaleset.add("%.2f" % scale)
+			
+		for scale in sorted(list(scaleset), key=float):
+			w = int(w0 * float(scale))
+			h = int(h0 * float(scale))
+			css = CSSStyle()
+			css['transform'] = "scale(%s)" % scale
+			self._css("""@media screen and (min-width:%dpx) and (min-height:%dpx) {.svg{%s}}\n""" % (w, h, str(css)))
+			
 	def svg(self, x):
 		#サイズ設定
 		self._css(""".svg{
@@ -1018,6 +1045,7 @@ width:%s;height:%s;
 margin:%s %s;
 position:absolute;overflow: hidden;}
 """ % (x.width, x.height, -x.height/2, -x.width/2) )
+		self.autosize(x.width, x.height)
 
 		#内容を出力
 		self._html('<div class="svg">')
