@@ -767,7 +767,7 @@ class SlideWriter(CSSWriter):
 	slide_layer = "slidelayer"
 	
 	#標準的なディスプレイのサイズ
-	display_sizes = [
+	__display_sizes = [
 		(640, 480),
 		(800, 600),
 		(1024, 768),
@@ -807,19 +807,33 @@ class SlideWriter(CSSWriter):
 		self.__all_slides = 0
 		self.__width = 0
 		self.__height = 0
-		self.__scales = [("100%", 1), ("128%", 1.28), ("160%", 1.6)]
 	
 	#自動サイズ調整用CSSを出力
 	def autosize(self):
 		w0 = float(self.__width)
 		h0 = float(self.__height)
-		sizes = sorted(SlideWriter.display_sizes)
-		for i, size in enumerate(sizes):
-			w, h = size
-			scale = min(w/w0, h/h0)
+		steps = 100		#拡大率の数
+		min_scale = 0.1	#最小の拡大率
+		max_scale = 10.0 #最大の拡大率
+		
+		#min_scaleからmax_scaleの間で自動縮小・拡大
+		a = math.log(max_scale/min_scale)/steps
+		scaleset = set()
+		for i in range(steps+1):
+			scale = math.exp(a*i)*min_scale
+			scaleset.add("%.2f" % scale)
+		
+		#最大化した場合に画面ぴったりになるよう調整
+		for w, h in SlideWriter.__display_sizes:
+			scale = min(float(w)/w0, float(h)/h0)
+			scaleset.add("%.2f" % scale)
+			
+		for scale in sorted(list(scaleset), key=float):
+			w = int(w0 * float(scale))
+			h = int(h0 * float(scale))
 			css = CSSStyle()
-			css['transform'] = "scale(%f)" % scale
-			self._css("""@media screen and (min-device-width:%dpx) and (min-device-height:%dpx) {.slidelayer{%s}}\n""" % (w, h, str(css)))
+			css['transform'] = "scale(%s)" % scale
+			self._css("""@media screen and (min-width:%dpx) and (min-height:%dpx) {.slidelayer{%s}}\n""" % (w, h, str(css)))
 		
 	def svg(self, x):
 		self._html('<div class="svg">')
@@ -933,10 +947,6 @@ opacity: 1;
 }
 """)
 
-		#スケール調整用ラジオボタン
-		self._css('input.scaleradio{display:none;}')
-		for i in range(len(self.__scales)):
-			self._html('<input id="scale%d" type="radio" name="scaleradio" class="scaleradio"/>' % i)
 		
 		#スライドの開始タグを出力
 		counter = SlideWriter.CountSlide(self._html, self._css)
@@ -961,14 +971,6 @@ opacity: 1;
 			self._html('<li><a id="navibutton%d" href="#%s%d">%d</a></li>' % (i+1, SlideWriter.slide_prefix, i+1, i+1))
 			self._css('#%s%d:target #navibutton%d{opacity: 1;}\n' % (SlideWriter.slide_prefix, i+1, i+1))
 		self._html("""</ul>""")
-		
-		for i, t in enumerate(self.__scales):
-			self._html('<label for="scale%d">%s</label>' % (i, t[0]))
-			self._css("""#scale%d:checked ~ div *.slidelayer{
--webkit-transform:scale(%f);-o-transform:scale(%f);-moz-transform:scale(%f);-ms-transform:scale(%f);transform:scale(%f);}
-#scale%d:checked ~div * label[for="scale%d"]{outline: dotted 2px #f93;}
-""" % (i, t[1], t[1], t[1], t[1], t[1], i, i))
-			
 		self._html("""</div>""")
 		
 		#スライドの終了タグを出力
