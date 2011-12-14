@@ -342,6 +342,7 @@ class Group(Container):
 		Container.__init__(self, attrs, parent)
 		self.clip_path = attrs.get((None,"clip-path"), "")
 		self.groupmode = attrs.get((inkscape,"groupmode"), "")
+		self.label = attrs.get((inkscape,"label"), "")
 		self.style = Style(attrs.get((None,"style"), ""))
 
 	def callHandler(self, handler):

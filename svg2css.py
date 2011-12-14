@@ -785,6 +785,7 @@ class SlideWriter(CSSWriter):
 			self.slides = 0
 			self._html = html
 			self._css = css
+			self.labels = {}
 		
 		def group(self, x):
 			if x.groupmode!="layer":
@@ -797,6 +798,7 @@ class SlideWriter(CSSWriter):
 			self._css("#%s:target .%s {%s}\n" % (name, SlideWriter.container_prefix, str(css)));
 			self._css("#%s{left:%d%%}\n" % (SlideWriter.container_prefix + str(self.slides), self.slides*100))
 			self._html('<div id="%s">' % name)
+			self.labels[name] = x.label
 		
 		def printEndTags(self):
 			self._html("</div>" * self.slides + "\n")
@@ -968,8 +970,10 @@ opacity: 1;
 		self._html("""<div id="menu">""")
 		self._html("""<ul id="navi">""")
 		for i in range(self.__all_slides):
-			self._html('<li><a id="navibutton%d" href="#%s%d">%d</a></li>' % (i+1, SlideWriter.slide_prefix, i+1, i+1))
-			self._css('#%s%d:target #navibutton%d{opacity: 1;}\n' % (SlideWriter.slide_prefix, i+1, i+1))
+			name = SlideWriter.slide_prefix + str(i+1)
+			self._html('<li><a id="navibutton%d" href="#%s" title=%s>%d</a></li>' %
+				(i+1, name, quoteattr(counter.labels.get(name,"")), i+1))
+			self._css('#%s:target #navibutton%d{opacity: 1;}\n' % (name, i+1))
 		self._html("""</ul>""")
 		self._html("""</div>""")
 		
