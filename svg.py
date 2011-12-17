@@ -826,7 +826,11 @@ class SVGHandler:
 		pass
 	
 	def use(self, x):
-		x.getRoot().getElementById(x.href[1:]).callHandler(self)
+		target = x.getRoot().getElementById(x.href[1:])
+		if target:
+			target.callHandler(self)
+		else:
+			print >> sys.stderr, "Element " + x.href + " is not found"
 	
 	def rect(self, x):
 		pass
