@@ -900,7 +900,6 @@ padding:0px;}
 		#メニュー
 		self._css("""#menu{
 width: 100%;
-height: 60px;
 position: absolute;
 bottom: 0px;
 opacity: 0;
@@ -920,7 +919,7 @@ padding: 0px;
 }
 #navi li{
 float:left;
-margin: 3px;
+margin: 2px;
 }
 #navi li a {
 padding: 5px 0px 0px 0px;
