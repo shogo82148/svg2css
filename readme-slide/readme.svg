@@ -1,0 +1,2423 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:jessyink="https://launchpad.net/jessyink"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800px"
+   height="600px"
+   id="svg2816"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="readme.svg">
+  <defs
+     id="defs2818">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 300 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="800 : 300 : 1"
+       inkscape:persp3d-origin="400 : 200 : 1"
+       id="perspective2824" />
+    <inkscape:perspective
+       id="perspective2846"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2944"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2955"
+       id="linearGradient3333"
+       x1="347.24408"
+       y1="126.14174"
+       x2="400.7677"
+       y2="267.53937"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(8.5039369,12.755905)" />
+    <linearGradient
+       id="linearGradient2955">
+      <stop
+         style="stop-color:#fbfcff;stop-opacity:1;"
+         offset="0"
+         id="stop2957" />
+      <stop
+         style="stop-color:#5258ef;stop-opacity:1;"
+         offset="1"
+         id="stop2959" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2955"
+       id="linearGradient2972"
+       gradientUnits="userSpaceOnUse"
+       x1="22.693371"
+       y1="28.950274"
+       x2="108.57735"
+       y2="84.930939"
+       gradientTransform="translate(1.5469614,-10.38674)" />
+    <linearGradient
+       id="linearGradient2953">
+      <stop
+         style="stop-color:#fbfcff;stop-opacity:1;"
+         offset="0"
+         id="stop2955" />
+      <stop
+         style="stop-color:#5258ef;stop-opacity:1;"
+         offset="1"
+         id="stop2958" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2955"
+       id="linearGradient2966"
+       gradientUnits="userSpaceOnUse"
+       x1="22.693371"
+       y1="28.950274"
+       x2="108.57735"
+       y2="84.930939"
+       gradientTransform="matrix(1.0511003,0,0,1.0517241,27.50652,1.2611923)" />
+    <linearGradient
+       id="linearGradient2961">
+      <stop
+         style="stop-color:#fbfcff;stop-opacity:1;"
+         offset="0"
+         id="stop2963" />
+      <stop
+         style="stop-color:#5258ef;stop-opacity:1;"
+         offset="1"
+         id="stop2965" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2955"
+       id="linearGradient2970"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0574713,0,0,1.0581729,53.099639,13.989279)"
+       x1="22.693371"
+       y1="28.950274"
+       x2="108.57735"
+       y2="84.930939" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="71.088734"
+       x2="145.94595"
+       y1="71.088734"
+       x1="128.97526"
+       gradientTransform="scale(0.75890158,1.3176939)"
+       id="linearGradient2968">
+      <stop
+         style="stop-color:#fbfcff;stop-opacity:1;"
+         offset="0"
+         id="stop2970" />
+      <stop
+         style="stop-color:#5258ef;stop-opacity:1;"
+         offset="1"
+         id="stop2972" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2913"
+       id="linearGradient2951"
+       x1="34.869572"
+       y1="85.162331"
+       x2="69.447136"
+       y2="85.162331"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.8103484,0,0,0.8087248,11.67459,15.220437)" />
+    <linearGradient
+       id="linearGradient2913">
+      <stop
+         style="stop-color:#f1ff1d;stop-opacity:1;"
+         offset="0"
+         id="stop2915" />
+      <stop
+         style="stop-color:#fba100;stop-opacity:1"
+         offset="1"
+         id="stop2917" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2913"
+       id="linearGradient2935"
+       x1="117.19492"
+       y1="96.566895"
+       x2="108.4378"
+       y2="77.16523"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.8103484,0,0,0.8087248,11.876496,9.4552995)" />
+    <linearGradient
+       id="linearGradient2979">
+      <stop
+         style="stop-color:#f1ff1d;stop-opacity:1;"
+         offset="0"
+         id="stop2981" />
+      <stop
+         style="stop-color:#fba100;stop-opacity:1"
+         offset="1"
+         id="stop2983" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2913"
+       id="linearGradient2943"
+       x1="81.277565"
+       y1="68.547112"
+       x2="91.105675"
+       y2="91.024132"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.7897017,-0.1817575,0.1813933,0.7881194,-4.8653748,24.856814)" />
+    <linearGradient
+       id="linearGradient2986">
+      <stop
+         style="stop-color:#f1ff1d;stop-opacity:1;"
+         offset="0"
+         id="stop2988" />
+      <stop
+         style="stop-color:#fba100;stop-opacity:1"
+         offset="1"
+         id="stop2990" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2913"
+       id="linearGradient2927"
+       x1="118.00729"
+       y1="86.390717"
+       x2="156.74582"
+       y2="86.390717"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.8103484,0,0,0.8087248,14.383651,12.295597)" />
+    <linearGradient
+       id="linearGradient2993">
+      <stop
+         style="stop-color:#f1ff1d;stop-opacity:1;"
+         offset="0"
+         id="stop2995" />
+      <stop
+         style="stop-color:#fba100;stop-opacity:1"
+         offset="1"
+         id="stop2997" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2913"
+       id="linearGradient2919"
+       x1="35.085781"
+       y1="55.376659"
+       x2="25.629274"
+       y2="92.503731"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.8103484,0,0,0.8087248,2.2289552,16.936481)" />
+    <linearGradient
+       id="linearGradient3000">
+      <stop
+         style="stop-color:#f1ff1d;stop-opacity:1;"
+         offset="0"
+         id="stop3002" />
+      <stop
+         style="stop-color:#fba100;stop-opacity:1"
+         offset="1"
+         id="stop3004" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2953"
+       id="linearGradient2960"
+       x1="108.78014"
+       y1="92.046555"
+       x2="104.73283"
+       y2="88.124817"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3007">
+      <stop
+         style="stop-color:#2502ff;stop-opacity:1;"
+         offset="0"
+         id="stop3009" />
+      <stop
+         style="stop-color:#a8a5ff;stop-opacity:1;"
+         offset="1"
+         id="stop3011" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2953"
+       id="linearGradient3013"
+       x1="110.75861"
+       y1="116.03537"
+       x2="106.21297"
+       y2="98.169502"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3015">
+      <stop
+         style="stop-color:#2502ff;stop-opacity:1;"
+         offset="0"
+         id="stop3017" />
+      <stop
+         style="stop-color:#a8a5ff;stop-opacity:1;"
+         offset="1"
+         id="stop3019" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2953"
+       id="linearGradient2977"
+       x1="129.11227"
+       y1="115.96979"
+       x2="120.07692"
+       y2="96.278084"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0.441989,-0.2209945)" />
+    <linearGradient
+       id="linearGradient3022">
+      <stop
+         style="stop-color:#2502ff;stop-opacity:1;"
+         offset="0"
+         id="stop3024" />
+      <stop
+         style="stop-color:#a8a5ff;stop-opacity:1;"
+         offset="1"
+         id="stop3026" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2953"
+       id="linearGradient2985"
+       x1="154.24722"
+       y1="110.70377"
+       x2="134.85132"
+       y2="87.365448"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.9962198,-0.08686864,0.08686864,0.9962198,-7.0296853,12.597208)" />
+    <linearGradient
+       id="linearGradient3029">
+      <stop
+         style="stop-color:#2502ff;stop-opacity:1;"
+         offset="0"
+         id="stop3031" />
+      <stop
+         style="stop-color:#a8a5ff;stop-opacity:1;"
+         offset="1"
+         id="stop3033" />
+    </linearGradient>
+    <inkscape:perspective
+       id="perspective6316"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6349"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4705"
+       id="linearGradient4711"
+       x1="53.623188"
+       y1="347.10144"
+       x2="752.17389"
+       y2="347.10144"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient4705">
+      <stop
+         style="stop-color:#ff0004;stop-opacity:1;"
+         offset="0"
+         id="stop4707" />
+      <stop
+         id="stop4721"
+         offset="0.1619554"
+         style="stop-color:#fcff00;stop-opacity:1;" />
+      <stop
+         id="stop4719"
+         offset="0.34050831"
+         style="stop-color:#00ff00;stop-opacity:0.93725491;" />
+      <stop
+         id="stop4717"
+         offset="0.5337137"
+         style="stop-color:#00ffff;stop-opacity:1;" />
+      <stop
+         id="stop4715"
+         offset="0.72302908"
+         style="stop-color:#0000ff;stop-opacity:1;" />
+      <stop
+         id="stop4713"
+         offset="0.86721992"
+         style="stop-color:#ff00fc;stop-opacity:1;" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="1"
+         id="stop4709" />
+    </linearGradient>
+    <linearGradient
+       y2="347.10144"
+       x2="752.17389"
+       y1="347.10144"
+       x1="53.623188"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient6363"
+       xlink:href="#linearGradient4705"
+       inkscape:collect="always" />
+    <inkscape:perspective
+       id="perspective6373"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective6391"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7060">
+      <rect
+         transform="matrix(0.90267767,-0.43031735,0.43031735,0.90267767,0,0)"
+         y="455.03864"
+         x="318.21884"
+         height="176.8116"
+         width="169.56522"
+         id="rect7062"
+         style="color:#000000;fill:none;stroke:#000000;stroke-width:6;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.84852814"
+     inkscape:cx="473.32347"
+     inkscape:cy="280.50408"
+     inkscape:current-layer="layer7"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:window-width="1024"
+     inkscape:window-height="712"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2821">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Cover"
+     inkscape:groupmode="layer"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+       x="290"
+       y="303.33334"
+       id="text2826"><tspan
+         sodipodi:role="line"
+         x="290"
+         y="303.33334"
+         style="font-size:64px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+         id="tspan2830">svg2css</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+       x="110"
+       y="270"
+       id="text2834"><tspan
+         sodipodi:role="line"
+         id="tspan2836"
+         x="110"
+         y="270" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+       x="40.023434"
+       y="379.02603"
+       id="text2826-1"><tspan
+         sodipodi:role="line"
+         x="40.023434"
+         y="379.02603"
+         style="font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+         id="tspan2830-7">An Inkscape Plugin which converts SVG to HTML+CSS</tspan></text>
+    <g
+       style="display:inline"
+       id="g3339"
+       transform="translate(119.49879,575.73856)"
+       jessyink:lockstate="unlocked"
+       jessyink:module="core_main">
+      <rect
+         style="fill:url(#linearGradient3333);fill-opacity:1;stroke:#4b4b4b;stroke-width:5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         ry="29.763779"
+         y="151.65353"
+         x="151.65353"
+         height="126.14173"
+         width="255.1181"
+         id="rect2555"
+         rx="29.763779"
+         jessyink:lockstate="unlocked" />
+      <g
+         transform="matrix(1.2400867,0,0,1.2400867,119.537,88.128618)"
+         id="g2505"
+         sodipodi:insensitive="true">
+        <path
+           style="fill:url(#linearGradient2972);fill-opacity:1;stroke:#4b4b4b;stroke-width:5;stroke-miterlimit:4;stroke-opacity:1"
+           d="m 17.679558,7.9558006 57.900548,8.3977904 c 5.264531,0 9.502763,4.238232 9.502763,9.502763 l 0,33.591155 c 0,5.264531 -4.238232,9.502763 -9.502763,9.502763 l -57.900548,3.093923 c -5.264531,0 -9.5027624,-4.238232 -9.5027624,-9.502763 l 0,-45.082868 c 0,-5.264531 4.2382314,-9.5027634 9.5027624,-9.5027634 z"
+           id="rect2953"
+           sodipodi:nodetypes="ccccccccc"
+           inkscape:connector-curvature="0"
+           sodipodi:insensitive="true" />
+        <path
+           sodipodi:nodetypes="ccccccccc"
+           id="path2964"
+           d="m 44.463497,20.552485 60.859283,7.506191 c 5.53355,0 9.98835,4.457451 9.98835,9.994285 l 0,36.654594 c 0,5.536834 -4.4548,9.994285 -9.98835,9.994285 l -60.859283,3.253953 c -5.53355,0 -9.988357,-4.457451 -9.988357,-9.994285 l 0,-47.414738 c 0,-5.536835 4.454807,-9.994285 9.988357,-9.994285 z"
+           style="fill:url(#linearGradient2966);fill-opacity:1;stroke:#4b4b4b;stroke-width:5;stroke-miterlimit:4;stroke-opacity:1"
+           inkscape:connector-curvature="0"
+           sodipodi:insensitive="true" />
+        <path
+           style="fill:url(#linearGradient2970);fill-opacity:1;stroke:#4b4b4b;stroke-width:5;stroke-miterlimit:4;stroke-opacity:1"
+           d="m 70.159398,33.39886 61.670162,6.897364 c 5.56709,0 10.04889,4.484782 10.04889,10.055566 l -0.44199,37.5342 c 0,5.570785 -4.4818,10.055566 -10.04889,10.055566 l -61.228172,3.273904 c -5.567091,0 -10.0489,-4.484774 -10.0489,-10.055565 l 0,-47.705469 c 0,-5.570784 4.481809,-10.055566 10.0489,-10.055566 z"
+           id="path2968"
+           sodipodi:nodetypes="ccccccccc"
+           inkscape:connector-curvature="0"
+           sodipodi:insensitive="true" />
+        <path
+           style="fill:url(#linearGradient2951);fill-opacity:1;fill-rule:evenodd;stroke:#b42f00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 48.259884,67.641283 -9.249586,9.350203 3.098497,14.083119 12.954885,8.1448 11.830891,-4.73576 0.209234,-8.2793 -10.948783,6.7555 -5.582124,-5.08702 14.237683,-12.995477 -16.550697,-7.236065 z m 1.425597,6.042074 4.691598,2.210246 -7.209766,7.22667 -1.629538,-5.018652 4.147706,-4.418264 z"
+           id="path2325"
+           sodipodi:nodetypes="ccccccccccccccc"
+           inkscape:connector-curvature="0"
+           sodipodi:insensitive="true" />
+        <path
+           style="fill:url(#linearGradient2935);fill-opacity:1;fill-rule:evenodd;stroke:#b42f00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 109.94416,60.389053 -16.162298,3.207044 0.7792,14.284694 10.319298,0.109926 0.73158,7.806068 -9.357078,1.47684 -3.36912,6.44553 18.094208,-2.75352 1.84443,-18.366356 -11.41865,-0.446062 -0.24637,-4.939988 5.6867,0.553387 3.0981,-7.377563 z"
+           id="path2330"
+           sodipodi:nodetypes="ccccccccccccc"
+           inkscape:connector-curvature="0"
+           sodipodi:insensitive="true" />
+        <path
+           id="path2332"
+           d="m 86.991802,59.321245 -17.65441,3.976782 0.9236,15.478742 12.196992,0.984049 -0.264526,5.823637 -6.604481,0.50644 -1.768798,8.78173 14.549013,-5.32798 0.55503,-16.748994 -11.656287,0.188649 -0.925431,-5.056257 8.558768,0.466372 2.09053,-9.07317 z"
+           style="fill:url(#linearGradient2943);fill-opacity:1;fill-rule:evenodd;stroke:#b42f00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           sodipodi:nodetypes="ccccccccccccc"
+           inkscape:connector-curvature="0"
+           sodipodi:insensitive="true" />
+        <path
+           style="fill:url(#linearGradient2927);fill-opacity:1;fill-rule:evenodd;stroke:#b42f00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 114.59915,63.241312 9.43175,0.298253 3.50186,10.747813 3.14584,-0.143736 2.05009,-10.449558 8.26851,-1.027714 -16.09638,38.9911 -14.48498,-1.33239 0,-5.174495 9.28116,-0.814 3.00488,-10.738737 -8.10273,-20.356536 z"
+           id="path2334"
+           sodipodi:nodetypes="cccccccccccc"
+           inkscape:connector-curvature="0"
+           sodipodi:insensitive="true" />
+        <path
+           style="fill:url(#linearGradient2919);fill-opacity:1;fill-rule:evenodd;stroke:#b42f00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="M 16.062616,56.920463 5.4570362,66.658553 24.598155,65.112451 25.498545,81.968272 22.455049,88.063495 15.113904,80.45544 7.9595962,85.417915 23.106022,98.641595 35.078912,84.268039 34.989542,64.110086 47.051806,63.138925 69.82447,50.165743 16.06262,56.920463 z"
+           id="path2323"
+           sodipodi:nodetypes="ccccccccccccc"
+           inkscape:connector-curvature="0"
+           sodipodi:insensitive="true" />
+        <g
+           id="g2934"
+           transform="matrix(1.0316068,0,0,1.0316068,-4.082398,-1.6657798)"
+           style="fill:none;stroke:#000089;stroke-opacity:1"
+           sodipodi:insensitive="true">
+          <path
+             transform="translate(-0.8839779,-1.9889503)"
+             style="fill:url(#linearGradient2960);fill-opacity:1;stroke:#000078;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="m 109.28116,90.193217 c 0.22246,1.812476 -0.72369,2.379049 -2.45841,2.468179 -1.74156,0.08948 -2.42423,-0.393791 -3.10552,-2.416899 -0.67276,-1.997754 -0.79272,-3.487808 1.84549,-3.457159 2.41724,0.02808 3.49637,1.596586 3.71844,3.405879 z"
+             id="path2944"
+             sodipodi:nodetypes="czzzz"
+             inkscape:connector-curvature="0"
+             sodipodi:insensitive="true" />
+          <path
+             style="fill:url(#linearGradient2968);fill-opacity:1;fill-rule:evenodd;stroke:#000078;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 104.75138,95.248619 c -0.18812,-1.446381 4.53458,-1.421367 4.86188,0 1.55265,6.742671 0.41634,14.998981 -4.64088,19.668511 -1.43343,1.32354 -7.742959,0.31861 -6.408844,-1.10498 4.720924,-5.03756 6.950464,-12.70016 6.187844,-18.563531 z"
+             id="path2946"
+             transform="translate(-0.8839779,-1.9889503)"
+             sodipodi:nodetypes="cssss"
+             inkscape:connector-curvature="0"
+             sodipodi:insensitive="true" />
+          <path
+             style="fill:url(#linearGradient2977);fill-opacity:1;fill-rule:evenodd;stroke:#000078;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 114.58656,104.84306 c -0.43426,7.19031 -3.33794,8.99215 -2.9638,9.41506 0.41723,0.47162 4.43739,0.90858 5.33871,0.13883 0.80243,-0.68529 2.34318,-4.98055 2.4182,-8.8408 0.0751,-3.8631 -0.48623,-6.868045 3.65078,-6.502628 4.137,0.365417 0.18862,15.020748 0.60948,15.741938 0.38053,0.65209 4.6516,0.22058 5.23554,-0.17359 0.62934,-0.42481 2.75103,-14.835174 -0.97859,-18.57107 -3.61748,-3.623581 -8.54627,-0.199384 -8.91517,-0.462902 -0.42674,-0.304831 0.0594,-2.704493 -0.39495,-3.381767 -0.4281,-0.638145 -3.27597,0.153961 -4.07436,0.504163 -0.72272,0.317007 0.50849,4.941228 0.0742,12.132766 z"
+             id="path2948"
+             sodipodi:nodetypes="czzzzzzzzszz"
+             inkscape:connector-curvature="0"
+             sodipodi:insensitive="true" />
+          <path
+             style="fill:url(#linearGradient2985);fill-opacity:1;fill-rule:evenodd;stroke:#000078;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 137.46641,81.381754 c -0.54541,-0.768984 -5.79254,0.761929 -6.05508,1.476138 -0.26254,0.71421 2.57354,7.775266 3.31585,15.421611 0.76377,7.867277 -0.0866,15.452987 0.61102,15.954997 0.69762,0.50201 5.35666,-0.29461 5.69702,-1.03128 0.36089,-0.78108 -1.10798,-8.62707 -0.23747,-9.51275 0.96062,-0.97739 9.01102,6.56762 10.3537,6.2204 1.25556,-0.32469 5.50398,-1.93755 5.47829,-3.17567 -0.0256,-1.23544 -12.96778,-5.19834 -13.12156,-6.38428 -0.14207,-1.095603 7.5338,-9.501322 7.56874,-10.330642 0.0387,-0.919564 -3.01276,-3.10289 -3.84765,-3.016898 -0.83837,0.08635 -6.90375,9.150034 -7.77184,9.378073 -0.95509,0.250897 -1.47028,-14.265493 -1.99102,-14.999699 z"
+             id="path2950"
+             sodipodi:nodetypes="czszzzzzzzzzz"
+             inkscape:connector-curvature="0"
+             sodipodi:insensitive="true" />
+        </g>
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3335"
+         y="256.70779"
+         x="388.6698"
+         style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:sans-serif;-inkscape-font-specification:Sans"
+         xml:space="preserve"
+         sodipodi:insensitive="true"><tspan
+           y="256.70779"
+           x="388.6698"
+           id="tspan3337"
+           sodipodi:role="line"
+           transform="matrix(1,0,0,-1,0,497.01227)"
+           jessyink:version="version"
+           sodipodi:insensitive="true">2.0.0-alpha-1</tspan></text>
+      <script
+         id="script68"
+         jessyink:scriptname="JessyInk_main.js"
+         sodipodi:insensitive="true">// Copyright 2008, 2009, 2010 Hannes Hochreiner
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see http://www.gnu.org/licenses/.
+
+function Slide(groupElement, clipPathId, slideBackgroundId)
+{
+	// States.
+	this.STATE_START = -1;
+	this.STATE_END = -2;
+
+	// Namespaces.
+	this.nss = {	'sodipodi':'http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd',
+		'cc':'http://web.resource.org/cc/',
+		'svg':'http://www.w3.org/2000/svg',
+		'dc':'http://purl.org/dc/elements/1.1/',
+		'rdf':'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+		'inkscape':'http://www.inkscape.org/namespaces/inkscape',
+		'xlink':'http://www.w3.org/1999/xlink',
+		'xml':'http://www.w3.org/XML/1998/namespace',
+		'jessyink':'https://launchpad.net/jessyink'};
+	this.elements = new Object();
+	this.origGElement = groupElement;
+	this.gElement = this.removeModulesAndIds(this.origGElement.cloneNode(true));
+	this.viewGroup = document.createElementNS(this.nss.svg, &quot;g&quot;);
+	this.transformGroup = document.createElementNS(this.nss.svg, &quot;g&quot;);
+	this.initialView = null;
+	this.init(clipPathId, slideBackgroundId);
+	this.effects = new Array();
+	this.effectIndices = new Array();
+
+	return this;
+}
+
+Slide.prototype.init = function(clipPathId, slideBackgroundId)
+{
+	// Set clip-path.
+	this.gElement.setAttribute('clip-path', 'url(#' + clipPathId + ')');
+
+	// Set background.
+	var useNode = document.createElementNS(this.nss.svg, 'use');
+
+	useNode.setAttributeNS(this.nss.xlink, 'href', '#' + slideBackgroundId);
+	this.gElement.insertBefore(useNode, this.gElement.firstChild);
+	
+	// Add content to transform group.
+	while (this.gElement.firstChild)
+	{
+		this.transformGroup.appendChild(this.gElement.firstChild);
+	}
+
+	// Transfer the transform attribute from the node to the transform group.
+	if (this.gElement.getAttribute(&quot;transform&quot;))
+	{
+		this.transformGroup.setAttribute(&quot;transform&quot;, this.gElement.getAttribute(&quot;transform&quot;));
+		this.gElement.removeAttribute(&quot;transform&quot;);
+	}
+
+	this.viewGroup.appendChild(this.transformGroup);
+
+	var matrixOld = (new matrixSVG()).fromElements(1, 0, 0, 0, 1, 0, 0, 0, 1);
+
+	// Set initial view.
+	this.viewGroup.setAttribute(&quot;transform&quot;, matrixOld.toAttribute());
+	this.initialView = { getMatrix: function() { return matrixOld; } };
+
+	this.gElement.appendChild(this.viewGroup);
+};
+
+Slide.prototype.removeModulesAndIds = function(node)
+{
+	var nodesToBeRemoved = [];
+
+	for (var nodeCounter in node.childNodes)
+	{
+		var n = node.childNodes[nodeCounter];
+
+		if ((n !== undefined) &amp;&amp; (n.nodeType === 1))
+		{
+			if (n.getAttribute('id'))
+			{
+				n.removeAttribute('id');
+			}
+
+			if (n.getAttributeNS(this.nss.jessyink, &quot;module&quot;))
+			{
+				nodesToBeRemoved.push(n);
+			}
+
+			if (n.getAttributeNS(this.nss.jessyink, &quot;element&quot;))
+			{
+				var cat = n.getAttributeNS(this.nss.jessyink, &quot;element&quot;);
+
+				// Hide element.
+				n.style.display = &quot;none&quot;;
+
+				if (!this.elements[cat])
+				{
+					this.elements[cat] = new Array();
+				}
+
+				this.elements[cat].push(n);
+			}
+
+			if (n.childNodes.length &gt; 0)
+			{
+				this.removeModulesAndIds(n);
+			}
+		}
+	}
+
+	while (nodesToBeRemoved.length &gt; 0)
+	{
+		var nd = nodesToBeRemoved.pop();
+
+		nd.parentNode.removeChild(nd);
+	}
+
+	node.removeAttribute(&quot;id&quot;);
+
+	return node;
+};
+
+Slide.prototype.hide = function(keepInTree)
+{
+	this.gElement.setAttribute(&quot;opacity&quot;,0);
+
+	if (keepInTree)
+	{
+		this.gElement.style.display = &quot;inherit&quot;;
+	}
+	else
+	{
+		this.gElement.style.display = &quot;none&quot;;
+	}
+};
+
+Slide.prototype.show = function()
+{
+	this.gElement.setAttribute(&quot;opacity&quot;,1.0);
+	this.gElement.style.display = &quot;inherit&quot;;
+};
+
+Slide.prototype.getGElement = function()
+{
+	return this.gElement;
+};
+
+Slide.prototype.addEffect = function(effect, index)
+{
+	if (!((index &gt; 0) &amp;&amp; (effect.playEffect)))
+		return;
+
+	if (this.effects[index] == undefined)
+	{
+		this.effects[index] = new Object();
+	}
+
+	if (this.effects[index].effects == undefined)
+	{
+		this.effects[index].effects = new Array();
+	}
+
+	this.effects[index].effects.push(effect);
+
+	this.updateIndices();
+};
+
+Slide.prototype.setView = function(view, index)
+{
+	if (!(index &gt;= 0 &amp;&amp; view.playEffect &amp;&amp; view.getMatrix))
+		return;
+
+	if (index == 0)
+	{
+		this.initialView = view;
+		return;
+	}
+
+	if (this.effects[index] == undefined)
+	{
+		this.effects[index] = new Object();
+	}
+
+	this.effects[index].view = view;
+
+	this.updateIndices();
+};
+
+Slide.prototype.updateIndices = function()
+{
+	this.effectIndices = new Array();
+
+	for (var elem in this.effects)
+	{
+		this.effectIndices.push(elem);
+	}
+};
+
+Slide.prototype.getEffectsAtIndex = function(index)
+{
+	var outArray = new Array();
+
+	for (var effCounter in this.effects[this.effectIndices[index]].effects)
+	{
+		outArray.push(this.effects[this.effectIndices[index]].effects[effCounter]);
+	}
+
+	if (this.effects[this.effectIndices[index]].view)
+	{
+		outArray.push(this.effects[this.effectIndices[index]].view);
+	}
+
+	return outArray;
+};
+
+Slide.prototype.getPreviousView = function(order)
+{
+	for (var indexCounter in this.effectIndices)
+	{
+		if (this.effectIndices[indexCounter] == order)
+			var index = indexCounter;
+	}
+
+	var outView = null;
+
+	for (var counter = index - 1; counter &gt;= 0 &amp;&amp; outView == null; counter--)
+	{
+		outView = this.effects[this.effectIndices[counter]].view;
+	}
+
+	if (outView == null)
+		outView = this.initialView;
+
+	return outView;
+};
+
+Slide.prototype.getEffectIndexCount = function()
+{
+	return this.effectIndices.length;
+};
+
+Slide.prototype.setToState = function(state)
+{	
+	this.viewGroup.setAttribute(&quot;transform&quot;, this.initialView.getMatrix().toAttribute());
+
+	if (this.getEffectIndexCount() &gt; 0)
+	{
+		if (state == this.STATE_END)
+		{
+			for (var counter = 0; counter &lt; this.getEffectIndexCount(); counter++)
+			{
+				for (var subCounter = 0; subCounter &lt; this.getEffectsAtIndex(counter).length; subCounter++)
+				{
+					this.getEffectsAtIndex(counter)[subCounter].playEffect(1, this.STATE_END);
+				}
+			}
+		}
+		else if (state == this.STATE_START)
+		{
+			for (var counter = this.getEffectIndexCount() - 1; counter &gt;= 0; counter--)
+			{
+				for (var subCounter = 0; subCounter &lt; this.getEffectsAtIndex(counter).length; subCounter++)
+				{
+					this.getEffectsAtIndex(counter)[subCounter].playEffect(-1, this.STATE_START);
+				}
+			}
+		}
+		else
+		{
+			setSlideToState(slide, this.STATE_START);
+		}
+	}
+};
+
+function JessyInkEffectAppear(element, direction)
+{
+	this.gElement = element;
+	this.baseDirection = direction;
+
+	return this;
+}
+
+JessyInkEffectAppear.prototype.playEffect = function (dir, time)
+{
+	if ((dir * this.baseDirection) == 1)
+	{
+		this.gElement.style.display = 'inherit';
+		this.gElement.setAttribute(&quot;opacity&quot;, 1);
+	}
+	else
+	{
+		this.gElement.style.display = 'none';
+		this.gElement.setAttribute(&quot;opacity&quot;, 0);
+	}
+
+	return true;
+};
+
+/** Main JessyInk class.
+*/
+function JessyInk()
+{
+	this.nss = {	'sodipodi':'http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd',
+		'cc':'http://web.resource.org/cc/',
+		'svg':'http://www.w3.org/2000/svg',
+		'dc':'http://purl.org/dc/elements/1.1/',
+		'rdf':'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+		'inkscape':'http://www.inkscape.org/namespaces/inkscape',
+		'xlink':'http://www.w3.org/1999/xlink',
+		'xml':'http://www.w3.org/XML/1998/namespace',
+		'jessyink':'https://launchpad.net/jessyink'};
+	this.rootNode = document.getElementsByTagNameNS(this.nss.svg, 'svg')[0];
+	this.width;
+	this.height;
+	this.bgColor;
+	this.slides = [];
+	this.currentMode = &quot;core_slide&quot;;
+	this.activeSlide = 0;
+	this.activeEffect = 0;
+	this.effectArray = [];
+	this.timeStep = 30; // 40 ms equal 25 frames per second.
+	this.lastFrameTime = null;
+	this.processingEffect = false;
+	this.transCounter = 0;
+	this.presentationLayer = null;
+
+	// Keycodes.
+	this.LEFT_KEY = 37; // cursor left keycode
+	this.UP_KEY = 38; // cursor up keycode
+	this.RIGHT_KEY = 39; // cursor right keycode
+	this.DOWN_KEY = 40; // cursor down keycode
+	this.PAGE_UP_KEY = 33; // page up keycode
+	this.PAGE_DOWN_KEY = 34; // page down keycode
+	this.HOME_KEY = 36; // home keycode
+	this.END_KEY = 35; // end keycode
+	this.ENTER_KEY = 13; // enter keycode
+	this.SPACE_KEY = 32; // space keycode
+
+	// Mouse handler actions.
+	this.MOUSE_UP = 1;
+	this.MOUSE_DOWN = 2;
+	this.MOUSE_MOVE = 3;
+	this.MOUSE_WHEEL = 4;
+
+	// States.
+	this.STATE_START = -1;
+	this.STATE_END = -2;
+
+	// Initialise char and key code dictionaries.
+	this.charCodeDictionary = this.getDefaultCharCodeDictionary();
+	this.keyCodeDictionary = this.getDefaultKeyCodeDictionary();
+
+	// Initialise mouse handler dictionary.
+	this.mouseHandlerDictionary = this.getDefaultMouseHandlerDictionary();
+
+	return this;
+}
+
+/** Private function to make the presentation scale.
+ *
+ * The function gets the width and height of the presentation either from the
+ * viewbox or the width and height attributes of the root node and saves them
+ * in the fields &quot;width&quot; and &quot;height&quot;. Afterwards, it sets the viewbox
+ * attribute, if needed, and changes the width and height attributes of the
+ * root node to 100%.
+ */
+JessyInk.prototype.setAutoScale = function()
+{
+	if (this.rootNode.getAttribute('viewBox'))
+	{
+		this.width = this.rootNode.viewBox.animVal.width;
+		this.height = this.rootNode.viewBox.animVal.height;
+	}
+	else
+	{
+		this.width = parseFloat(this.rootNode.getAttribute(&quot;width&quot;));
+		this.height = parseFloat(this.rootNode.getAttribute(&quot;height&quot;));
+		this.rootNode.setAttribute(&quot;viewBox&quot;, &quot;0 0 &quot; + this.width + &quot; &quot; + this.height);
+	}
+
+	this.rootNode.setAttribute(&quot;width&quot;, &quot;100%&quot;);
+	this.rootNode.setAttribute(&quot;height&quot;, &quot;100%&quot;);
+};
+
+/** Private function to set the background color.
+ *
+ * The function determines the background color from the sodipodi setting and
+ * applies it to the root node. It also saves the color in the field
+ * &quot;bgColor&quot; for later use with the slides.
+ */
+JessyInk.prototype.setBackgroundColor = function()
+{
+	// Setting the background color.
+	var namedViews = document.getElementsByTagNameNS(this.nss.sodipodi, &quot;namedview&quot;);
+
+	for (var counter = 0; counter &lt; namedViews.length; counter++)
+	{
+		if (namedViews[counter].hasAttribute(&quot;id&quot;) &amp;&amp; namedViews[counter].hasAttribute(&quot;pagecolor&quot;))
+		{
+			if (namedViews[counter].getAttribute(&quot;id&quot;) == &quot;base&quot;)
+			{
+				this.bgColor = namedViews[counter].getAttribute(&quot;pagecolor&quot;);
+				var newAttribute = &quot;background-color:&quot; + this.bgColor + &quot;;&quot;;
+
+				if (this.rootNode.hasAttribute(&quot;style&quot;))
+					newAttribute += this.rootNode.getAttribute(&quot;style&quot;);
+
+				this.rootNode.setAttribute(&quot;style&quot;, newAttribute);
+			}
+		}
+	}
+};
+
+/** Private function this removes the old JessyInk layer, if present.
+*/
+JessyInk.prototype.removeJessyInkLayer = function()
+{
+	// Delete existing JessyInk presentation layer.
+	var oldLayer = document.getElementById(&quot;jessyInkPresentationLayer&quot;);
+
+	if (oldLayer)
+	{
+		oldLayer.parentNode.removeChild(oldLayer);
+	}
+}
+
+/** Private function to hide all elements this are direct children of the
+ * root node.
+ *
+ * The function tries to hide any visual objects this maybe present as
+ * children of the root node. This is done to avoid any interference with the
+ * presentation and to limit the number of elements this need to be drawn.
+ */
+JessyInk.prototype.hideEverything = function()
+{
+	for (nodeNumber in this.rootNode.childNodes)
+	{
+		var nodeName = this.rootNode.childNodes[nodeNumber].nodeName;
+
+		if (nodeName !== undefined)
+		{
+			var elementsToBeHidden = ['text', 'tspan', 'tref', 'rect', 'circle', 'ellipse', 'line', 'polyline', 'polygon', 'path', 'g'];
+			var found = false;
+
+			for (var elementCounter = 0; elementCounter &lt; elementsToBeHidden.length &amp;&amp; !found; elementCounter++)
+			{
+				if (nodeName === elementsToBeHidden[elementCounter])
+				{
+					found = true;
+				}
+			}
+
+			if (found)
+			{
+				this.rootNode.childNodes[nodeNumber].style.display = 'none';
+			}
+		}
+	}
+};
+
+/** Private function for creating a new JessyInk layer.
+*/
+JessyInk.prototype.makeJessyInkLayer = function()
+{
+	var JessyInkPresentationLayer = document.createElementNS(this.nss.svg, 'g');
+
+	JessyInkPresentationLayer.setAttributeNS(this.nss.inkscape, 'groupmode', 'layer');
+	JessyInkPresentationLayer.setAttributeNS(this.nss.inkscape, 'label', 'JessyInk Presentation Layer');
+	JessyInkPresentationLayer.setAttributeNS(this.nss.jessyink, 'presentationLayer', 'presentationLayer');
+	JessyInkPresentationLayer.setAttribute('id', 'jessyInkPresentationLayer');
+	JessyInkPresentationLayer.setAttribute('opacity', 1);
+	JessyInkPresentationLayer.style.display = 'inherit';
+
+	this.presentationLayer = this.rootNode.appendChild(JessyInkPresentationLayer);
+}
+
+/** Private function to define a clip path for the slides.
+ *
+ * The function first deletes the old clip path, if present, and then creates
+ * a new one.
+ */
+JessyInk.prototype.defineClipPath = function()
+{
+	// Delete existing clip path.
+	var oldClipPath = document.getElementById(&quot;jessyInkSlideClipPath&quot;);
+
+	if (oldClipPath)
+	{
+		oldClipPath.parentNode.removeChild(oldClipPath);
+	}
+
+	// Find or create a defs node.
+	var defsNode;
+	var defsNodes = document.getElementsByTagNameNS(this.nss.svg, 'defs');
+
+	if (defsNodes.length &gt; 0)
+	{
+		defsNode = defsNodes[0];
+	}
+	else
+	{
+		defsNode = document.createElementNS(this.nss.svg, 'defs');
+		this.rootNode.appendChild(defNode);
+	}
+
+	// Create clip path.
+	var rectNode = document.createElementNS(this.nss.svg, 'rect');
+	var clipPath = document.createElementNS(this.nss.svg, 'clipPath');
+
+	rectNode.setAttribute('x', 0);
+	rectNode.setAttribute('y', 0);
+	rectNode.setAttribute('width', this.width);
+	rectNode.setAttribute('height', this.height);
+
+	clipPath.setAttribute('id', 'jessyInkSlideClipPath');
+	clipPath.setAttribute('clipPathUnits', 'userSpaceOnUse');
+
+	clipPath.appendChild(rectNode);
+
+	// Append clip path to defs node.
+	defsNode.appendChild(clipPath);
+};
+
+/** Private function to define a background layer.
+ *
+ * The function first delets the old definition, if present, and then creates
+ * a new one.
+ */
+JessyInk.prototype.defineBackground = function()
+{
+	// Delete existing background.
+	var background = document.getElementById(&quot;jessyInkSlideBackground&quot;);
+
+	if (background)
+	{
+		background.parentNode.removeChild(background);
+	}
+
+	// Find or create a defs node.
+	var defsNode;
+	var defsNodes = document.getElementsByTagNameNS(this.nss.svg, 'defs');
+
+	if (defsNodes.length &gt; 0)
+	{
+		defsNode = defsNodes[0];
+	}
+	else
+	{
+		defsNode = document.createElementNS(this.nss.svg, 'defs');
+		this.rootNode.appendChild(defNode);
+	}
+
+	// Create clip path.
+	var rectNode = document.createElementNS(this.nss.svg, 'rect');
+
+	rectNode.setAttribute('x', 0);
+	rectNode.setAttribute('y', 0);
+	rectNode.setAttribute('width', this.width);
+	rectNode.setAttribute('height', this.height);
+	rectNode.setAttribute('id', 'jessyInkBackground');
+	rectNode.setAttribute('fill', this.bgColor);
+
+	// Append clip path to defs node.
+	defsNode.appendChild(rectNode);
+};
+
+/** Private function to collect all the slides.
+*/
+JessyInk.prototype.getSlides = function()
+{
+	for (nodeNumber in this.rootNode.childNodes)
+	{
+		var nd = this.rootNode.childNodes[nodeNumber];
+
+		if ((nd !== undefined) &amp;&amp; (nd.nodeType === 1))
+		{
+			if ((nd.nodeName === 'g') &amp;&amp; (nd.getAttributeNS(this.nss.inkscape, &quot;groupmode&quot;)) &amp;&amp; (nd.getAttributeNS(this.nss.inkscape, &quot;groupmode&quot;) === 'layer') &amp;&amp; (nd.getAttributeNS(this.nss.jessyink, 'presentationLayer') != 'presentationLayer'))
+			{
+				var tmpSlide = new Slide(this.rootNode.childNodes[nodeNumber], 'jessyInkSlideClipPath', 'jessyInkSlideBackground');
+				tmpSlide.hide(true);
+				this.slides.push(tmpSlide);
+
+				document.getElementById('jessyInkPresentationLayer').appendChild(this.slides[this.slides.length - 1].getGElement());
+			}
+		}
+	}
+};
+
+JessyInk.prototype.callSlideChangingExtensions = function()
+{
+	for (module in JESSYINK.modules)
+	{
+		if (JESSYINK.modules[module].changeSlides)
+		{
+			JESSYINK.modules[module].changeSlides(this);
+		}
+	}
+};
+
+JessyInk.prototype.callSlideDecoratingExtensions = function()
+{
+	for (module in JESSYINK.modules)
+	{
+		if (JESSYINK.modules[module].decorateSlides)
+		{
+			JESSYINK.modules[module].decorateSlides(this);
+		}
+	}
+};
+
+JessyInk.prototype.initModules = function()
+{
+	for (module in JESSYINK.modules)
+	{
+		if (JESSYINK.modules[module].init)
+		{
+			JESSYINK.modules[module].init(this);
+		}
+	}
+};
+
+JessyInk.prototype.initPresentation = function()
+{
+	for (var slide in this.slides)
+	{
+		this.slides[slide].hide(false);
+	}
+
+	this.slides[0].setToState(this.STATE_START);
+	this.slides[0].show();
+};
+
+/** Function to dispatch the next effect, if there is none left, change the slide.
+ *
+ *  @param dir direction of the change (1 = forwards, -1 = backwards)
+ */
+JessyInk.prototype.dispatchEffects = function(dir)
+{
+	if (this.slides[this.activeSlide].effects &amp;&amp; (((dir == 1) &amp;&amp; (this.activeEffect &lt; this.slides[this.activeSlide].getEffectIndexCount())) || ((dir == -1) &amp;&amp; (this.activeEffect &gt; 0))))
+	{
+		this.processingEffect = true;
+
+		if (dir == 1)
+		{
+			this.effectArray = this.slides[this.activeSlide].getEffectsAtIndex(this.activeEffect);
+			this.activeEffect += dir;
+		}
+		else if (dir == -1)
+		{
+			this.activeEffect += dir;
+			this.effectArray = this.slides[this.activeSlide].getEffectsAtIndex(this.activeEffect);
+		}
+
+		this.transCounter = 0;
+		this.startTime = (new Date()).getTime();
+		this.lastFrameTime = null;
+		this.playEffects(dir);
+	}
+	else if (((dir == 1) &amp;&amp; (this.activeSlide &lt; (this.slides.length - 1))) || (((dir == -1) &amp;&amp; (this.activeSlide &gt; 0))))
+	{
+		this.changeSlide(dir);
+	}
+};
+
+/** Function to change between slides.
+ *
+ *  @param dir direction (1 = forwards, -1 = backwards)
+ */
+JessyInk.prototype.changeSlide = function(dir)
+{
+	this.processingEffect = true;
+	this.effectArray = new Array();
+
+	// Create the effect array. If transitions are set for the slide use them,
+	// if not create appear effects.
+	if (dir == 1)
+	{
+		if (this.slides[this.activeSlide].transitionOut)
+		{
+			this.effectArray[0] = this.slides[this.activeSlide].transitionOut;
+		}
+		else
+		{
+			this.effectArray[0] = new JessyInkEffectAppear(this.slides[this.activeSlide].getGElement(), -1);
+		}
+	}
+	else if (dir == -1)
+	{
+		if (this.slides[this.activeSlide].transitionIn)
+		{
+			this.effectArray[0] = this.slides[this.activeSlide].transitionIn;
+		}
+		else
+		{
+			this.effectArray[0] = new JessyInkEffectAppear(this.slides[this.activeSlide].getGElement(), 1);
+		}
+	}
+
+	this.activeSlide += dir;
+
+	if (dir == 1)
+	{
+		if (this.slides[this.activeSlide].transitionIn)
+		{
+			this.effectArray[1] = this.slides[this.activeSlide].transitionIn;
+		}
+		else
+		{
+			this.effectArray[1] = new JessyInkEffectAppear(this.slides[this.activeSlide].getGElement(), 1);
+		}
+	}
+	else if (dir == -1)
+	{
+		if (this.slides[this.activeSlide].transitionOut)
+		{
+			this.effectArray[1] = this.slides[this.activeSlide].transitionOut;
+		}
+		else
+		{
+			this.effectArray[1] = new JessyInkEffectAppear(this.slides[this.activeSlide].getGElement(), -1);
+		}
+	}
+
+	if (this.slides[this.activeSlide].effects &amp;&amp; (dir == -1))
+		this.activeEffect = this.slides[this.activeSlide].getEffectIndexCount();
+	else
+		this.activeEffect = 0;
+
+	if (dir == -1)
+		this.slides[this.activeSlide].setToState(this.STATE_END);
+	else
+		this.slides[this.activeSlide].setToState(this.STATE_START);
+
+	this.transCounter = 0;
+	this.startTime = (new Date()).getTime();
+	this.lastFrameTime = null;
+	this.playEffects(dir);
+};
+
+/** Function to play an effect.
+ *
+ *  @param dir direction in which to play the effect (1 = forwards, -1 = backwards)
+ */
+JessyInk.prototype.playEffects = function(dir)
+{
+	var done = true;
+	var suspendHandle = this.rootNode.suspendRedraw(200);
+
+	for (var counter = 0; counter &lt; this.effectArray.length; counter++)
+	{
+		done &amp;= this.effectArray[counter].playEffect(dir, this.transCounter);
+	}
+
+	this.rootNode.unsuspendRedraw(suspendHandle);
+	this.rootNode.forceRedraw();
+
+	if (!done)
+	{
+		var currentTime = (new Date()).getTime();
+		var timeDiff = 1;
+
+		this.transCounter = currentTime - this.startTime;
+
+		if (this.lastFrameTime != null)
+		{
+			timeDiff = this.timeStep - (currentTime - this.lastFrameTime);
+
+			if (timeDiff &lt;= 0)
+				timeDiff = 1;
+		}
+
+		this.lastFrameTime = currentTime;
+
+		var that = this;
+
+		window.setTimeout(function() { that.playEffects(dir); }, timeDiff);
+	}
+	else
+	{
+		window.location.hash = (this.activeSlide + 1) + '_' + this.activeEffect;
+		this.processingEffect = false;
+	}
+};
+
+/** Event handler for key press.
+ *
+ *  @param e the event
+ */
+JessyInk.prototype.keydown = function (e)
+{
+	var that = this;
+
+	if (!e)
+		e = window.event;
+
+	code = e.keyCode || e.charCode;
+
+	if (!this.processingEffect &amp;&amp; this.keyCodeDictionary[this.currentMode] &amp;&amp; this.keyCodeDictionary[this.currentMode][code])
+		this.keyCodeDictionary[this.currentMode][code]();
+	else
+		document.onkeypress = function(e) { that.keypress(e); };
+};
+
+/** Event handler for key press.
+ *
+ *  @param e the event
+ */
+JessyInk.prototype.keypress = function (e)
+{
+	document.onkeypress = null;
+
+	if (!e)
+		e = window.event;
+
+	str = String.fromCharCode(e.keyCode || e.charCode);
+
+	if (!this.processingEffect &amp;&amp; this.charCodeDictionary[this.currentMode] &amp;&amp; this.charCodeDictionary[this.currentMode][str])
+		this.charCodeDictionary[this.currentMode][str]();
+};
+
+/** Function to supply the default char code dictionary.
+ *
+ * @returns default char code dictionary
+ */
+JessyInk.prototype.getDefaultCharCodeDictionary = function()
+{
+	var that = this;
+	var charCodeDict = new Object();
+
+	charCodeDict.core_slide = new Object();
+	charCodeDict.core_slide[&quot;i&quot;] = function () { that.toggleSlideIndex(); };
+	charCodeDict.core_slide[&quot;d&quot;] = function () { that.slideSwitchToDrawingMode(); };
+	charCodeDict.core_slide[&quot;D&quot;] = function () { that.slideQueryDuration(); };
+	charCodeDict.core_slide[&quot;n&quot;] = function () { that.slideAddSlide(activeSlide); };
+	charCodeDict.core_slide[&quot;p&quot;] = function () { that.slideToggleProgressBarVisibility(); };
+	charCodeDict.core_slide[&quot;t&quot;] = function () { that.slideResetTimer(); };
+	charCodeDict.core_slide[&quot;e&quot;] = function () { that.slideUpdateExportLayer(); };
+
+	return charCodeDict;
+};
+
+/** Function to supply the default key code dictionary.
+ *
+ * @returns default key code dictionary
+ */
+JessyInk.prototype.getDefaultKeyCodeDictionary = function()
+{
+	var that = this;
+	var keyCodeDict = new Object();
+
+	keyCodeDict.core_slide = new Object();
+	keyCodeDict.core_slide[this.LEFT_KEY] = function() { that.dispatchEffects(-1); };
+	keyCodeDict.core_slide[this.RIGHT_KEY] = function() { that.dispatchEffects(1); };
+	keyCodeDict.core_slide[this.UP_KEY] = function() { that.skipEffects(-1); };
+	keyCodeDict.core_slide[this.DOWN_KEY] = function() { that.skipEffects(1); };
+	keyCodeDict.core_slide[this.PAGE_UP_KEY] = function() { that.dispatchEffects(-1); };
+	keyCodeDict.core_slide[this.PAGE_DOWN_KEY] = function() { that.dispatchEffects(1); };
+	keyCodeDict.core_slide[this.HOME_KEY] = function() { that.slideSetActiveSlide(0); };
+	keyCodeDict.core_slide[this.END_KEY] = function() { that.slideSetActiveSlide(that.slides.length - 1); };
+	keyCodeDict.core_slide[this.SPACE_KEY] = function() { that.dispatchEffects(1); };
+
+	return keyCodeDict;
+};
+
+/** Function to handle all mouse events.
+ *
+ *	@param	evnt	event
+ *	@param	action	type of event (e.g. mouse up, mouse wheel)
+ */
+JessyInk.prototype.mouseHandlerDispatch = function(evnt, action)
+{
+	if (!evnt)
+		evnt = window.event;
+
+	var retVal = true;
+
+	if (!this.processingEffect &amp;&amp; this.mouseHandlerDictionary[this.currentMode] &amp;&amp; this.mouseHandlerDictionary[this.currentMode][action])
+	{
+		var subRetVal = this.mouseHandlerDictionary[this.currentMode][action](evnt);
+
+		if (subRetVal != null &amp;&amp; subRetVal != undefined)
+			retVal = subRetVal;
+	}
+
+	if (evnt.preventDefault &amp;&amp; !retVal)
+		evnt.preventDefault();
+
+	evnt.returnValue = retVal;
+
+	return retVal;
+};
+
+/** Function to supply the default mouse handler dictionary.
+ *
+ * @returns default mouse handler dictionary
+ */
+JessyInk.prototype.getDefaultMouseHandlerDictionary = function()
+{
+	var mouseHandlerDict = new Object();
+
+	mouseHandlerDict.core_slide = new Object();
+	mouseHandlerDict.core_slide[this.MOUSE_DOWN] = function(evnt) { this.dispatchEffects(1); };
+	mouseHandlerDict.core_slide[this.MOUSE_WHEEL] = function(evnt) { this.slideMousewheel(evnt); };
+
+	return mouseHandlerDict;
+};
+
+/** Convenience function to obtain a transformation matrix from a point matrix.
+ *
+ *  @param mPoints Point matrix.
+ *  @return A transformation matrix.
+ */
+JessyInk.prototype.pointMatrixToTransformation = function(mPoints)
+{
+	  mPointsOld = (new matrixSVG()).fromElements(0, this.width, this.width, 0, 0, this.height, 1, 1, 1);
+
+		return mPointsOld.mult(mPoints.inv());
+};
+
+/** Convenience function to obtain a matrix with three corners of a rectangle.
+ *
+ *  @param rect an svg rectangle
+ *  @return a matrixSVG containing three corners of the rectangle
+ */
+JessyInk.prototype.rectToMatrix = function(rect)
+{
+	rectWidth = rect.getBBox().width;
+	rectHeight = rect.getBBox().height;
+	rectX = rect.getBBox().x;
+	rectY = rect.getBBox().y;
+	rectXcorr = 0;
+	rectYcorr = 0;
+
+	scaleX = this.width / rectWidth;
+	scaleY = this.height / rectHeight;
+
+	if (scaleX &gt; scaleY)
+	{
+		scaleX = scaleY;
+		rectXcorr -= (this.width / scaleX - rectWidth) / 2;
+		rectWidth = this.width / scaleX;
+	}
+	else
+	{
+		scaleY = scaleX;
+		rectYcorr -= (this.height / scaleY - rectHeight) / 2;
+		rectHeight = this.height / scaleY;
+	}
+
+	if (rect.transform.baseVal.numberOfItems &lt; 1)
+	{
+		mRectTrans = (new matrixSVG()).fromElements(1, 0, 0, 0, 1, 0, 0, 0, 1);
+	}
+	else
+	{
+		mRectTrans = (new matrixSVG()).fromSVGMatrix(rect.transform.baseVal.consolidate().matrix);
+	}
+
+	newBasePoints = (new matrixSVG()).fromElements(rectX, rectX, rectX, rectY, rectY, rectY, 1, 1, 1);
+	newVectors = (new matrixSVG()).fromElements(rectXcorr, rectXcorr + rectWidth, rectXcorr + rectWidth, rectYcorr, rectYcorr, rectYcorr + rectHeight, 0, 0, 0);
+
+	return mRectTrans.mult(newBasePoints.add(newVectors));
+};
+
+JessyInk.prototype.init = function()
+{
+	var suspendId = this.rootNode.suspendRedraw(1000);
+
+	this.setAutoScale();
+	this.setBackgroundColor();
+
+	this.rootNode.unsuspendRedraw(suspendId);
+	suspendId = this.rootNode.suspendRedraw(2000);
+
+	this.removeJessyInkLayer();
+	this.hideEverything();
+	this.makeJessyInkLayer();
+	this.defineClipPath();
+	this.defineBackground();
+	this.getSlides();
+	this.callSlideChangingExtensions();
+	this.callSlideDecoratingExtensions();
+	this.initModules();
+	this.initPresentation();
+
+	this.rootNode.unsuspendRedraw(suspendId);
+	this.rootNode.forceRedraw();
+
+	var that = this;
+	// Set mouse event handler.
+//	document.onmousedown = function(e) { return this.mouseHandlerDispatch(e, MOUSE_DOWN); };
+//	document.onmouseup = function(e) { return this.mouseHandlerDispatch(e, MOUSE_UP); };
+//	document.onmousemove = function(e) { return this.mouseHandlerDispatch(e, MOUSE_MOVE); };
+//
+//	// Moz
+//	if (window.addEventListener)
+//	{
+//		window.addEventListener('DOMMouseScroll', function(e) { return this.mouseHandlerDispatch(e, MOUSE_WHEEL); }, false);
+//	}
+//
+//	// Opera Safari OK - may not work in IE
+//	window.onmousewheel = function(e) { return this.mouseHandlerDispatch(e, MOUSE_WHEEL); };
+
+	// Set event handler for key down.
+	document.onkeydown = function(e) { that.keydown(e); };
+};
+
+if (typeof(JESSYINK) === &quot;undefined&quot;)
+{
+	JESSYINK = new Object();
+}
+
+JESSYINK.main = new JessyInk();
+
+window.onload = function() { JESSYINK.main.init(); };
+
+/** Class representing an svg matrix.
+*/
+function matrixSVG()
+{
+	this.e11 = 0; // a
+	this.e12 = 0; // c
+	this.e13 = 0; // e
+	this.e21 = 0; // b
+	this.e22 = 0; // d
+	this.e23 = 0; // f
+	this.e31 = 0;
+	this.e32 = 0;
+	this.e33 = 0;
+}
+
+/** Constructor function.
+ *
+ *	@param a element a (i.e. 1, 1) as described in the svg standard.
+ *	@param b element b (i.e. 2, 1) as described in the svg standard.
+ *	@param c element c (i.e. 1, 2) as described in the svg standard.
+ *	@param d element d (i.e. 2, 2) as described in the svg standard.
+ *	@param e element e (i.e. 1, 3) as described in the svg standard.
+ *	@param f element f (i.e. 2, 3) as described in the svg standard.
+ */
+matrixSVG.prototype.fromSVGElements = function(a, b, c, d, e, f)
+{
+	this.e11 = a;
+	this.e12 = c;
+	this.e13 = e;
+	this.e21 = b;
+	this.e22 = d;
+	this.e23 = f;
+	this.e31 = 0;
+	this.e32 = 0;
+	this.e33 = 1;
+
+	return this;
+}
+
+/** Constructor function.
+ *
+ *	@param matrix an svg matrix as described in the svg standard.
+ */
+matrixSVG.prototype.fromSVGMatrix = function(m)
+{
+	this.e11 = m.a;
+	this.e12 = m.c;
+	this.e13 = m.e;
+	this.e21 = m.b;
+	this.e22 = m.d;
+	this.e23 = m.f;
+	this.e31 = 0;
+	this.e32 = 0;
+	this.e33 = 1;
+
+	return this;
+}
+
+/** Constructor function.
+ *
+ *	@param e11 element 1, 1 of the matrix.
+ *	@param e12 element 1, 2 of the matrix.
+ *	@param e13 element 1, 3 of the matrix.
+ *	@param e21 element 2, 1 of the matrix.
+ *	@param e22 element 2, 2 of the matrix.
+ *	@param e23 element 2, 3 of the matrix.
+ *	@param e31 element 3, 1 of the matrix.
+ *	@param e32 element 3, 2 of the matrix.
+ *	@param e33 element 3, 3 of the matrix.
+ */
+matrixSVG.prototype.fromElements = function(e11, e12, e13, e21, e22, e23, e31, e32, e33)
+{
+	this.e11 = e11;
+	this.e12 = e12;
+	this.e13 = e13;
+	this.e21 = e21;
+	this.e22 = e22;
+	this.e23 = e23;
+	this.e31 = e31;
+	this.e32 = e32;
+	this.e33 = e33;
+
+	return this;
+}
+
+/** Constructor function.
+ *
+ *	@param attrString string value of the &quot;transform&quot; attribute (currently only &quot;matrix&quot; is accepted)
+ */
+matrixSVG.prototype.fromAttribute = function(attrString)
+{
+	str = attrString.substr(7, attrString.length - 8);
+
+	str = str.trim();
+
+	strArray = str.split(&quot;,&quot;);
+
+	// Opera does not use commas to separate the values of the matrix, only spaces.
+	if (strArray.length != 6)
+		strArray = str.split(&quot; &quot;);
+
+	this.e11 = parseFloat(strArray[0]);
+	this.e21 = parseFloat(strArray[1]);
+	this.e31 = 0;
+	this.e12 = parseFloat(strArray[2]);
+	this.e22 = parseFloat(strArray[3]);
+	this.e32 = 0;
+	this.e13 = parseFloat(strArray[4]);
+	this.e23 = parseFloat(strArray[5]);
+	this.e33 = 1;
+
+	return this;
+}
+
+/** Output function
+ *
+ *	@return a string that can be used as the &quot;transform&quot; attribute.
+ */
+matrixSVG.prototype.toAttribute = function()
+{
+	return &quot;matrix(&quot; + this.e11 + &quot;, &quot; + this.e21 + &quot;, &quot; + this.e12 + &quot;, &quot; + this.e22 + &quot;, &quot; + this.e13 + &quot;, &quot; + this.e23 + &quot;)&quot;;
+}
+
+/** Matrix nversion.
+ *
+ *	@return the inverse of the matrix
+ */
+matrixSVG.prototype.inv = function()
+{
+	out = new matrixSVG();
+
+	det = this.e11 * (this.e33 * this.e22 - this.e32 * this.e23) - this.e21 * (this.e33 * this.e12 - this.e32 * this.e13) + this.e31 * (this.e23 * this.e12 - this.e22 * this.e13);
+
+	out.e11 =  (this.e33 * this.e22 - this.e32 * this.e23) / det;
+	out.e12 = -(this.e33 * this.e12 - this.e32 * this.e13) / det;
+	out.e13 =  (this.e23 * this.e12 - this.e22 * this.e13) / det;
+	out.e21 = -(this.e33 * this.e21 - this.e31 * this.e23) / det;
+	out.e22 =  (this.e33 * this.e11 - this.e31 * this.e13) / det;
+	out.e23 = -(this.e23 * this.e11 - this.e21 * this.e13) / det;
+	out.e31 =  (this.e32 * this.e21 - this.e31 * this.e22) / det;
+	out.e32 = -(this.e32 * this.e11 - this.e31 * this.e12) / det;
+	out.e33 =  (this.e22 * this.e11 - this.e21 * this.e12) / det;
+
+	return out;
+}
+
+/** Matrix multiplication.
+ *
+ *	@param op another svg matrix
+ *	@return this * op
+ */
+matrixSVG.prototype.mult = function(op)
+{
+	out = new matrixSVG();
+
+	out.e11 = this.e11 * op.e11 + this.e12 * op.e21 + this.e13 * op.e31;
+	out.e12 = this.e11 * op.e12 + this.e12 * op.e22 + this.e13 * op.e32;
+	out.e13 = this.e11 * op.e13 + this.e12 * op.e23 + this.e13 * op.e33;
+	out.e21 = this.e21 * op.e11 + this.e22 * op.e21 + this.e23 * op.e31;
+	out.e22 = this.e21 * op.e12 + this.e22 * op.e22 + this.e23 * op.e32;
+	out.e23 = this.e21 * op.e13 + this.e22 * op.e23 + this.e23 * op.e33;
+	out.e31 = this.e31 * op.e11 + this.e32 * op.e21 + this.e33 * op.e31;
+	out.e32 = this.e31 * op.e12 + this.e32 * op.e22 + this.e33 * op.e32;
+	out.e33 = this.e31 * op.e13 + this.e32 * op.e23 + this.e33 * op.e33;
+
+	return out;
+}
+
+/** Matrix addition.
+ *
+ *	@param op another svg matrix
+ *	@return this + op
+ */
+matrixSVG.prototype.add = function(op)
+{
+	out = new matrixSVG();
+
+	out.e11 = this.e11 + op.e11;
+	out.e12 = this.e12 + op.e12;
+	out.e13 = this.e13 + op.e13;
+	out.e21 = this.e21 + op.e21;
+	out.e22 = this.e22 + op.e22;
+	out.e23 = this.e23 + op.e23;
+	out.e31 = this.e31 + op.e31;
+	out.e32 = this.e32 + op.e32;
+	out.e33 = this.e33 + op.e33;
+
+	return out;
+}
+
+/** Matrix mixing.
+ *
+ *	@param op another svg matrix
+ *	@parma contribOp contribution of the other matrix (0 &lt;= contribOp &lt;= 1)
+ *	@return (1 - contribOp) * this + contribOp * op
+ */
+matrixSVG.prototype.mix = function(op, contribOp)
+{
+	contribThis = 1.0 - contribOp;
+	out = new matrixSVG();
+
+	out.e11 = contribThis * this.e11 + contribOp * op.e11;
+	out.e12 = contribThis * this.e12 + contribOp * op.e12;
+	out.e13 = contribThis * this.e13 + contribOp * op.e13;
+	out.e21 = contribThis * this.e21 + contribOp * op.e21;
+	out.e22 = contribThis * this.e22 + contribOp * op.e22;
+	out.e23 = contribThis * this.e23 + contribOp * op.e23;
+	out.e31 = contribThis * this.e31 + contribOp * op.e31;
+	out.e32 = contribThis * this.e32 + contribOp * op.e32;
+	out.e33 = contribThis * this.e33 + contribOp * op.e33;
+
+	return out;
+}
+
+/** Trimming function for strings.
+*/
+String.prototype.trim = function()
+{
+	return this.replace(/^\s+|\s+$/g, '');
+}
+
+</script>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="How to Install"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="36.666668"
+       y="83.333328"
+       id="text2955"><tspan
+         sodipodi:role="line"
+         id="tspan2957"
+         x="36.666668"
+         y="83.333328"
+         style="font-size:64px">How to Install</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="53.500839"
+       y="168.24957"
+       id="text2959"><tspan
+         sodipodi:role="line"
+         x="53.500839"
+         y="168.24957"
+         id="tspan2977">Copy the following files to</tspan><tspan
+         sodipodi:role="line"
+         x="53.500839"
+         y="208.24957"
+         id="tspan2981">/path/to/inkscape/share/extentions/</tspan><tspan
+         sodipodi:role="line"
+         x="53.500839"
+         y="248.24957"
+         id="tspan2973" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="131.99326"
+       y="257.05322"
+       id="text2988"><tspan
+         sodipodi:role="line"
+         id="tspan2990"
+         x="131.99326"
+         y="257.05322">* svg2css.py</tspan><tspan
+         sodipodi:role="line"
+         x="131.99326"
+         y="297.05322"
+         id="tspan2992">* svg.py</tspan><tspan
+         sodipodi:role="line"
+         x="131.99326"
+         y="337.05322"
+         id="tspan2994">* svg2css.inx</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="How to Use"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="43.604919"
+       y="73.205452"
+       id="text3005"><tspan
+         sodipodi:role="line"
+         id="tspan3007"
+         x="43.604919"
+         y="73.205452"
+         style="font-size:64px">How to Use</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="56.568546"
+       y="153.34422"
+       id="text2968"><tspan
+         sodipodi:role="line"
+         id="tspan2970"
+         x="56.568546"
+         y="153.34422">Step1.</tspan><tspan
+         sodipodi:role="line"
+         x="56.568546"
+         y="193.34422"
+         id="tspan2988">Draw your graphics with Rectangles and/or Ellipses</tspan></text>
+    <rect
+       style="color:#000000;fill:#ff0000;stroke:#000080;stroke-width:3;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect2972"
+       width="143.77838"
+       height="83.674301"
+       x="259.27249"
+       y="212.26979"
+       rx="5.5767522"
+       ry="3.6366515" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:#00ff00;fill-opacity:1;fill-rule:nonzero;stroke:#ffff00;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path2974"
+       sodipodi:cx="290.50302"
+       sodipodi:cy="244.08958"
+       sodipodi:rx="79.549515"
+       sodipodi:ry="43.604919"
+       d="m 370.05254,244.08958 a 79.549515,43.604919 0 1 1 -159.09903,0 79.549515,43.604919 0 1 1 159.09903,0 z"
+       transform="translate(134.3503,38.890873)" />
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="51.8545"
+       y="426.75882"
+       id="text2976"><tspan
+         sodipodi:role="line"
+         id="tspan2978"
+         x="51.8545"
+         y="426.75882">Step2.</tspan><tspan
+         sodipodi:role="line"
+         x="51.8545"
+         y="466.75882"
+         id="tspan2991">Save with type &quot;HTML+CSS(.html)&quot;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="226.27417"
+       y="348.97708"
+       id="text2980"><tspan
+         sodipodi:role="line"
+         x="226.27417"
+         y="348.97708"
+         id="tspan2984"
+         style="font-size:20px">note: You can't use lines and/or curves svg2css can't convert them</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer8"
+     inkscape:label="Functions"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="51.854488"
+       y="244.0896"
+       id="text2994"><tspan
+         sodipodi:role="line"
+         id="tspan2996"
+         x="51.854488"
+         y="244.0896"
+         style="font-size:64px">What can svg2css convert?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="232.16672"
+       y="312.44324"
+       id="text2998"><tspan
+         sodipodi:role="line"
+         id="tspan3000"
+         x="232.16672"
+         y="312.44324"
+         style="font-size:32px">I'll show some examples</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Transforms"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+       x="119.85507"
+       y="329.99997"
+       id="text4589"><tspan
+         sodipodi:role="line"
+         id="tspan4591"
+         x="119.85507"
+         y="329.99997"
+         style="font-size:48px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">Rotation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+       x="507.2464"
+       y="330.43475"
+       id="text4595"><tspan
+         sodipodi:role="line"
+         id="tspan4597"
+         x="507.2464"
+         y="330.43475"
+         style="font-size:48px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">Skew</tspan></text>
+    <g
+       style="display:inline"
+       id="g4628"
+       transform="matrix(0.89076354,0,0,0.89076354,-119.18398,-563.3999)">
+      <rect
+         ry="11.616755"
+         y="412.47565"
+         x="275.47012"
+         height="76.112457"
+         width="24.364952"
+         id="rect2830-4"
+         style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         ry="11.616755"
+         y="412.71976"
+         x="419.00549"
+         height="75.818886"
+         width="24.364952"
+         id="rect2830-2-5"
+         style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         ry="11.616755"
+         y="491.26755"
+         x="326.78378"
+         height="56.063465"
+         width="24.243662"
+         id="rect3626-0"
+         style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         ry="11.616755"
+         y="490.50992"
+         x="368.20004"
+         height="56.063465"
+         width="24.243662"
+         id="rect3626-6-1"
+         style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         ry="11.616755"
+         y="420.55685"
+         x="303.7905"
+         height="87.121269"
+         width="110.92019"
+         id="rect3650-4"
+         style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         ry="51.51778"
+         y="359.95374"
+         x="303.7905"
+         height="122.34391"
+         width="110.92019"
+         id="rect3652-5"
+         style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         transform="matrix(0.87562738,-0.48298725,0.48298725,0.87562738,0,0)"
+         ry="1.767767"
+         y="461.92853"
+         x="114.04214"
+         height="29.7995"
+         width="3.5355339"
+         id="rect3654"
+         style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         inkscape:transform-center-y="-2.7779195"
+         inkscape:transform-center-x="2.6516504"
+         transform="matrix(-0.87562738,-0.48298725,-0.48298725,0.87562738,0,0)"
+         ry="1.767767"
+         y="114.84434"
+         x="-515.46246"
+         height="29.7995"
+         width="3.5355339"
+         id="rect3654-9"
+         style="fill:#a5ca39;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         ry="4.4194174"
+         y="381.47659"
+         x="329.81424"
+         height="9.3439112"
+         width="8.8388348"
+         id="rect3678-6"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         inkscape:transform-center-y="-0.69447988"
+         inkscape:transform-center-x="15.404826"
+         ry="4.4194174"
+         y="381.47659"
+         x="380.38501"
+         height="9.3439112"
+         width="8.8388348"
+         id="rect3678-7-2"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline" />
+      <rect
+         y="410.5816"
+         x="301.34058"
+         height="4.1669521"
+         width="116.73573"
+         id="rect3704-0"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline" />
+    </g>
+    <use
+       style="display:inline"
+       x="0"
+       y="0"
+       xlink:href="#g4628"
+       id="use4659"
+       transform="matrix(0.89926359,-0.43740713,0.43740713,0.89926359,84.017295,427.16808)"
+       width="800"
+       height="600" />
+    <use
+       style="display:inline"
+       x="0"
+       y="0"
+       xlink:href="#g4628"
+       id="use4661"
+       transform="matrix(1,0,1.1360592,1,518.00329,363.76811)"
+       width="800"
+       height="600" />
+    <use
+       style="display:inline"
+       x="0"
+       y="0"
+       xlink:href="#g4628"
+       id="use4692"
+       transform="matrix(2.2775005,0,0,1,-94.547202,607.24638)"
+       width="800"
+       height="600" />
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+       x="323.47824"
+       y="583.91302"
+       id="text4694"><tspan
+         sodipodi:role="line"
+         id="tspan4696"
+         x="323.47824"
+         y="583.91302"
+         style="font-size:48px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">Scale</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="50"
+       y="90"
+       id="text3062"><tspan
+         sodipodi:role="line"
+         id="tspan3064"
+         x="50"
+         y="90"
+         style="font-size:64px">Transforms</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Gradients"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="50"
+       y="103.33334"
+       id="text3067"><tspan
+         sodipodi:role="line"
+         id="tspan3069"
+         x="50"
+         y="103.33334"
+         style="font-size:64px">Gradients</tspan></text>
+    <rect
+       style="color:#000000;fill:url(#linearGradient6363);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4703"
+       width="698.55072"
+       height="436.23187"
+       x="53.623188"
+       y="128.9855" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Opacity"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="46.666664"
+       y="96.666664"
+       id="text3101"><tspan
+         sodipodi:role="line"
+         id="tspan3103"
+         x="46.666664"
+         y="96.666664"
+         style="font-size:64px">Opacity</tspan></text>
+    <rect
+       style="fill:#ff0000;fill-opacity:0.49803922;stroke:none;display:inline"
+       id="rect6431"
+       width="201.84097"
+       height="201.84097"
+       x="22.246376"
+       y="195.16452"
+       ry="60.552292" />
+    <rect
+       style="fill:#00ff00;fill-opacity:0.49803922;stroke:none;display:inline"
+       id="rect6431-2"
+       width="201.84097"
+       height="201.84097"
+       x="163.53506"
+       y="195.16452"
+       ry="60.552292" />
+    <rect
+       style="fill:#0000ff;fill-opacity:0.49803922;stroke:none;display:inline"
+       id="rect6431-27"
+       width="201.84097"
+       height="201.84097"
+       x="82.798668"
+       y="255.71683"
+       ry="60.552292" />
+    <rect
+       style="fill:none;stroke:#ff0000;stroke-width:20.18409729;stroke-miterlimit:4;stroke-opacity:0.49803922;stroke-dasharray:none;display:inline"
+       id="rect6431-4"
+       width="201.84097"
+       height="201.84097"
+       x="415.83627"
+       y="195.16452"
+       ry="60.552292" />
+    <rect
+       style="fill:none;stroke:#00ff00;stroke-width:20.18409729;stroke-miterlimit:4;stroke-opacity:0.49803922;stroke-dasharray:none;display:inline"
+       id="rect6431-2-0"
+       width="201.84097"
+       height="201.84097"
+       x="557.12494"
+       y="195.16452"
+       ry="60.552292" />
+    <rect
+       style="fill:none;stroke:#0000ff;stroke-width:20.18409729;stroke-miterlimit:4;stroke-opacity:0.49803922;stroke-dasharray:none;display:inline"
+       id="rect6431-27-3"
+       width="201.84097"
+       height="201.84097"
+       x="476.38858"
+       y="255.71683"
+       ry="60.552292" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Clip"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+       x="52.608696"
+       y="107.82608"
+       id="text4748"><tspan
+         sodipodi:role="line"
+         id="tspan4750"
+         x="52.608696"
+         y="107.82608"
+         style="font-family:Times New Roman;-inkscape-font-specification:Times New Roman">Clip</tspan></text>
+    <use
+       style="display:inline"
+       x="0"
+       y="0"
+       xlink:href="#g4628"
+       id="use4752"
+       width="1"
+       height="1"
+       transform="matrix(1.4905296,0,0,1.4905296,-122.33705,631.41318)" />
+    <rect
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:6;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4776"
+       width="169.56522"
+       height="176.8116"
+       x="-68.560524"
+       y="270.93851"
+       transform="matrix(0.90267767,-0.43031735,0.43031735,0.90267767,0,0)" />
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
+       x="330.43478"
+       y="400"
+       id="text4778"><tspan
+         sodipodi:role="line"
+         x="330.43478"
+         y="400"
+         id="tspan4782"
+         style="font-size:144px">→</tspan></text>
+    <g
+       transform="translate(0,4e-6)"
+       style="display:inline"
+       id="g7056"
+       clip-path="url(#clipPath7060)">
+      <use
+         inkscape:label="#use4752-4"
+         clip-path="none"
+         transform="matrix(1.4905296,0,0,1.4905296,306.02152,631.15841)"
+         height="1"
+         width="1"
+         id="use5tewq"
+         xlink:href="#g4628"
+         y="0"
+         x="0"
+         style="display:inline" />
+      <rect
+         y="197.10146"
+         x="485.50723"
+         height="18.84058"
+         width="23.188406"
+         id="rect7054"
+         style="color:#000000;fill:#00000c;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="Slide"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="56.568542"
+       y="82.633545"
+       id="text3003"><tspan
+         sodipodi:role="line"
+         id="tspan3005"
+         x="56.568542"
+         y="82.633545"
+         style="font-size:64px">Slides</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="49.497475"
+       y="176.91444"
+       id="text3007"><tspan
+         sodipodi:role="line"
+         x="49.497475"
+         y="176.91444"
+         style="font-size:32px"
+         id="tspan3011">You can make slides such as this readme slide.</tspan><tspan
+         sodipodi:role="line"
+         x="49.497475"
+         y="216.91444"
+         style="font-size:32px"
+         id="tspan3019" /><tspan
+         sodipodi:role="line"
+         x="49.497475"
+         y="256.91443"
+         style="font-size:32px"
+         id="tspan3015">Download JessyInk(http://code.google.com/p/jessyink/)</tspan><tspan
+         sodipodi:role="line"
+         x="49.497475"
+         y="296.91446"
+         style="font-size:32px"
+         id="tspan3017"></tspan><tspan
+         sodipodi:role="line"
+         x="49.497475"
+         y="336.91446"
+         style="font-size:32px"
+         id="tspan3021">and Copy&amp;Paste JessyInk Core to your slide.</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer10"
+     inkscape:label="Have Fun!"
+     style="display:none">
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="252.20142"
+       y="297.12259"
+       id="text3024"><tspan
+         sodipodi:role="line"
+         id="tspan3026"
+         x="252.20142"
+         y="297.12259"><tspan
+           style="font-size:64px"
+           id="tspan3028">Have Fun! </tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="263.98654"
+       y="569.3587"
+       id="text3030"><tspan
+         sodipodi:role="line"
+         id="tspan3032"
+         x="263.98654"
+         y="569.3587">Copyright(C) shogo82148(shogo82148@gmail.com)</tspan></text>
+  </g>
+</svg>
