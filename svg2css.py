@@ -382,6 +382,10 @@ class CSSWriter(svg.SVGHandler):
 				transform = element.transform.toMatrix()
 				transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
 				transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
+				css["left"] += transform.e
+				css["top"] += transform.f
+				transform.e = 0
+				transform.f = 0
 				css["transform"] = transform
 			
 			#透明度を指定
@@ -444,6 +448,10 @@ class CSSWriter(svg.SVGHandler):
 					transform = element.transform.toMatrix()
 					transform = transform * svg.Transform.Translate(x-10000+width/2, y-10000+height/2)
 					transform = svg.Transform.Translate(-x+10000-width/2, -y+10000-height/2) * transform
+					css["left"] += transform.e
+					css["top"] += transform.f
+					transform.e = 0
+					transform.f = 0
 					css["transform"] = transform
 
 					#透明度を指定
@@ -501,6 +509,10 @@ class CSSWriter(svg.SVGHandler):
 					transform = element.transform.toMatrix()
 					transform = transform * svg.Transform.Translate(x+width/2, y+height/2)
 					transform = svg.Transform.Translate(-x-width/2, -y-height/2) * transform
+					css["left"] += transform.e
+					css["top"] += transform.f
+					transform.e = 0
+					transform.f = 0
 					css["transform"] = transform
 
 				#透明度を指定
