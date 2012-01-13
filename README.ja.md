@@ -1,22 +1,22 @@
 svg2css
 ======================
-SVG��HTML+CSS�ɕϊ�����Inkscape�̃v���O�C���ł��B
+SVGをHTML+CSSに変換するInkscapeのプラグインです。
 
-## �C���X�g�[��
-���̃t�@�C���� (Inkscape�̃C���X�g�[���t�H���_)/share/extensions �ɃR�s�[���Ă�������
+## インストール
+次のファイルを (Inkscapeのインストールフォルダ)/share/extensions にコピーしてください
 
 * svg2css.py
 * svg.py
 * svg2css.inx
 
-## ���s
-"HTML+CSS(.html)"�Ƃ����t�@�C���`���ŕۑ����邱�ƂŁAHTML+CSS�ɕϊ��ł��܂��B
+## 実行
+"HTML+CSS(.html)"というファイル形式で保存することで、HTML+CSSに変換できます。
 
-�ڍׂ� readme-slide/index.ja.html ���m�F���Ă��������B
+詳細は readme-slide/index.ja.html を確認してください。
 
-## ���C�Z���X
+## ライセンス
 Copyright &copy; 2011 Shogo Ichinose
 
-[MIT License][mit]�Ŕz�z����Ă��܂��B
+[MIT License][mit]で配布されています。
 
 [MIT]: http://www.opensource.org/licenses/mit-license.php
