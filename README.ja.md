@@ -17,6 +17,10 @@ SVGをHTML+CSSに変換するInkscapeのプラグインです。
 ## ライセンス
 Copyright &copy; 2011 Shogo Ichinose
 
+アイコンは @honki に描いてもらったもので，
+著作権は @hinki にあります．
+ありがとうございます．
+
 [MIT License][mit]で配布されています。
 
 [MIT]: http://www.opensource.org/licenses/mit-license.php

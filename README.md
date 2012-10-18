@@ -17,6 +17,9 @@ Please see readme-slide/index.html to get more details.
 ## License
 Copyright &copy; 2011 Shogo Ichinose
 
+The icon is made by @honki, and @honki has its copyright.
+thx.
+
 Distributed under the [MIT License][mit].
 
 [MIT]: http://www.opensource.org/licenses/mit-license.php

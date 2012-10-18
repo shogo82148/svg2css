@@ -15,7 +15,7 @@
    height="600px"
    id="svg2816"
    version="1.1"
-   inkscape:version="0.47 r22583"
+   inkscape:version="0.48.1 r9760"
    sodipodi:docname="readme.svg">
   <defs
      id="defs2818">
@@ -415,15 +415,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.84852814"
-     inkscape:cx="473.32347"
+     inkscape:cx="311.86742"
      inkscape:cy="280.50408"
-     inkscape:current-layer="layer7"
+     inkscape:current-layer="layer1"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:window-width="1024"
-     inkscape:window-height="712"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
+     inkscape:window-width="1280"
+     inkscape:window-height="948"
+     inkscape:window-x="1280"
+     inkscape:window-y="25"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata2821">
@@ -433,7 +433,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -441,18 +441,7 @@
      id="layer1"
      inkscape:label="Cover"
      inkscape:groupmode="layer"
-     style="display:none">
-    <text
-       xml:space="preserve"
-       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
-       x="290"
-       y="303.33334"
-       id="text2826"><tspan
-         sodipodi:role="line"
-         x="290"
-         y="303.33334"
-         style="font-size:64px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
-         id="tspan2830">svg2css</tspan></text>
+     style="display:inline">
     <text
        xml:space="preserve"
        style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
@@ -1854,6 +1843,15 @@ String.prototype.trim = function()
 
 </script>
     </g>
+    <image
+       sodipodi:absref="/home/ichinose/workspace/svg2css/readme-slide/svg2css.svg"
+       xlink:href="svg2css.svg"
+       style="display:inline"
+       width="239.04648"
+       height="239.04648"
+       id="image4084"
+       x="281.53671"
+       y="77.655724" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -1912,7 +1910,7 @@ String.prototype.trim = function()
      inkscape:groupmode="layer"
      id="layer7"
      inkscape:label="How to Use"
-     style="display:inline">
+     style="display:none">
     <text
        xml:space="preserve"
        style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
@@ -2385,7 +2383,7 @@ String.prototype.trim = function()
          x="49.497475"
          y="296.91446"
          style="font-size:32px"
-         id="tspan3017"></tspan><tspan
+         id="tspan3017" /><tspan
          sodipodi:role="line"
          x="49.497475"
          y="336.91446"

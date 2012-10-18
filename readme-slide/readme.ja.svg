@@ -15,7 +15,7 @@
    height="600px"
    id="svg2816"
    version="1.1"
-   inkscape:version="0.47 r22583"
+   inkscape:version="0.48.1 r9760"
    sodipodi:docname="readme.ja.svg">
   <defs
      id="defs2818">
@@ -406,6 +406,74 @@
          id="rect7062"
          style="color:#000000;fill:none;stroke:#000000;stroke-width:6;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     </clipPath>
+    <g
+       style="fill:#ffffff"
+       id="SVG-5"
+       transform="matrix(2,0,0,2,40,158)">
+      <path
+         inkscape:connector-curvature="0"
+         id="S-9"
+         d="M 5.482,31.319 C 2.163,28.001 0.109,23.419 0.109,18.358 0.109,8.232 8.322,0.024 18.443,0.024 c 10.126,0 18.339,8.208 18.339,18.334 l -10.74,0 c 0,-4.194 -3.404,-7.593 -7.599,-7.593 -4.194,0 -7.593,3.399 -7.593,7.593 0,2.095 0.851,3.993 2.22,5.363 l 0.005,0 c 1.375,1.38 2.52,1.779 5.368,2.231 l 0,0 c 5.066,0.527 9.648,2.054 12.966,5.372 l 0,0 c 3.319,3.319 5.373,7.901 5.373,12.962 0,10.126 -8.213,18.339 -18.339,18.339 -10.121,0 -18.334,-8.213 -18.334,-18.339 l 10.741,0 c 0,4.194 3.399,7.598 7.593,7.598 4.195,0 7.599,-3.404 7.599,-7.598 0,-2.095 -0.851,-3.988 -2.221,-5.363 l -0.005,0 c -1.375,-1.375 -3.348,-1.849 -5.373,-2.226 l 0,-0.005 C 13.533,35.939 8.8,34.638 5.482,31.319 l 0,0 0,0 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="V-0"
+         d="m 73.452,0.024 -12.97,62.601 -10.74,0 -12.96,-62.601 10.74,0 7.6,36.663 7.59,-36.663 10.74,0 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="G-2"
+         d="m 91.792,25.952 18.334,0 0,18.334 0.005,0 c 0,10.127 -8.213,18.34 -18.339,18.34 -10.127,0 -18.334,-8.213 -18.334,-18.34 l 0,0 0,-25.927 -0.005,0 c 0,-10.126 8.212,-18.334 18.339,-18.334 10.121,0 18.334,8.208 18.334,18.334 l -10.741,0 c 0,-4.19 -3.404,-7.594 -7.593,-7.594 -4.195,0 -7.594,3.404 -7.594,7.594 l 0,25.927 0,0 c 0,4.195 3.399,7.594 7.594,7.594 4.189,0 7.588,-3.399 7.593,-7.589 l 0,-0.005 0,-7.588 -7.593,0 0,-10.746 0,0 z" />
+    </g>
+    <g
+       style="fill:#ffffff"
+       id="SVG"
+       transform="matrix(2,0,0,2,40,158)">
+      <path
+         inkscape:connector-curvature="0"
+         id="S"
+         d="M 5.482,31.319 C 2.163,28.001 0.109,23.419 0.109,18.358 0.109,8.232 8.322,0.024 18.443,0.024 c 10.126,0 18.339,8.208 18.339,18.334 l -10.74,0 c 0,-4.194 -3.404,-7.593 -7.599,-7.593 -4.194,0 -7.593,3.399 -7.593,7.593 0,2.095 0.851,3.993 2.22,5.363 l 0.005,0 c 1.375,1.38 2.52,1.779 5.368,2.231 l 0,0 c 5.066,0.527 9.648,2.054 12.966,5.372 l 0,0 c 3.319,3.319 5.373,7.901 5.373,12.962 0,10.126 -8.213,18.339 -18.339,18.339 -10.121,0 -18.334,-8.213 -18.334,-18.339 l 10.741,0 c 0,4.194 3.399,7.598 7.593,7.598 4.195,0 7.599,-3.404 7.599,-7.598 0,-2.095 -0.851,-3.988 -2.221,-5.363 l -0.005,0 c -1.375,-1.375 -3.348,-1.849 -5.373,-2.226 l 0,-0.005 C 13.533,35.939 8.8,34.638 5.482,31.319 l 0,0 0,0 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="V"
+         d="m 73.452,0.024 -12.97,62.601 -10.74,0 -12.96,-62.601 10.74,0 7.6,36.663 7.59,-36.663 10.74,0 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="G"
+         d="m 91.792,25.952 18.334,0 0,18.334 0.005,0 c 0,10.127 -8.213,18.34 -18.339,18.34 -10.127,0 -18.334,-8.213 -18.334,-18.34 l 0,0 0,-25.927 -0.005,0 c 0,-10.126 8.212,-18.334 18.339,-18.334 10.121,0 18.334,8.208 18.334,18.334 l -10.741,0 c 0,-4.19 -3.404,-7.594 -7.593,-7.594 -4.195,0 -7.594,3.404 -7.594,7.594 l 0,25.927 0,0 c 0,4.195 3.399,7.594 7.594,7.594 4.189,0 7.588,-3.399 7.593,-7.589 l 0,-0.005 0,-7.588 -7.593,0 0,-10.746 0,0 z" />
+    </g>
+    <g
+       style="fill:#ffffff"
+       id="SVG-5-1"
+       transform="matrix(2,0,0,2,40,158)">
+      <path
+         inkscape:connector-curvature="0"
+         id="S-9-1"
+         d="M 5.482,31.319 C 2.163,28.001 0.109,23.419 0.109,18.358 0.109,8.232 8.322,0.024 18.443,0.024 c 10.126,0 18.339,8.208 18.339,18.334 l -10.74,0 c 0,-4.194 -3.404,-7.593 -7.599,-7.593 -4.194,0 -7.593,3.399 -7.593,7.593 0,2.095 0.851,3.993 2.22,5.363 l 0.005,0 c 1.375,1.38 2.52,1.779 5.368,2.231 l 0,0 c 5.066,0.527 9.648,2.054 12.966,5.372 l 0,0 c 3.319,3.319 5.373,7.901 5.373,12.962 0,10.126 -8.213,18.339 -18.339,18.339 -10.121,0 -18.334,-8.213 -18.334,-18.339 l 10.741,0 c 0,4.194 3.399,7.598 7.593,7.598 4.195,0 7.599,-3.404 7.599,-7.598 0,-2.095 -0.851,-3.988 -2.221,-5.363 l -0.005,0 c -1.375,-1.375 -3.348,-1.849 -5.373,-2.226 l 0,-0.005 C 13.533,35.939 8.8,34.638 5.482,31.319 l 0,0 0,0 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="V-0-7"
+         d="m 73.452,0.024 -12.97,62.601 -10.74,0 -12.96,-62.601 10.74,0 7.6,36.663 7.59,-36.663 10.74,0 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="G-2-0"
+         d="m 91.792,25.952 18.334,0 0,18.334 0.005,0 c 0,10.127 -8.213,18.34 -18.339,18.34 -10.127,0 -18.334,-8.213 -18.334,-18.34 l 0,0 0,-25.927 -0.005,0 c 0,-10.126 8.212,-18.334 18.339,-18.334 10.121,0 18.334,8.208 18.334,18.334 l -10.741,0 c 0,-4.19 -3.404,-7.594 -7.593,-7.594 -4.195,0 -7.594,3.404 -7.594,7.594 l 0,25.927 0,0 c 0,4.195 3.399,7.594 7.594,7.594 4.189,0 7.588,-3.399 7.593,-7.589 l 0,-0.005 0,-7.588 -7.593,0 0,-10.746 0,0 z" />
+    </g>
+    <g
+       style="fill:#ffffff"
+       id="SVG-4"
+       transform="matrix(2,0,0,2,40,158)">
+      <path
+         inkscape:connector-curvature="0"
+         id="S-1"
+         d="M 5.482,31.319 C 2.163,28.001 0.109,23.419 0.109,18.358 0.109,8.232 8.322,0.024 18.443,0.024 c 10.126,0 18.339,8.208 18.339,18.334 l -10.74,0 c 0,-4.194 -3.404,-7.593 -7.599,-7.593 -4.194,0 -7.593,3.399 -7.593,7.593 0,2.095 0.851,3.993 2.22,5.363 l 0.005,0 c 1.375,1.38 2.52,1.779 5.368,2.231 l 0,0 c 5.066,0.527 9.648,2.054 12.966,5.372 l 0,0 c 3.319,3.319 5.373,7.901 5.373,12.962 0,10.126 -8.213,18.339 -18.339,18.339 -10.121,0 -18.334,-8.213 -18.334,-18.339 l 10.741,0 c 0,4.194 3.399,7.598 7.593,7.598 4.195,0 7.599,-3.404 7.599,-7.598 0,-2.095 -0.851,-3.988 -2.221,-5.363 l -0.005,0 c -1.375,-1.375 -3.348,-1.849 -5.373,-2.226 l 0,-0.005 C 13.533,35.939 8.8,34.638 5.482,31.319 l 0,0 0,0 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="V-7"
+         d="m 73.452,0.024 -12.97,62.601 -10.74,0 -12.96,-62.601 10.74,0 7.6,36.663 7.59,-36.663 10.74,0 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="G-1"
+         d="m 91.792,25.952 18.334,0 0,18.334 0.005,0 c 0,10.127 -8.213,18.34 -18.339,18.34 -10.127,0 -18.334,-8.213 -18.334,-18.34 l 0,0 0,-25.927 -0.005,0 c 0,-10.126 8.212,-18.334 18.339,-18.334 10.121,0 18.334,8.208 18.334,18.334 l -10.741,0 c 0,-4.19 -3.404,-7.594 -7.593,-7.594 -4.195,0 -7.594,3.404 -7.594,7.594 l 0,25.927 0,0 c 0,4.195 3.399,7.594 7.594,7.594 4.189,0 7.588,-3.399 7.593,-7.589 l 0,-0.005 0,-7.588 -7.593,0 0,-10.746 0,0 z" />
+    </g>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -414,16 +482,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.84852814"
-     inkscape:cx="473.32347"
-     inkscape:cy="306.49864"
-     inkscape:current-layer="layer10"
+     inkscape:zoom="0.42426407"
+     inkscape:cx="110.91559"
+     inkscape:cy="471.40926"
+     inkscape:current-layer="layer1"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:window-width="1024"
-     inkscape:window-height="712"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
+     inkscape:window-width="1280"
+     inkscape:window-height="998"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata2821">
@@ -441,18 +509,7 @@
      id="layer1"
      inkscape:label="表紙"
      inkscape:groupmode="layer"
-     style="display:none">
-    <text
-       xml:space="preserve"
-       style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
-       x="290"
-       y="303.33334"
-       id="text2826"><tspan
-         sodipodi:role="line"
-         x="290"
-         y="303.33334"
-         style="font-size:64px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
-         id="tspan2830">svg2css</tspan></text>
+     style="display:inline">
     <text
        xml:space="preserve"
        style="font-size:32px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:MS Gothic;-inkscape-font-specification:MS Gothic"
@@ -1871,6 +1928,25 @@ String.prototype.trim = function()
    id="tspan3018">HTML+CSS</tspan>に変換する<tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
    id="tspan3022">Inkscape</tspan>プラグイン</tspan></text>
+    <g
+       id="g3268"
+       transform="matrix(1.4042417,0,0,1.4042417,-906.79409,-188.68579)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect4318"
+       width="116.52825"
+       height="582.6413"
+       x="1790.8651"
+       y="-394.55475"
+       transform="matrix(0.96592582,0.25881905,-0.25881905,0.96592582,0,0)" />
+    <image
+       sodipodi:absref="/home/ichinose/workspace/svg2css/readme-slide/svg2css.svg"
+       xlink:href="svg2css.svg"
+       y="77.655716"
+       x="281.53671"
+       id="image4084"
+       height="239.04648"
+       width="239.04648" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -1900,7 +1976,7 @@ String.prototype.trim = function()
          id="tspan2981">次のファイルを</tspan><tspan
          sodipodi:role="line"
          x="53.500839"
-         y="208.24957"
+         y="208.64949"
          id="tspan3008">(<tspan
    style="font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
    id="tspan3014">Inkscape</tspan>のインストールフォルダ)<tspan
@@ -1908,15 +1984,15 @@ String.prototype.trim = function()
    id="tspan3016">/share/extensions</tspan></tspan><tspan
          sodipodi:role="line"
          x="53.500839"
-         y="256.47357"
+         y="250.1272"
          id="tspan3010">にコピーしてください</tspan><tspan
          sodipodi:role="line"
          x="53.500839"
-         y="296.47357"
+         y="290.1272"
          id="tspan3006" /><tspan
          sodipodi:role="line"
          x="53.500839"
-         y="336.47357"
+         y="330.1272"
          id="tspan2973" /></text>
     <text
        xml:space="preserve"
@@ -1965,7 +2041,7 @@ String.prototype.trim = function()
          y="153.34422">Step1.</tspan><tspan
          sodipodi:role="line"
          x="56.568546"
-         y="201.56821"
+         y="193.84241"
          id="tspan2988"
          style="font-family:MS PGothic;-inkscape-font-specification:MS PGothic">長方形や楕円を使って絵を描きます</tspan></text>
     <rect
@@ -1999,7 +2075,7 @@ String.prototype.trim = function()
          y="426.75882">Step2.</tspan><tspan
          sodipodi:role="line"
          x="51.8545"
-         y="474.98282"
+         y="467.25702"
          id="tspan2991">&quot;HTML+CSS(.html)&quot;<tspan
    style="font-family:MS PGothic;-inkscape-font-specification:MS PGothic"
    id="tspan3012">というファイル形式で保存します</tspan></tspan></text>
@@ -2444,7 +2520,7 @@ String.prototype.trim = function()
      inkscape:groupmode="layer"
      id="layer10"
      inkscape:label="楽しんで！"
-     style="display:inline">
+     style="display:none">
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
