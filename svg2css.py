@@ -627,8 +627,26 @@ class CSSWriter(svg.SVGHandler):
 				transform = svg.Transform.Translate(-x[0].x-x[0].width/2, -x[0].y-x[0].height/2) * transform
 				css["transform"] = transform
 			invtransform.append(svg.Transform.Translate(-x[0].x, -x[0].y))
-
 			css["overflow"] = "hidden"
+		elif isinstance(x[0], svg.Arc):
+			css["position"] = "absolute"
+			css["left"] = x[0].cx - x[0].rx
+			css["top"] = x[0].cy - x[0].ry
+			css["width"] = x[0].rx * 2
+			css["height"] = x[0].ry * 2
+                        css["border-radius"] = "%s/%s" % (str(x[0].rx), str(x[0].ry))
+			
+			#座標変換
+			if x[0].transform or element.transform:
+				#CSSとSVGの原点の違いを補正
+				transform = element.transform.toMatrix() * x[0].transform.toMatrix()
+				invtransform.append(transform.inverse())
+				transform = transform * svg.Transform.Translate(x[0].cx, x[0].cy)
+				transform = svg.Transform.Translate(-x[0].cx, -x[0].cy) * transform
+				css["transform"] = transform
+			invtransform.append(svg.Transform.Translate(-x[0].cx + x[0].rx, -x[0].cy + x[0].ry))
+			css["overflow"] = "hidden"
+
 		self._css(cls=name, style=css)
 		
 		css = CSSStyle()
